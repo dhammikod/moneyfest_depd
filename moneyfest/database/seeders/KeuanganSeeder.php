@@ -31,7 +31,7 @@ class KeuanganSeeder extends Seeder
             [
                 'nama' => "gaji pegawai",
                 'nominal' => 40000,
-                'kategori' => 6,
+                'kategori' => 5,
                 'jumlah' => 5,
                 'satuan' => "buah",
                 'tanggal' => Carbon::parse($userDefinedDate),
@@ -44,7 +44,20 @@ class KeuanganSeeder extends Seeder
             [
                 'nama' => "pembelian kue",
                 'nominal' => 40000,
-                'kategori' => 6,
+                'kategori' => 4,
+                'jumlah' => 5,
+                'satuan' => "buah",
+                'tanggal' => Carbon::parse($userDefinedDate),
+                'catatan' => "-",
+                'user_id' => 1,
+            ]
+        );
+
+        Keuangan::create(
+            [
+                'nama' => "pembelian nastar",
+                'nominal' => 40000,
+                'kategori' => 4,
                 'jumlah' => 5,
                 'satuan' => "buah",
                 'tanggal' => Carbon::parse($userDefinedDate),
@@ -83,7 +96,20 @@ class KeuanganSeeder extends Seeder
             [
                 'nama' => "hasil santet",
                 'nominal' => 40000,
-                'kategori' => 12,
+                'kategori' => 13,
+                'jumlah' => 5,
+                'satuan' => "buah",
+                'tanggal' => Carbon::parse($userDefinedDate),
+                'catatan' => "-",
+                'user_id' => 1,
+            ]
+        );
+
+        Keuangan::create(
+            [
+                'nama' => "hasil pesugihan",
+                'nominal' => 40000,
+                'kategori' => 13,
                 'jumlah' => 5,
                 'satuan' => "buah",
                 'tanggal' => Carbon::parse($userDefinedDate),

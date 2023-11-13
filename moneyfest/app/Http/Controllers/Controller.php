@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Keuangan;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
 
@@ -89,8 +90,20 @@ class Controller extends BaseController
         }
         $user = User::where('id', session('user_id'))->first();
 
+        $kategories_sum = Keuangan::select(
+            'kategoris.kategori',
+            DB::raw('SUM(keuangans.nominal * keuangans.jumlah) AS total_category')
+        )
+        ->join('kategoris', 'keuangans.kategori', '=', 'kategoris.id')
+        ->join('jenis__kategoris', 'kategoris.id_jenis_kategori', '=', 'jenis__kategoris.id')
+        ->where('keuangans.user_id', session('user_id'))
+        ->where('jenis__kategoris.jenis_kategori', 'pendapatan')
+        ->groupBy('kategoris.kategori')
+        ->get();
+        
         return view('dashboard', [
             'user' => $user,
+            'kategories_sum' => $kategories_sum,
         ]);
     }
 
@@ -101,8 +114,20 @@ class Controller extends BaseController
         }
         $user = User::where('id', session('user_id'))->first();
 
+        $kategories_sum = Keuangan::select(
+            'kategoris.kategori',
+            DB::raw('SUM(keuangans.nominal * keuangans.jumlah) AS total_category')
+        )
+        ->join('kategoris', 'keuangans.kategori', '=', 'kategoris.id')
+        ->join('jenis__kategoris', 'kategoris.id_jenis_kategori', '=', 'jenis__kategoris.id')
+        ->where('keuangans.user_id', session('user_id'))
+        ->where('jenis__kategoris.jenis_kategori', 'pengeluaran')
+        ->groupBy('kategoris.kategori')
+        ->get();
+
         return view('pengeluaran', [
             'user' => $user,
+            'kategories_sum' => $kategories_sum,
         ]);
     }
 
@@ -125,6 +150,8 @@ class Controller extends BaseController
             'catatan' => $_POST['catatan'],
             'user_id' => $_POST['user_id'],
         ]);
+        $tabel_kiri_atas = $userId = 1; // Replace with the actual user ID        
+        
         return view('dashboard', [
             'user' => $user,
         ]);

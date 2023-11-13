@@ -86,6 +86,27 @@
             </form>
         </div>
 
+        <table>
+            <tr>
+                <th>
+                    Kategori
+                </th>
+                <th>
+                    Jumlah
+                </th>
+            </tr>
+            @foreach ($kategories_sum as $item)
+                <tr>
+                    <td>
+                        {{$item['kategori']}}
+                    </td>
+                    <td>
+                        {{$item['total_category']}}
+                    </td>
+                </tr>
+            @endforeach
+        </table>
+        
         <div style="display: flex; justify-content: flex-end">
             <form method="post" action="" class="form" style="text-align: center">
                 <h2 style="font-weight: bold">Input New Expenditures</h2>
