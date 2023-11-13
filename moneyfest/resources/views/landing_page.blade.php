@@ -1,26 +1,5 @@
+@extends('layouts.layout')
 
-
-
-
-
-<!DOCTYPE html>
-<html dir="ltr" lang="en-US">
-  <head>
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="author" content="Ayman Fikry"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-    <meta name="description" content="Multi-purpose Business html5 template"/>
-    <title>CapcAI</title>
-    <link href="assets/images/favicon/favicon.png" rel="icon"/>
-    <!--  Fonts ==
-    -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i%7CSource+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i" rel="stylesheet"/>
-    <!--  Stylesheets==
-    -->
-    <link href="assets/css/vendor.min.css" rel="stylesheet"/>
-    <link href="assets/css/style.css" rel="stylesheet"/>
-  </head>
   <body class="body-scroll">
     <!-- Document Wrapper-->
     <div class="wrapper clearfix" id="wrapperParallax">
@@ -28,31 +7,7 @@
       Header
       =============================================
       -->
-      <header class="header header-transparent header-sticky">
-        <nav class="navbar navbar-sticky navbar-expand-lg" id="primary-menu">
-          <div class="container"> <a class="logo navbar-brand" href="index.html"><img class="logo logo-dark" src="assets/images/logo/logo-dark.png" alt="Ebookyo Logo"/><img class="logo logo-light" src="assets/images/logo/logo-light.png" alt="Ebookyo Logo"/></a>
-            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarContent" aria-expanded="false"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarContent">
-              <ul class="navbar-nav ml-auto">
-                <li class="nav-item active"><a class="nav-link" data-scroll="scrollTo" href="#hero">Home</a></li>
-                <li class="nav-item"><a class="nav-link" data-scroll="scrollTo" href="#feature">Features</a></li>
-                <li class="nav-item"><a class="nav-link" data-scroll="scrollTo" href="#about">about</a></li>
-                <li class="nav-item"><a class="nav-link" data-scroll="scrollTo" href="#author">Author</a></li>
-                <li class="nav-item"><a class="nav-link" data-scroll="scrollTo" href="#testimonials">Testimonials</a></li>
-                <li class="nav-item"><a class="nav-link" data-scroll="scrollTo" href="#pricing">Pricing</a></li>
-              </ul>
-              <div class="module-container">
-                <!--module-btn-->
-                <div class="module module-cta"><a class="btn" data-scroll="scrollTo" href="#action"> <span>Download Now</span></a></div>
-              </div>
-              <!-- End Module Container  -->
-            </div>
-            <!-- End .nav-collapse-->
-          </div>
-          <!-- End .container-->
-        </nav>
-        <!-- End .navbar-->
-      </header>
+
       <!-- End Header-->
       <!-- Start hero #1-->
       <section class="hero hero-mailchimp bg-primary-alt" id="hero">
@@ -61,7 +16,7 @@
             <div class="row">
               <div class="col-12 col-md-6 col-lg-6">
                 <div class="hero-content">
-                  <h1 class="hero-headline">CapCai Money Management<Br> With AI.</h1>
+                  <h1 class="hero-headline">CapcAI Money Management<Br> With AI.</h1>
                   <div class="hero-bio">With us your business runs easily and smoothly!</div>
                   <div class="hero-action text-center">
                     <form class="mb-0 form-action mailchimp">
@@ -91,66 +46,84 @@
       </section>
       <!-- End #hero-->
       <!-- Start Feature #1-->
-      <section class="features text-center" id="feature">
-        <div class="container">
-          <div class="row clearfix">
-            <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
-              <div class="heading text-center">
-                <h2 class="heading-title">Our Clients</h2>
-                <p class="heading-desc">We have been working with some start up business clients</p>
-              </div>
-            </div>
-            <!-- End .col-lg-6 -->
+  <!-- ======= Clients Section ======= -->
+
+  <section class="features text-center" id="feature">
+    <div class="container">
+      <div class="row clearfix">
+        <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+          <div class="heading text-center">
+            <h2 class="heading-title">Our Clients</h2>
+            <p class="heading-desc">We have been working with some start up business clients</p>
           </div>
-          <!-- End .row  -->
-          <div class="row">
-            <!-- Panel #1  -->
-            <div class="col-12 col-md-12 col-lg-4 ">
-              <div class="feature-panel">
-                <div class="feature-icon text-center">
-                  <div class="bg-section"><img src="assets/images/icons/bg-icon-1.svg" alt="icon svg"/></div><img src="assets/images/icons/icon-dollar.svg" alt="Dollar Icon"/>
-                </div>
-                <div class="feature-content">
-                  <h3>Fullyours</h3>
-                  <p>Clothing Brand bussiness</p>
-                </div>
-              </div>
-              <!-- End .feature-panel -->
-            </div>
-            <!-- End .col-md-12-->
-            <!-- Panel #2  -->
-            <div class="col-12 col-md-12 col-lg-4 ">
-              <div class="feature-panel active">
-                <div class="feature-icon text-center">
-                  <div class="bg-section"><img src="assets/images/icons/bg-icon-2.svg" alt="icon svg"/></div><img src="assets/images/icons/icon-cup.svg" alt="Cup Icon"/>
-                </div>
-                <div class="feature-content">
-                  <h3>Socialign</h3>
-                  <p>Your logo is the very heart of your identity and branding, let our designers deliver the perfect & dreamy design, make a lasting impression.</p>
-                </div>
-              </div>
-              <!-- End .feature-panel -->
-            </div>
-            <!-- End .col-md-12-->
-            <!-- Panel #3-->
-            <div class="col-12 col-md-12 col-lg-4 ">
-              <div class="feature-panel">
-                <div class="feature-icon text-center">
-                  <div class="bg-section"><img src="assets/images/icons/bg-icon-3.svg" alt="icon svg"/></div><img src="assets/images/icons/icon-delivery.svg" alt="Delivery Icon"/>
-                </div>
-                <div class="feature-content">
-                  <h3>Crochet</h3>
-                  <p>What separates our agency from all other web design agencies is the ability to offer the most Friendly Experience you can imagine.</p>
-                </div>
-              </div>
-              <!-- End .feature-panel -->
-            </div>
-            <!-- End .col-md-12-->
-          </div>
-          <!-- End .row  -->
         </div>
-        <!-- End .container-->
-      </section>
+        <!-- End .col-lg-6 -->
+      </div>
+      <!-- End .row  -->
+      <div class="row">
+        <div class="slider">
+        <!-- Panel #1  -->
+        <div class="col-12 col-md-12 col-lg-4 ">
+          <div class="feature-panel">
+            <div class="feature-icon text-center">
+              <div class="bg-section"><img src="assets/images/icons/bg-icon-1.svg" alt="icon svg"/></div><img src="assets/images/icons/icon-dollar.svg" alt="Dollar Icon"/>
+            </div>
+            <div class="feature-content">
+              <h3>Fullyours</h3>
+              <p>Clothing Brand bussiness</p>
+            </div>
+          </div>
+          <!-- End .feature-panel -->
+        </div>
+        <!-- End .col-md-12-->
+        <!-- Panel #2  -->
+        <div class="col-12 col-md-12 col-lg-4 ">
+          <div class="feature-panel active">
+            <div class="feature-icon text-center">
+              <div class="bg-section"><img src="assets/images/icons/bg-icon-2.svg" alt="icon svg"/></div><img src="assets/images/icons/icon-cup.svg" alt="Cup Icon"/>
+            </div>
+            <div class="feature-content">
+              <h3>Socialign</h3>
+              <p>Your logo is the very heart of your identity and branding, let our designers deliver the perfect & dreamy design, make a lasting impression.</p>
+            </div>
+          </div>
+          <!-- End .feature-panel -->
+        </div>
+        <!-- End .col-md-12-->
+        <!-- Panel #3-->
+        <div class="col-12 col-md-12 col-lg-4 ">
+          <div class="feature-panel">
+            <div class="feature-icon text-center">
+              <div class="bg-section"><img src="assets/images/icons/bg-icon-3.svg" alt="icon svg"/></div><img src="assets/images/icons/icon-delivery.svg" alt="Delivery Icon"/>
+            </div>
+            <div class="feature-content">
+              <h3>Crochet</h3>
+              <p>What separates our agency from all other web design agencies is the ability to offer the most Friendly Experience you can imagine.</p>
+            </div>
+          </div>
+          <!-- End .feature-panel -->
+        </div>
+        <div class="col-12 col-md-12 col-lg-4 ">
+            <div class="feature-panel">
+              <div class="feature-icon text-center">
+                <div class="bg-section"><img src="assets/images/icons/bg-icon-3.svg" alt="icon svg"/></div><img src="assets/images/icons/icon-delivery.svg" alt="Delivery Icon"/>
+              </div>
+              <div class="feature-content">
+                <h3>Crochet</h3>
+                <p>What separates our agency from all other web design agencies is the ability to offer the most Friendly Experience you can imagine.</p>
+              </div>
+            </div>
+            <!-- End .feature-panel -->
+          </div>
+
+        <!-- End .col-md-12-->
+      </div>
+    </div>
+      <!-- End .row  -->
+    </div>
+    <!-- End .container-->
+  </section>
+
       <!--
       About
       =============================================
@@ -464,58 +437,9 @@
       </section>
       <!-- End #cta-->
       <!--
-      Footer #1
-      =============================================
-      -->
-      <footer class="footer" id="footer">
-        <div class="footer-top">
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-12 col-lg-3">
-                <div class="footer-logo"><a class="logo" href="index.html"><img class="logo logo-light" src="assets/images/logo/logo-footer.png" alt="Ebookyo Logo"/></a></div>
-              </div>
-              <div class="col-12 col-md-12 col-lg-7">
-                <ul class="list-unstyled footer-navigation">
-                  <li><a href="javascript:void(0)">Home</a></li>
-                  <li><a href="javascript:void(0)">Features</a></li>
-                  <li><a href="javascript:void(0)">Video </a></li>
-                  <li><a href="javascript:void(0)">Services</a></li>
-                  <li><a href="javascript:void(0)">Testimonials</a></li>
-                </ul>
-              </div>
-              <div class="col-12 col-md-12 col-lg-2">
-                <div class="footer-social">
-                  <ul class="list-unstyled">
-                    <li> <a href="javascript:void(0)"><i class="fab fa-facebook-f"></i></a></li>
-                    <li> <a href="javascript:void(0)"><i class="fab fa-twitter"></i></a></li>
-                    <li> <a href="javascript:void(0)"><i class="fab fa-dribbble"></i></a></li>
-                    <li> <a href="javascript:void(0)"><i class="fab fa-behance"></i></a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="footer-bottom">
-          <div class="container">
-            <hr/>
-          </div>
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-12 col-lg-12 text--center">
-                <div class="footer-copyright"><span>2020 &copy; <a href="http://themeforest.net/user/zytheme/portfolio?ref=zytheme">zytheme</a>. All rights reserved.</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- End .container  -->
-      </footer>
-    </div>
-    <!--  Footer Scripts==
+
     -->
-    <script src="assets/js/vendor/jquery-3.4.1.min.js"></script>
-    <script src="assets/js/vendor.min.js"></script>
-    <script src="assets/js/functions.js"></script>
+
   </body>
 </html>
 
