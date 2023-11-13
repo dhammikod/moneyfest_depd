@@ -42,7 +42,6 @@
                         <li class="nav-item active"><a class="nav-link" data-scroll="scrollTo" href="#hero">Home</a>
                         </li>
                         <li class="nav-item"><a class="nav-link" data-scroll="scrollTo" href="#about">About Us</a></li>
-                        <li class="nav-item"><a class="nav-link" data-scroll="scrollTo" href="#author">Contact</a></li>
                         <li class="nav-item"><a class="nav-link" data-scroll="scrollTo" href="#pricing">Pricing</a></li>
                     </ul>
                     <div class="module-container">

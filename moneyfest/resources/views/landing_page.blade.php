@@ -19,13 +19,10 @@
                   <h1 class="hero-headline">CapcAI Money Management<Br> With AI.</h1>
                   <div class="hero-bio">With us your business runs easily and smoothly!</div>
                   <div class="hero-action text-center">
-                    <form class="mb-0 form-action mailchimp">
-                      <div class="input-group">
-                        <input class="form-control" type="email" placeholder="Enter E-mail Address" required="required"/>
-                        <button class="btn btn--secondary"><span>download</span></button>
-                      </div>
-                      <!--  End .input-group-->
-                    </form>
+
+                        <button class="btn btn--secondary justify-content-center d-flex align-item-center"  href="login"><span>Join Us!</span></button>
+
+
                     <div class="subscribe-alert"></div>
                   </div>
                 </div>
@@ -248,7 +245,7 @@
                   </div>
                 </div>
                 <div class="card style-2">
-                    <div class="card-heading"><a class="card-link collapsed" data-toggle="collapse" data-parent="#accordion01" href="#collapse01-2">Disclaimer</a></div>
+                    <div class="card-heading"><a class="card-link collapsed" data-toggle="collapse" data-parent="#accordion01" href="#collapse01-2">Benefits join our member</a></div>
                     <div class="collapse" id="collapse01-2" data-parent="#accordion01">
                       <div class="card-body">With any financial product that you buy, it is important that you know you are getting the best advice from a reputable company as often you will have to provide sensitive information.</div>
                     </div>

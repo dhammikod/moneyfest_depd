@@ -1439,7 +1439,7 @@ a.back span {
 
 /* Button Secondary*/
 .btn--secondary {
-	background-color: #ff7101;
+	background-color: #5B96F4;
 	color           : #ffffff;
 }
 
@@ -2473,8 +2473,8 @@ a.back span {
 }
 
 .header .module-container .module-cta .btn:hover {
-	background-color: #ff7101;
-	border-color    : #ff7101;
+	background-color: #2D36A1;
+	border-color    : #2D36A1;
 	color           : #ffffff;
 }
 
@@ -2485,8 +2485,8 @@ a.back span {
 		line-height     : 40px;
 		font-size       : 13px;
 		margin-right    : 15px;
-		background-color: #ff7101;
-		border-color    : #ff7101;
+		background-color: #2D36A1;
+		border-color    : #2D36A1;
 		color           : #ffffff;
 	}
 
@@ -2496,8 +2496,8 @@ a.back span {
 }
 
 .header .navbar-fixed .module-container .module-cta .btn {
-	background-color: #ff7101;
-	border-color    : #ff7101;
+	background-color: #2D36A1;
+	border-color    : #2D36A1;
 	color           : #ffffff;
 }
 
@@ -3276,11 +3276,11 @@ a.back span {
 
 .pricing .pricing-panel:last-of-type {
 	z-index            : 1;
-	border-bottom-color: #F67362;
+	border-bottom-color: #2D36A1;
 }
 
 .pricing .pricing-panel:last-of-type .btn {
-	background-color: #F67362;
+	background-color: #2D36A1;
 }
 
 @media screen and (max-width: 991px) {
