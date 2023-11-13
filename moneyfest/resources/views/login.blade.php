@@ -18,6 +18,7 @@
     -->
     <link href="assets/css/vendor.min.css" rel="stylesheet" />
     <link href="assets/css/style.css" rel="stylesheet" />
+    <link href="assets/css/login.css" rel="stylesheet" />
 
     <!--  Slick Slider
     -->
@@ -30,7 +31,7 @@
     <header class="header header-transparent header-sticky">
         <nav class="navbar navbar-sticky navbar-expand-lg" id="primary-menu">
             <div class="container"> <a class="logo navbar-brand" href="/"><img class="logo"
-                        style="width: 120px; height:50px" src="assets/images/logo/logo-dark.png"
+                        style="height:50px" src="assets/images/login/logoclean.png"
                         alt="Ebookyo Logo" /></a>
                 <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
                     data-target="#navbarContent" aria-expanded="false"><span
@@ -52,29 +53,45 @@
         {{ 'invalid' }}
     @endif
 
-    <section class="vh-200">
+    <section class="background-radial-gradient overflow-hidden vh-200">
         <div class="container py-5 h-100">
             <div class="row d-flex align-items-center justify-content-center h-100">
-                <div class="col-md-8 col-lg-7 col-xl-6">
-                    <img style=" height:350px; margin-left: 170px"  src="assets/images/login/picturemasmbak.png"
+                <div class="col-md-8 col-lg-7 col-xl-6" style="z-index: 10">
+                    <h1 class="text-center my-1 display-5 fw-bold ls-tight">
+                        <a style= "color: hsl(0, 0%, 0%)">Let's </a> <a style="color: hsl(0, 0%, 100%)">Boost
+                            Business</a> <br />
+                        <span><a style="color: hsl(0, 0%, 100%)">Efficiency</a><a style= "color: hsl(0, 0%, 0%)"> with
+                                CapcAI</a></span>
+                    </h1>
+                    <p class="text-center mb-4 opacity-70" style="color: hsl(208, 100%, 14%)">
+                        Try us risk free for 7 days, if you don’t love us, get your money back.
+                    </p>
+                    <img style=" height:350px; margin-left: 170px"  src="assets/images/login/masmbak.png"
                         class="img-fluid" alt="Phone image">
                 </div>
-                <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
 
+                 <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+                    <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
+                    <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
+
+                    <div class="card bg-glass">
+                        <div class="card-body px-4 py-5 px-md-5">
                     <form action="" method="post">
                         @csrf
+                        <div class="row">
+                            <div class="col-md-12 mb-4">
                         <div class="form-outline mb-4">
                             <label class="form-label" for="form1Example13">Email address</label>
                             <input type="email" name="email" id="" class="form-control form-control-lg"
                                 required />
-                            
                         </div>
-
+                        </div>
+                        <div class="col-md-12 mb-4">
                         <div class="form-outline mb-4">
                             <label class="form-label" for="form1Example23">Password</label>
                             <input type="password" name="password" id="" class="form-control form-control-lg"
                                 required />
-                           
+                        </div>
                         </div>
 
                         <div class="d-flex align-items-left mb-4">
@@ -83,7 +100,7 @@
 
                         <button type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
 
-
+                    </div>
 
                     </form>
                 </div>
