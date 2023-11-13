@@ -30,6 +30,7 @@ Route::get('/register', [Controller::class, 'registerpage']);
 Route::post('/register', [Controller::class, 'registerlogic']);
 
 Route::get('/dashboard', [Controller::class, 'dashboard']);
+Route::get('/pengeluaran', [Controller::class, 'pengeluaran']);
 Route::post('/dashboard', [Controller::class, 'tes']);
 
 Route::post('/logout', [Controller::class, 'logout']);
@@ -37,8 +38,6 @@ Route::post('/logout', [Controller::class, 'logout']);
 //jangan sentuh samsek yagais :)
 Route::get('/api/jenis-kategoris', [JenisKategorisController::class, 'index']);
 Route::get('/api/kategoris/{jenis}', [KategorisController::class, 'index']);
-Route::get('/api/dashboard', [KeuanganController::class, 'index']);
-
-
-
-
+Route::get('/api/list-pengeluaran', [KeuanganController::class, 'pengeluaran']);
+Route::get('/api/list-pemasukan', [KeuanganController::class, 'pemasukan']);
+Route::get('/api/jenis-pengeluaran', [JenisKategorisController::class, 'pengeluaran']);

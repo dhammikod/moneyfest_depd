@@ -93,6 +93,17 @@ class Controller extends BaseController
         ]);
     }
 
+    public function pengeluaran(){
+        if (!Session::has('user_id')) {
+            return redirect()->to('/login');
+        }
+        $user = User::where('id', session('user_id'))->first();
+
+        return view('pengeluaran', [
+            'user' => $user,
+        ]);
+    }
+
     public function logout(){
         session()->forget('user_id');
         return redirect()->to('/');

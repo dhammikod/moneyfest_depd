@@ -11,9 +11,9 @@ class KeuanganController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function pengeluaran()
     {
-        $userId = 1;
+        $userId = session('user_id');
 
         $keuangans = Keuangan::select(
                 'keuangans.id',
@@ -29,6 +29,30 @@ class KeuanganController extends Controller
             ->join('kategoris', 'keuangans.kategori', '=', 'kategoris.id')
             ->join('jenis__kategoris', 'kategoris.id_jenis_kategori', '=', 'jenis__kategoris.id')
             ->where('keuangans.user_id', $userId)
+            ->where('jenis_kategori', 'pengeluaran')
+            ->get();
+        return response()->json($keuangans);
+    }
+
+    public function pemasukan()
+    {
+        $userId = session('user_id');
+
+        $keuangans = Keuangan::select(
+                'keuangans.id',
+                'keuangans.nama',
+                'keuangans.nominal',
+                'keuangans.jumlah',
+                'keuangans.satuan',
+                'keuangans.tanggal',
+                'keuangans.user_id',
+                'jenis__kategoris.jenis_kategori',
+                'kategoris.kategori'
+            )
+            ->join('kategoris', 'keuangans.kategori', '=', 'kategoris.id')
+            ->join('jenis__kategoris', 'kategoris.id_jenis_kategori', '=', 'jenis__kategoris.id')
+            ->where('keuangans.user_id', $userId)
+            ->where('jenis_kategori', 'pendapatan')
             ->get();
         return response()->json($keuangans);
     }

@@ -13,4 +13,12 @@ class JenisKategorisController extends Controller
         $jenisKategoris = Jenis_Kategori::all();
         return response()->json($jenisKategoris);
     }
+
+    public function pengeluaran()
+    {
+        $jenisKategoris = Jenis_Kategori::find(2);
+        $tes = [];
+        array_push($tes, $jenisKategoris);
+        return response()->json($tes);
+    }
 }

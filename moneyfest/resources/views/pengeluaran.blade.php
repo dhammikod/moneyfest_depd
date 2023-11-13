@@ -88,7 +88,7 @@
 
         <div style="display: flex; justify-content: flex-end">
             <form method="post" action="" class="form" style="text-align: center">
-                <h2 style="font-weight: bold">Input New Transaction</h2>
+                <h2 style="font-weight: bold">Input New Expenditures</h2>
                 @csrf
                 <select id="jenis" name="jenis" style="border-color: #2F80ED; background-color: #E0E9F4" disabled>
                     <!-- Options will be dynamically populated using JavaScript -->
@@ -141,6 +141,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="assets/js/autoload_form.js"></script>
+    <script src="assets/js/autoload_pengeluaran.js"></script>
 </body>
 </html>

@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     $('#myTable').DataTable({
         ajax: {
-            url: '/api/list-pemasukan', // Replace with your Laravel API endpoint
+            url: '/api/list-pengeluaran', // Replace with your Laravel API endpoint
             dataSrc: ''
         },
         columns: [
@@ -22,8 +22,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Fetch data for jenis dropdown on page load
-    populateDropdown('jenis', '/api/jenis-pengeluaran');
-    populateDropdown('kategori', '/api/kategoris/2')
+    populateDropdown('jenis', '/api/jenis-kategoris');
+    populateDropdown('kategori', '/api/kategoris/1')
 
     // Event listener for jenis dropdown change
     document.getElementById('jenis').addEventListener('change', function() {

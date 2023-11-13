@@ -27,5 +27,69 @@ class KeuanganSeeder extends Seeder
                 'user_id' => 1,
             ]
         );
+        Keuangan::create(
+            [
+                'nama' => "gaji pegawai",
+                'nominal' => 40000,
+                'kategori' => 6,
+                'jumlah' => 5,
+                'satuan' => "buah",
+                'tanggal' => Carbon::parse($userDefinedDate),
+                'catatan' => "-",
+                'user_id' => 1,
+            ]
+        );
+
+        Keuangan::create(
+            [
+                'nama' => "pembelian kue",
+                'nominal' => 40000,
+                'kategori' => 6,
+                'jumlah' => 5,
+                'satuan' => "buah",
+                'tanggal' => Carbon::parse($userDefinedDate),
+                'catatan' => "-",
+                'user_id' => 1,
+            ]
+        );
+
+        Keuangan::create(
+            [
+                'nama' => "pendapatan ga tau",
+                'nominal' => 40000,
+                'kategori' => 12,
+                'jumlah' => 5,
+                'satuan' => "buah",
+                'tanggal' => Carbon::parse($userDefinedDate),
+                'catatan' => "-",
+                'user_id' => 1,
+            ]
+        );
+
+        Keuangan::create(
+            [
+                'nama' => "royalti",
+                'nominal' => 40000,
+                'kategori' => 12,
+                'jumlah' => 5,
+                'satuan' => "buah",
+                'tanggal' => Carbon::parse($userDefinedDate),
+                'catatan' => "-",
+                'user_id' => 1,
+            ]
+        );
+
+        Keuangan::create(
+            [
+                'nama' => "hasil santet",
+                'nominal' => 40000,
+                'kategori' => 12,
+                'jumlah' => 5,
+                'satuan' => "buah",
+                'tanggal' => Carbon::parse($userDefinedDate),
+                'catatan' => "-",
+                'user_id' => 1,
+            ]
+        );
     }
 }
