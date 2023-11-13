@@ -38,7 +38,7 @@
           </ul>
           <div class="module-container">
             <!--module-btn-->
-            <div class="module module-cta"><a class="btn" data-scroll="scrollTo" href="#action"> <span>Login</span></a></div>
+            <div class="module module-cta"><a class="btn" data-scroll="scrollTo" href="login"> <span>Login</span></a></div>
         </div>
 
           <!-- End Module Container  -->

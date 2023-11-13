@@ -60,65 +60,57 @@
         <!-- End .col-lg-6 -->
       </div>
       <!-- End .row  -->
-      <div class="row">
         <div class="slider">
         <!-- Panel #1  -->
-        <div class="col-12 col-md-12 col-lg-4 ">
+        <div class="col-md-6 col-lg-3">
           <div class="feature-panel">
             <div class="feature-icon text-center">
               <div class="bg-section"><img src="assets/images/icons/bg-icon-1.svg" alt="icon svg"/></div><img src="assets/images/icons/icon-dollar.svg" alt="Dollar Icon"/>
             </div>
             <div class="feature-content">
               <h3>Fullyours</h3>
-              <p>Clothing Brand bussiness</p>
             </div>
           </div>
           <!-- End .feature-panel -->
         </div>
         <!-- End .col-md-12-->
         <!-- Panel #2  -->
-        <div class="col-12 col-md-12 col-lg-4 ">
+        <div class="col-md-12 col-lg-4">
           <div class="feature-panel active">
             <div class="feature-icon text-center">
               <div class="bg-section"><img src="assets/images/icons/bg-icon-2.svg" alt="icon svg"/></div><img src="assets/images/icons/icon-cup.svg" alt="Cup Icon"/>
             </div>
             <div class="feature-content">
               <h3>Socialign</h3>
-              <p>Your logo is the very heart of your identity and branding, let our designers deliver the perfect & dreamy design, make a lasting impression.</p>
             </div>
           </div>
           <!-- End .feature-panel -->
         </div>
         <!-- End .col-md-12-->
         <!-- Panel #3-->
-        <div class="col-12 col-md-12 col-lg-4 ">
+        <div class="col-md-12 col-lg-4">
           <div class="feature-panel">
             <div class="feature-icon text-center">
               <div class="bg-section"><img src="assets/images/icons/bg-icon-3.svg" alt="icon svg"/></div><img src="assets/images/icons/icon-delivery.svg" alt="Delivery Icon"/>
             </div>
             <div class="feature-content">
               <h3>Crochet</h3>
-              <p>What separates our agency from all other web design agencies is the ability to offer the most Friendly Experience you can imagine.</p>
             </div>
           </div>
           <!-- End .feature-panel -->
         </div>
-        <div class="col-12 col-md-12 col-lg-4 ">
+        <div class="col-md-12 col-lg-4">
             <div class="feature-panel">
               <div class="feature-icon text-center">
                 <div class="bg-section"><img src="assets/images/icons/bg-icon-3.svg" alt="icon svg"/></div><img src="assets/images/icons/icon-delivery.svg" alt="Delivery Icon"/>
               </div>
               <div class="feature-content">
-                <h3>Crochet</h3>
-                <p>What separates our agency from all other web design agencies is the ability to offer the most Friendly Experience you can imagine.</p>
+                <h3>BumiCom</h3>
               </div>
             </div>
             <!-- End .feature-panel -->
           </div>
-
         <!-- End .col-md-12-->
-      </div>
-    </div>
       <!-- End .row  -->
     </div>
     <!-- End .container-->
@@ -131,6 +123,7 @@
       <section class="about" id="about">
         <div class="container">
           <div class="row align-items-center h-100">
+            <div class="col-12 col-md-12 col-lg-6 text-md-center mx-md-auto"><img class="img-fluid float-right float-md-none mb-30" src="assets/images/cover/author.png" alt="Author"/></div>
             <div class="col-12 col-md-12 col-lg-6">
               <div class="heading">
                 <h2 class="heading-title">About The CapCai</h2>
@@ -149,7 +142,7 @@
                     </div>
                     <div class="about-item-title">
                       <div>+ <span class="counting">100 </span></div>
-                      <div>Total Pages</div>
+                      <div>Employee</div>
                     </div>
                   </div>
                 </div>
@@ -173,28 +166,10 @@
                     </div>
                     <div class="about-item-title">
                       <div>+ <span class="counting">16 </span></div>
-                      <div>Great Aword</div>
+                      <div>Clients</div>
                     </div>
                   </div>
                 </div>
-                <div class="col">
-                  <div class="about-item style-3">
-                    <div class="about-item-icon"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="43.305" viewBox="0 0 56.915 43.305">
-<g id="icon_and_text_2" data-name="icon and text 2" transform="translate(0 -43.774)">
-<path id="Path_3476" data-name="Path 3476" d="M55.024,18.621,32.337,7.538a9.292,9.292,0,0,0-7.237,0L1.891,18.621A2.8,2.8,0,0,0,0,21.1c0,.587.261,1.63,1.891,2.477l1.891.913V34.92A3.194,3.194,0,0,0,1.76,37.854a3.237,3.237,0,0,0,1.956,2.934L.782,50.11H9L6.063,40.787A3.159,3.159,0,0,0,6,34.92V25.6l3.455,1.7v13.56a1.052,1.052,0,0,0,.2.587A23.677,23.677,0,0,0,28.425,50.11a23.543,23.543,0,0,0,18.711-8.671,1.052,1.052,0,0,0,.2-.587v-13.5l7.693-3.781A2.8,2.8,0,0,0,56.915,21.1,2.914,2.914,0,0,0,55.024,18.621ZM45.245,40.527a21.8,21.8,0,0,1-16.82,7.563A21.8,21.8,0,0,1,11.6,40.527V28.2l13.5,6.454a8.792,8.792,0,0,0,3.586.717,7.939,7.939,0,0,0,3.651-.782L45.245,28.27Zm8.866-18.776L46.288,25.6a.749.749,0,0,0-.717.391L31.424,32.834a7.238,7.238,0,0,1-5.476,0L8.54,24.489l20.015-2.347a1.015,1.015,0,0,0-.2-2.021L5.15,22.859,2.8,21.751a1.315,1.315,0,0,1-.717-.587c0-.065.13-.326.717-.587L26.013,9.429a6.735,6.735,0,0,1,2.673-.522,6.608,6.608,0,0,1,2.738.522L54.112,20.512c.587.261.717.522.717.652A1.793,1.793,0,0,1,54.112,21.751Z" transform="translate(0 36.97)" fill="#f67362"/>
-</g>
-</svg>
-                    </div>
-                    <div class="about-item-title">
-                      <div>+ <span class="counting">1,000</span></div>
-                      <div>Active Readers</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-md-12 col-lg-6 text-md-center mx-md-auto"><img class="img-fluid float-right float-md-none" src="assets/images/cover/book-2.png" alt="Book Cover"/></div>
-          </div>
           <!-- End .row  -->
         </div>
         <!-- End .container  -->
@@ -204,41 +179,7 @@
       Author
       =============================================
       -->
-      <section class="author bg-gray" id="author">
-        <div class="container">
-          <div class="row align-items-center h-100">
-            <div class="col-12 col-md-12 col-lg-6 text-md-center mx-md-auto"><img class="img-fluid float-right float-md-none mb-30" src="assets/images/cover/author.png" alt="Author"/></div>
-            <div class="col-12 col-md-12 col-lg-6">
-              <div class="heading mb-50">
-                <h2 class="heading-title">About The Author</h2>
-                <p class="heading-desc">The author name is Herry Khan. bron in 1930, has been in volved in gliding for more than fifty years. with the gold C badge and two dia monds, he has flown about one hundred, diffrerent types of sailplane, including twen ty of those described in this work.</p>
-              </div>
-              <div class="author-education">
-                <h3>Education Backgroud</h3>
-                <div class="education-list">
-                  <div class="row">
-                    <div class="col">
-                      <div class="education-item style-1">
-                        <div class="education-title">Harvard University</div>
-                        <div class="education-period">Since 2012</div>
-                        <div class="education-desc">I am completed master degree from Harvard university 2012</div>
-                      </div>
-                    </div>
-                    <div class="col">
-                      <div class="education-item style-2">
-                        <div class="education-title">Newyork University</div>
-                        <div class="education-period">Since 2016</div>
-                        <div class="education-desc">I am completed master degree from Newyork university 2016</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- End .row  -->
-        </div>
-        <!-- End .container  -->
+
       </section>
       <!-- End #banner2  -->
       <!-- Start Testimonials-->
@@ -247,8 +188,8 @@
           <div class="row clearfix">
             <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
               <div class="heading text-center">
-                <h2 class="heading-title">Customer Stories</h2>
-                <p class="heading-desc">This should be used to tell a story and let your users know a little more about your product or service. How can you benefit them?</p>
+                <h2 class="heading-title">Reviews</h2>
+                <p class="heading-desc">Berikut adalah ulasan dari client kami bagamiana CapCai dapat membantu memanajemen bisnis mereka</p>
               </div>
             </div>
           </div>
@@ -257,11 +198,11 @@
               <div class="testimonial-panel style-1">
                 <div class="testimonial-body">
                   <div class="testimonial-icon"><i class="fas fa-quote-left"></i></div>
-                  <p>It is the greatest media and web development agency i've ever. easy user interface to the powerfull servives To do it , so I give him 5 out of 5 for there good and amazing services. Thanks you</p>
+                  <p>keren sekali , target omset bisa tercapai , terimakasih CapcAI!</p>
                   <div class="testimonial-author">
                     <div class="testimonial-img"><img src="assets/images/testimonials/avatar-1.png" alt="avatar author"/></div>
                     <div class="testimonial-info">
-                      <p>John R Michal</p><img class="testimonial-rating" src="assets/images/testimonials/4-stars.svg" alt="4 Stars"/>
+                      <p>Kathlyne</p>
                     </div>
                   </div>
                 </div>
@@ -271,11 +212,11 @@
               <div class="testimonial-panel style-2">
                 <div class="testimonial-body">
                   <div class="testimonial-icon"><i class="fas fa-quote-left"></i></div>
-                  <p>My project was a simple task, but the persistence of kolaso web development team turend an very awesome and grear project make me very happy Thanks you so much for this project.</p>
+                  <p>Keren sekali prediksinya sangat tepat! </p>
                   <div class="testimonial-author">
                     <div class="testimonial-img"><img src="assets/images/testimonials/avatar-2.png" alt="avatar author"/></div>
                     <div class="testimonial-info">
-                      <p>Micheal Lewis</p><img class="testimonial-rating" src="assets/images/testimonials/5-stars.svg" alt="5 Stars"/>
+                      <p>Vebrillia Santoso</p>
                     </div>
                   </div>
                 </div>
@@ -285,11 +226,11 @@
               <div class="testimonial-panel style-3">
                 <div class="testimonial-body">
                   <div class="testimonial-icon"><i class="fas fa-quote-left"></i></div>
-                  <p>i am realy very proud of beeing first use this project, fantastice and awesome design, Well code and Extremely good work. Quick reply and very professional for  just don't Know to say for this team.</p>
+                  <p>Dengan CapcAi, pencatatan keuangan bisnis saya semakin lebih mudah dan efesien</p>
                   <div class="testimonial-author">
                     <div class="testimonial-img"><img src="assets/images/testimonials/avatar-3.png" alt="avatar author"/></div>
                     <div class="testimonial-info">
-                      <p>Bronston Milton</p><img class="testimonial-rating" src="assets/images/testimonials/5-stars.svg" alt="5 Stars"/>
+                      <p>Gaby</p>
                     </div>
                   </div>
                 </div>
@@ -318,8 +259,8 @@
           <div class="row clearfix">
             <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
               <div class="heading text-center">
-                <h2 class="heading-title">Our Best Pricing Plan</h2>
-                <p class="heading-desc">This should be used to tell a story and let your users know a little more about your product or service. How can you benefit them?</p>
+                <h2 class="heading-title">Pricing</h2>
+                <p class="heading-desc">Our price from standart until premium</p>
               </div>
             </div>
           </div>
@@ -330,34 +271,47 @@
                   <!--  Pricing heading   -->
                   <div class="pricing-head">
                     <div class="pricing-name">Standard</div>
-                    <div class="currency">$29<span class="per"> / month</span></div>
+                    <div class="currency">500.000,-<span class="per"> / month</span></div>
                   </div>
                   <!--  Pricing body-->
                   <div class="pricing-body">
                     <ul class="pricing-list list-unstyled">
-                      <li>crm auto cync</li>
-                      <li>click to call back</li>
+                      <li>All Feature</li>
+                      <li>Pricing Feature</li>
                       <li>track energy costs </li>
                       <li>predictive dialing </li>
-                    </ul><a class="btn btn--primary" href="javascript:void(0)"><span>Download</span></a>
+                    </ul><a class="btn btn--primary" href="javascript:void(0)"><span>Order Now</span></a>
                   </div>
                 </div>
                 <div class="pricing-panel">
                   <!--  Pricing heading   -->
                   <div class="pricing-head">
-                    <div class="pricing-name">Advanced</div>
-                    <div class="currency">$49<span class="per"> / month</span></div>
+                    <div class="pricing-name">Business</div>
+                    <div class="currency">5.000.000,-<span class="per"> / month</span></div>
                   </div>
                   <!--  Pricing body-->
                   <div class="pricing-body">
                     <ul class="pricing-list list-unstyled">
-                      <li>crm auto cync</li>
-                      <li>click to call back</li>
-                      <li>track energy costs </li>
-                      <li>predictive dialing </li>
-                    </ul><a class="btn btn--primary" href="javascript:void(0)"><span>Download</span></a>
+                        <li>All Feature</li>
+                        <li>Pricing Feature</li>
+                        <li>track energy costs </li>
+                        <li>predictive dialing </li>
+                    </ul><a class="btn btn--primary" href="javascript:void(0)"><span>Order Now</span></a>
                   </div>
-                </div>
+                </div><div class="pricing-panel">
+                    <!--  Pricing heading   -->
+                    <div class="pricing-head">
+                      <div class="pricing-name">Free</div>
+                      <div class="currency">0,-<span class="per"> / month</span></div>
+                    </div>
+                    <!--  Pricing body-->
+                    <div class="pricing-body">
+                      <ul class="pricing-list list-unstyled">
+                        <li>All Features</li>
+                        <li>Only for a month</li>
+                      </ul><a class="btn btn--primary" href="javascript:void(0)"><span>Order Now</span></a>
+                    </div>
+                  </div>
               </div>
             </div>
             <div class="col-12 col-md-12 col-lg-6">
@@ -435,6 +389,15 @@
         </div>
         <!-- End .container-->
       </section>
+      <script type="text/javascript">
+        $(".slider").slick({
+            centerMode: true,
+            slidesToShow: 3,
+            dots : true,
+            autoplay: true,
+            autoplaySpeed: 1000
+        })
+        </script>
       <!-- End #cta-->
       <!--
 
