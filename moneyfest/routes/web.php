@@ -19,20 +19,9 @@ use App\Http\Controllers\KeuanganController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('landing_page');
 });
 
-Route::get('/landing-click', function () {
-    return view('landing_click');
-});
-
-Route::get('/landing-lead', function () {
-    return view('landing_lead');
-});
-
-Route::get('/landing-mailchimp', function () {
-    return view('landing_mailchimp');
-});
 
 Route::get('/login', [Controller::class, 'login']);
 Route::post('/login', [Controller::class, 'login']);
