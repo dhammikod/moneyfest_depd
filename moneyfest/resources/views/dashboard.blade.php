@@ -18,6 +18,10 @@
 
 </head>
 <body>
+    <form action="/logout" method="post">
+        @csrf
+        <button type="submit">Logout</button>
+    </form>
     <form method="post" action="">
         @csrf
         <input type="hidden" name="user_id" value="{{$user->id}}">

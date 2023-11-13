@@ -93,6 +93,11 @@ class Controller extends BaseController
         ]);
     }
 
+    public function logout(){
+        session()->forget('user_id');
+        return redirect()->to('/');
+    }
+
     public function tes(){
         $user = User::where('id', session('user_id'))->first();
         $keuangan = Keuangan::create([

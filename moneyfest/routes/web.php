@@ -32,6 +32,8 @@ Route::post('/register', [Controller::class, 'registerlogic']);
 Route::get('/dashboard', [Controller::class, 'dashboard']);
 Route::post('/dashboard', [Controller::class, 'tes']);
 
+Route::post('/logout', [Controller::class, 'logout']);
+
 //jangan sentuh samsek yagais :)
 Route::get('/api/jenis-kategoris', [JenisKategorisController::class, 'index']);
 Route::get('/api/kategoris/{jenis}', [KategorisController::class, 'index']);
