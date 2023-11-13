@@ -90,9 +90,7 @@
             <form method="post" action="" class="form" style="text-align: center">
                 <h2 style="font-weight: bold">Input New Expenditures</h2>
                 @csrf
-                <select id="jenis" name="jenis" style="border-color: #2F80ED; background-color: #E0E9F4" disabled>
-                    <!-- Options will be dynamically populated using JavaScript -->
-                </select>
+                <input type="hidden" name="jenis" value="pengeluaran">
 
                 <select id="kategori" name="kategori" style="border-color: #2F80ED; background-color: #E0E9F4">
                     <!-- Options will be dynamically populated using JavaScript -->
