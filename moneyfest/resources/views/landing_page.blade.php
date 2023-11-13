@@ -60,69 +60,61 @@
         <!-- End .col-lg-6 -->
       </div>
       <!-- End .row  -->
-        <div class="slider">
+      <div class="row">
         <!-- Panel #1  -->
-        <div class="col-md-6 col-lg-3">
+        <div class="col-12 col-md-12 col-lg-4 ">
           <div class="feature-panel">
             <div class="feature-icon text-center">
               <div class="bg-section"><img src="assets/images/icons/bg-icon-1.svg" alt="icon svg"/></div><img src="assets/images/icons/icon-dollar.svg" alt="Dollar Icon"/>
             </div>
             <div class="feature-content">
               <h3>Fullyours</h3>
+              <p>Clothing Brand bussiness</p>
             </div>
           </div>
           <!-- End .feature-panel -->
         </div>
         <!-- End .col-md-12-->
         <!-- Panel #2  -->
-        <div class="col-md-12 col-lg-4">
+        <div class="col-12 col-md-12 col-lg-4 ">
           <div class="feature-panel active">
             <div class="feature-icon text-center">
               <div class="bg-section"><img src="assets/images/icons/bg-icon-2.svg" alt="icon svg"/></div><img src="assets/images/icons/icon-cup.svg" alt="Cup Icon"/>
             </div>
             <div class="feature-content">
               <h3>Socialign</h3>
+              <p>Your logo is the very heart of your identity and branding, let our designers deliver the perfect & dreamy design, make a lasting impression.</p>
             </div>
           </div>
           <!-- End .feature-panel -->
         </div>
         <!-- End .col-md-12-->
         <!-- Panel #3-->
-        <div class="col-md-12 col-lg-4">
+        <div class="col-12 col-md-12 col-lg-4 ">
           <div class="feature-panel">
             <div class="feature-icon text-center">
               <div class="bg-section"><img src="assets/images/icons/bg-icon-3.svg" alt="icon svg"/></div><img src="assets/images/icons/icon-delivery.svg" alt="Delivery Icon"/>
             </div>
             <div class="feature-content">
               <h3>Crochet</h3>
+              <p>What separates our agency from all other web design agencies is the ability to offer the most Friendly Experience you can imagine.</p>
             </div>
           </div>
           <!-- End .feature-panel -->
         </div>
-        <div class="col-md-12 col-lg-4">
-            <div class="feature-panel">
-              <div class="feature-icon text-center">
-                <div class="bg-section"><img src="assets/images/icons/bg-icon-3.svg" alt="icon svg"/></div><img src="assets/images/icons/icon-delivery.svg" alt="Delivery Icon"/>
-              </div>
-              <div class="feature-content">
-                <h3>BumiCom</h3>
-              </div>
-            </div>
-            <!-- End .feature-panel -->
-          </div>
         <!-- End .col-md-12-->
+      </div>
       <!-- End .row  -->
     </div>
     <!-- End .container-->
   </section>
-
       <!--
       About
       =============================================
       -->
       <section class="about" id="about">
         <div class="container">
-          <div class="row align-items-center h-100">
+          <div class="row align-items-center">
             <div class="col-12 col-md-12 col-lg-6 text-md-center mx-md-auto"><img class="img-fluid float-right float-md-none mb-30" src="assets/images/cover/author.png" alt="Author"/></div>
             <div class="col-12 col-md-12 col-lg-6">
               <div class="heading">
@@ -180,11 +172,104 @@
       =============================================
       -->
 
+            <!--
+      Pricing Table #1
+      =============================================
+      -->
+      <section class="pricing pt-80" id="pricing">
+        <div class="container">
+          <div class="row clearfix">
+            <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+              <div class="heading text-center">
+                <h2 class="heading-title">Pricing</h2>
+                <p class="heading-desc">Our price from standart until premium</p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-md-12 col-lg-6">
+              <div class="pricing-holder">
+                <div class="pricing-panel active">
+                  <!--  Pricing heading   -->
+                  <div class="pricing-head">
+                    <div class="pricing-name">Standart</div>
+                    <div class="currency">400.000,-<span class="per"> / month</span></div>
+                  </div>
+                  <!--  Pricing body-->
+                  <div class="pricing-body">
+                    <ul class="pricing-list list-unstyled">
+                        <li>All Features</li>
+                        <li>Only for a month</li>
+                    </ul><a class="btn btn--primary" href="javascript:void(0)"><span>Order Now</span></a>
+                  </div>
+                </div>
+                <div class="pricing-panel">
+                  <!--  Pricing heading   -->
+                  <div class="pricing-head">
+                    <div class="pricing-name">Business</div>
+                    <div class="currency">5.000.000,-<span class="per"> / years</span></div>
+                  </div>
+                  <!--  Pricing body-->
+                  <div class="pricing-body">
+                    <ul class="pricing-list list-unstyled">
+                        <li>All Features</li>
+                        <li>Only for a years</li>
+                    </ul><a class="btn btn--primary" href="javascript:void(0)"><span>Order Now</span></a>
+                  </div>
+                </div><div class="pricing-panel">
+                    <!--  Pricing heading   -->
+                    <div class="pricing-head">
+                      <div class="pricing-name">Free</div>
+                      <div class="currency">0,-<span class="per"> / week</span></div>
+                    </div>
+                    <!--  Pricing body-->
+                    <div class="pricing-body">
+                      <ul class="pricing-list list-unstyled">
+                        <li>All Features</li>
+                        <li>Only for a week</li>
+                      </ul><a class="btn btn--primary" href="javascript:void(0)"><span>Order Now</span></a>
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-6">
+              <div class="accordion accordion-1" id="accordion01">
+                <div class="card style-1">
+                  <div class="card-heading"><a class="card-link collapsed" data-toggle="collapse" data-parent="#accordion01" href="#collapse01-1">Our Features!</a></div>
+                  <div class="collapse show" id="collapse01-1" data-parent="#accordion01">
+                    <div class="card-body">With any financial product that you buy, it is important that you know you are getting the best advice from a reputable company as often you will have to provide sensitive information.</div>
+                  </div>
+                </div>
+                <!-- Panel 02-->
+                <div class="card style-2">
+                  <div class="card-heading"><a class="card-link collapsed" data-toggle="collapse" data-parent="#accordion01" href="#collapse01-2">Benefits join our member</a></div>
+                  <div class="collapse" id="collapse01-2" data-parent="#accordion01">
+                    <div class="card-body">With any financial product that you buy, it is important that you know you are getting the best advice from a reputable company as often you will have to provide sensitive information.</div>
+                  </div>
+                </div>
+                <div class="card style-2">
+                    <div class="card-heading"><a class="card-link collapsed" data-toggle="collapse" data-parent="#accordion01" href="#collapse01-2">Disclaimer</a></div>
+                    <div class="collapse" id="collapse01-2" data-parent="#accordion01">
+                      <div class="card-body">With any financial product that you buy, it is important that you know you are getting the best advice from a reputable company as often you will have to provide sensitive information.</div>
+                    </div>
+                  </div>
+
+                <!-- End .row-->
+              </div>
+              <!-- End .Accordion-->
+            </div>
+          </div>
+          <!-- End .row-->
+        </div>
+        <!-- End .container-->
+      </section>
+      <!-- #pricing1 end  -->
+
       </section>
       <!-- End #banner2  -->
       <!-- Start Testimonials-->
       <section class="testimonials" id="testimonials">
-        <div class="container">
+        <div class="container" style="margin-bottom: 100px">
           <div class="row clearfix">
             <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
               <div class="heading text-center">
@@ -241,7 +326,7 @@
         </div>
         <!-- End .container-->
       </section>
-      <div class="pt-20 pb-20">
+      {{-- <div class="pt-20 pb-20">
         <div class="container">
           <div class="row">
             <div class="col">
@@ -249,115 +334,15 @@
             </div>
           </div>
         </div>
-      </div>
-      <!--
-      Pricing Table #1
-      =============================================
-      -->
-      <section class="pricing pt-80" id="pricing">
-        <div class="container">
-          <div class="row clearfix">
-            <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
-              <div class="heading text-center">
-                <h2 class="heading-title">Pricing</h2>
-                <p class="heading-desc">Our price from standart until premium</p>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12 col-md-12 col-lg-6">
-              <div class="pricing-holder">
-                <div class="pricing-panel active">
-                  <!--  Pricing heading   -->
-                  <div class="pricing-head">
-                    <div class="pricing-name">Standard</div>
-                    <div class="currency">500.000,-<span class="per"> / month</span></div>
-                  </div>
-                  <!--  Pricing body-->
-                  <div class="pricing-body">
-                    <ul class="pricing-list list-unstyled">
-                      <li>All Feature</li>
-                      <li>Pricing Feature</li>
-                      <li>track energy costs </li>
-                      <li>predictive dialing </li>
-                    </ul><a class="btn btn--primary" href="javascript:void(0)"><span>Order Now</span></a>
-                  </div>
-                </div>
-                <div class="pricing-panel">
-                  <!--  Pricing heading   -->
-                  <div class="pricing-head">
-                    <div class="pricing-name">Business</div>
-                    <div class="currency">5.000.000,-<span class="per"> / month</span></div>
-                  </div>
-                  <!--  Pricing body-->
-                  <div class="pricing-body">
-                    <ul class="pricing-list list-unstyled">
-                        <li>All Feature</li>
-                        <li>Pricing Feature</li>
-                        <li>track energy costs </li>
-                        <li>predictive dialing </li>
-                    </ul><a class="btn btn--primary" href="javascript:void(0)"><span>Order Now</span></a>
-                  </div>
-                </div><div class="pricing-panel">
-                    <!--  Pricing heading   -->
-                    <div class="pricing-head">
-                      <div class="pricing-name">Free</div>
-                      <div class="currency">0,-<span class="per"> / month</span></div>
-                    </div>
-                    <!--  Pricing body-->
-                    <div class="pricing-body">
-                      <ul class="pricing-list list-unstyled">
-                        <li>All Features</li>
-                        <li>Only for a month</li>
-                      </ul><a class="btn btn--primary" href="javascript:void(0)"><span>Order Now</span></a>
-                    </div>
-                  </div>
-              </div>
-            </div>
-            <div class="col-12 col-md-12 col-lg-6">
-              <div class="accordion accordion-1" id="accordion01">
-                <div class="card style-1">
-                  <div class="card-heading"><a class="card-link collapsed" data-toggle="collapse" data-parent="#accordion01" href="#collapse01-1">What should be included in a book ?</a></div>
-                  <div class="collapse show" id="collapse01-1" data-parent="#accordion01">
-                    <div class="card-body">With any financial product that you buy, it is important that you know you are getting the best advice from a reputable company as often you will have to provide sensitive information.</div>
-                  </div>
-                </div>
-                <!-- Panel 02-->
-                <div class="card style-2">
-                  <div class="card-heading"><a class="card-link collapsed" data-toggle="collapse" data-parent="#accordion01" href="#collapse01-2">I'm looking for the Best Novels List ?</a></div>
-                  <div class="collapse" id="collapse01-2" data-parent="#accordion01">
-                    <div class="card-body">With any financial product that you buy, it is important that you know you are getting the best advice from a reputable company as often you will have to provide sensitive information.</div>
-                  </div>
-                </div>
-                <!-- Panel 03-->
-                <div class="card style-4">
-                  <div class="card-heading"><a class="card-link collapsed" data-toggle="collapse" data-parent="#accordion01" href="#collapse01-3">What are the five parts of a book?</a></div>
-                  <div class="collapse" id="collapse01-3" data-parent="#accordion01">
-                    <div class="card-body">With any financial product that you buy, it is important that you know you are getting the best advice from a reputable company as often you will have to provide sensitive information.</div>
-                  </div>
-                </div>
-                <!-- Panel 04-->
-                <div class="card style-3">
-                  <div class="card-heading"><a class="card-link collapsed" data-toggle="collapse" data-parent="#accordion01" href="#collapse01-4">What’s the next book in this series?</a></div>
-                  <div class="collapse" id="collapse01-4" data-parent="#accordion01">
-                    <div class="card-body">With any financial product that you buy, it is important that you know you are getting the best advice from a reputable company as often you will have to provide sensitive information. </div>
-                  </div>
-                </div>
-                <!-- End .row-->
-              </div>
-              <!-- End .Accordion-->
-            </div>
-          </div>
-          <!-- End .row-->
-        </div>
-        <!-- End .container-->
-      </section>
-      <!-- #pricing1 end  -->
+      </div> --}}
+
       <!--
       CTA #1
       =============================================
       -->
-      <section class="cta pt-0 pb-0" id="action">
+
+
+      {{-- <section class="cta pt-0 pb-0" id="action">
         <div class="container">
           <div class="row">
             <div class="col-12 col-md-12 col-lg-12">
@@ -388,7 +373,7 @@
           </div>
         </div>
         <!-- End .container-->
-      </section>
+      </section> --}}
       <script type="text/javascript">
         $(".slider").slick({
             centerMode: true,
