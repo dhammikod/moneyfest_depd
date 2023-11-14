@@ -120,9 +120,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Income</title>
-  <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
+  {{-- <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" /> --}}
   <link rel="stylesheet" href="assets/css/dashboard.css" />
   <link rel="stylesheet" href="assets/css/dashboard2.css" />
+  <link rel="stylesheet" href="assets/css/icon/icon.css">
+  <link rel="stylesheet" href="assets/css/icon/tablericon.svg">
 </head>
 
 <body>
