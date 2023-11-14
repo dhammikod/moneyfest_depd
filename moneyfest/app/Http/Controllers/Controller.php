@@ -23,7 +23,7 @@ class Controller extends BaseController
             return redirect()->to('/dashboard');
         }
 
-        if(isset($_POST["email"]) && isset($_POST["password"])){            
+        if (isset($_POST["email"]) && isset($_POST["password"])) {
             $user = User::where('email', $_POST["email"])->first();
 
             if ($user && Hash::check($_POST["password"], $user->password)) {
@@ -36,7 +36,7 @@ class Controller extends BaseController
                 'pagetitle' => 'Home',
                 'invalid' => true,
             ]);
-        }         
+        }
 
         return view('login', [
             'pagetitle' => 'Home',
@@ -57,15 +57,15 @@ class Controller extends BaseController
         $user = User::where('email', $_POST["email"])->first();
         $errors = [];
 
-        if($user != null){
+        if ($user != null) {
             array_push($errors, "Email already registered");
         }
 
-        if($_POST['repassword'] != $_POST['password']){
+        if ($_POST['repassword'] != $_POST['password']) {
             array_push($errors, "Password does not match");
         }
 
-        if(!empty($errors)){
+        if (!empty($errors)) {
             return view('register', [
                 'pagetitle' => 'Home',
                 'invalid' => true,
@@ -82,7 +82,8 @@ class Controller extends BaseController
         return redirect()->to('/dashboard');
     }
 
-    public function dashboard(){
+    public function dashboard()
+    {
         if (!Session::has('user_id')) {
             return redirect()->to('/login');
         }
@@ -93,7 +94,8 @@ class Controller extends BaseController
         ]);
     }
 
-    public function pengeluaran(){
+    public function pengeluaran()
+    {
         if (!Session::has('user_id')) {
             return redirect()->to('/login');
         }
@@ -104,12 +106,14 @@ class Controller extends BaseController
         ]);
     }
 
-    public function logout(){
+    public function logout()
+    {
         session()->forget('user_id');
         return redirect()->to('/');
     }
 
-    public function tes(){
+    public function tes()
+    {
         $user = User::where('id', session('user_id'))->first();
         $keuangan = Keuangan::create([
             'nama' => $_POST['name'],
@@ -122,6 +126,24 @@ class Controller extends BaseController
             'user_id' => $_POST['user_id'],
         ]);
         return view('dashboard', [
+            'user' => $user,
+        ]);
+    }
+
+    public function create_pengeluaran()
+    {
+        $user = User::where('id', session('user_id'))->first();
+        $keuangan = Keuangan::create([
+            'nama' => $_POST['name'],
+            'nominal' => $_POST['nominal'],
+            'kategori' => $_POST['kategori'],
+            'jumlah' => $_POST['jumlah'],
+            'tanggal' => Carbon::parse($_POST['tanggal']),
+            'satuan' => $_POST['satuan'],
+            'catatan' => $_POST['catatan'],
+            'user_id' => $_POST['user_id'],
+        ]);
+        return view('pengeluaran', [
             'user' => $user,
         ]);
     }

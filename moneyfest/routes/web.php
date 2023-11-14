@@ -32,6 +32,7 @@ Route::post('/register', [Controller::class, 'registerlogic']);
 Route::get('/dashboard', [Controller::class, 'dashboard']);
 Route::get('/pengeluaran', [Controller::class, 'pengeluaran']);
 Route::post('/dashboard', [Controller::class, 'tes']);
+Route::post('/pengeluaran', [Controller::class, 'create_pengeluaran']);
 
 Route::post('/logout', [Controller::class, 'logout']);
 
