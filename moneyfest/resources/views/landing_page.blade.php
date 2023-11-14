@@ -296,7 +296,7 @@
                             </div>
                             <div class="card style-2">
                                 <div class="card-heading"><a class="card-link collapsed" data-toggle="collapse"
-                                        data-parent="#accordion01" href="#collapse01-2">Benefits join our member</a>
+                                        data-parent="#accordion01" href="#collapse01-2">Disclaimer!</a>
                                 </div>
                                 <div class="collapse" id="collapse01-2" data-parent="#accordion01">
                                     <div class="card-body">With any financial product that you buy, it is important

@@ -30,19 +30,19 @@
 
     <header class="header header-transparent header-sticky">
         <nav class="navbar navbar-sticky navbar-expand-lg" id="primary-menu">
-            <div class="container"> <a class="logo navbar-brand" href="index.html"><img class="logo logo-dark"
+            <div class="container"> <a class="logo navbar-brand" href="/"><img class="logo logo-dark"
                         style="width: 120px; height:50px" src="assets/images/logo/logo-dark.png"
-                        alt="Ebookyo Logo" /><img class="logo logo-light" style="width: 120px; height:50px"
-                        src="assets/images/logo/logo-light.png" alt="Ebookyo Logo" /></a>
+                        alt="" /><img class="logo logo-light" style="width: 120px; height:50px"
+                        src="assets/images/logo/logo-light.png" alt="" /></a>
                 <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
                     data-target="#navbarContent" aria-expanded="false"><span
                         class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarContent">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active"><a class="nav-link" data-scroll="scrollTo" href="#hero">Home</a>
+                        <li class="nav-item active"><a class="nav-link" data-scroll="scrollTo" href="/">Home</a>
                         </li>
-                        <li class="nav-item"><a class="nav-link" data-scroll="scrollTo" href="#about">About Us</a></li>
-                        <li class="nav-item"><a class="nav-link" data-scroll="scrollTo" href="#pricing">Pricing</a></li>
+                        <li class="nav-item"><a class="nav-link" data-scroll="scrollTo" href="/">About Us</a></li>
+                        <li class="nav-item"><a class="nav-link" data-scroll="scrollTo" href="/">Pricing</a></li>
                     </ul>
                     <div class="module-container">
                         <!--module-btn-->
@@ -64,16 +64,14 @@
             <div class="container">
                 <div class="row">
                     <div class="col-6 col-md-6 col-lg-3">
-                        <div class="footer-logo"><a class="logo" href="index.html"><img class="logo logo-light"
-                                    src="assets/images/logo/logo-footer.png" alt="Ebookyo Logo" /></a></div>
+                        <div class="footer-logo"><a class="logo" href="/"><img class="logo logo-light" style="width:100px"
+                                    src="assets/images/logo/logo-light.png" alt="" /></a></div>
                     </div>
                     <div class="col-12 col-md-12 col-lg-7">
                         <ul class="list-unstyled footer-navigation">
-                            <li><a href="javascript:void(0)">Home</a></li>
-                            <li><a href="javascript:void(0)">Features</a></li>
-                            <li><a href="javascript:void(0)">Video </a></li>
-                            <li><a href="javascript:void(0)">Services</a></li>
-                            <li><a href="javascript:void(0)">Testimonials</a></li>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/">About Us</a></li>
+                            <li><a href="/">Pricing</a></li>
                         </ul>
                     </div>
                     <div class="col-12 col-md-12 col-lg-2">
