@@ -267,7 +267,7 @@
                         </div>
                         <div style="display: flex; justify-content: flex-end">
                             <form method="post" action="" class="form" style="text-align: center">
-                                <h2 style="font-weight: bold; padding: 20px">Input New Transaction</h2>
+                                <h2 style="font-weight: bold; padding: 20px">Input New Income</h2>
                                 @csrf
                                 <input type="hidden" name="jenis" value="pendapatan">
 
