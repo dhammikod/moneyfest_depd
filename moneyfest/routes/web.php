@@ -29,11 +29,17 @@ Route::post('/login', [Controller::class, 'login']);
 Route::get('/register', [Controller::class, 'registerpage']);
 Route::post('/register', [Controller::class, 'registerlogic']);
 
+Route::get('/stock', [Controller::class, 'stock']);
+
 Route::get('/dashboard', [Controller::class, 'dashboard']);
 Route::get('/pemasukan', [Controller::class, 'pemasukan']);
 Route::get('/pengeluaran', [Controller::class, 'pengeluaran']);
 Route::post('/pemasukan', [Controller::class, 'tes']);
 Route::post('/pengeluaran', [Controller::class, 'create_pengeluaran']);
+
+Route::get('/histori/{histori}', [Controller::class, 'histori']);
+Route::post('/histori/{histori}', [Controller::class, 'updateKeuangan']);
+
 
 Route::post('/logout', [Controller::class, 'logout']);
 

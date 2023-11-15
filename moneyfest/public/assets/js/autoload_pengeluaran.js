@@ -4,23 +4,6 @@ document.addEventListener('DOMContentLoaded', function() {
         dateFormat: "Y-m-d H:i",
     });
 
-    $('#myTable').DataTable({
-        ajax: {
-            url: '/api/list-pengeluaran', // Replace with your Laravel API endpoint
-            dataSrc: ''
-        },
-        columns: [
-            { data: 'nama' },
-            { data: 'jenis_kategori' },
-            { data: 'kategori' },
-            { data: 'nominal' },
-            { data: 'jumlah' },
-            { data: 'satuan' },
-            { data: 'tanggal' },
-            // Add more columns based on your data structure
-        ]
-    });
-
     // Fetch data for jenis dropdown on page load
     populateDropdown('jenis', '/api/jenis-kategoris');
     populateDropdown('kategori', '/api/kategoris/1')
