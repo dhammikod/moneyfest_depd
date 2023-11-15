@@ -83,7 +83,18 @@ class Controller extends BaseController
         return redirect()->to('/dashboard');
     }
 
-    public function dashboard()
+    public function dashboard(){
+        if (!Session::has('user_id')) {
+            return redirect()->to('/login');
+        }
+        $user = User::where('id', session('user_id'))->first();
+
+        return view('dashboard', [
+            'user' => $user,
+        ]);
+    }
+
+    public function pemasukan()
     {
         if (!Session::has('user_id')) {
             return redirect()->to('/login');
@@ -94,14 +105,14 @@ class Controller extends BaseController
             'kategoris.kategori',
             DB::raw('SUM(keuangans.nominal * keuangans.jumlah) AS total_category')
         )
-        ->join('kategoris', 'keuangans.kategori', '=', 'kategoris.id')
-        ->join('jenis__kategoris', 'kategoris.id_jenis_kategori', '=', 'jenis__kategoris.id')
-        ->where('keuangans.user_id', session('user_id'))
-        ->where('jenis__kategoris.jenis_kategori', 'pendapatan')
-        ->groupBy('kategoris.kategori')
-        ->get();
-        
-        return view('dashboard', [
+            ->join('kategoris', 'keuangans.kategori', '=', 'kategoris.id')
+            ->join('jenis__kategoris', 'kategoris.id_jenis_kategori', '=', 'jenis__kategoris.id')
+            ->where('keuangans.user_id', session('user_id'))
+            ->where('jenis__kategoris.jenis_kategori', 'pendapatan')
+            ->groupBy('kategoris.kategori')
+            ->get();
+
+        return view('pemasukan', [
             'user' => $user,
             'kategories_sum' => $kategories_sum,
         ]);
@@ -118,12 +129,12 @@ class Controller extends BaseController
             'kategoris.kategori',
             DB::raw('SUM(keuangans.nominal * keuangans.jumlah) AS total_category')
         )
-        ->join('kategoris', 'keuangans.kategori', '=', 'kategoris.id')
-        ->join('jenis__kategoris', 'kategoris.id_jenis_kategori', '=', 'jenis__kategoris.id')
-        ->where('keuangans.user_id', session('user_id'))
-        ->where('jenis__kategoris.jenis_kategori', 'pengeluaran')
-        ->groupBy('kategoris.kategori')
-        ->get();
+            ->join('kategoris', 'keuangans.kategori', '=', 'kategoris.id')
+            ->join('jenis__kategoris', 'kategoris.id_jenis_kategori', '=', 'jenis__kategoris.id')
+            ->where('keuangans.user_id', session('user_id'))
+            ->where('jenis__kategoris.jenis_kategori', 'pengeluaran')
+            ->groupBy('kategoris.kategori')
+            ->get();
 
         return view('pengeluaran', [
             'user' => $user,
@@ -150,11 +161,7 @@ class Controller extends BaseController
             'catatan' => $_POST['catatan'],
             'user_id' => $_POST['user_id'],
         ]);
-        $tabel_kiri_atas = $userId = 1; // Replace with the actual user ID        
-        
-        return view('dashboard', [
-            'user' => $user,
-        ]);
+        return redirect()->to('/pemasukan');
     }
 
     public function create_pengeluaran()
@@ -170,8 +177,6 @@ class Controller extends BaseController
             'catatan' => $_POST['catatan'],
             'user_id' => $_POST['user_id'],
         ]);
-        return view('pengeluaran', [
-            'user' => $user,
-        ]);
+        return redirect()->to('/pengeluaran');
     }
 }
