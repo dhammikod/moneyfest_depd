@@ -12,9 +12,7 @@ use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use App\Models\Jenis_Kategori;
 use App\Models\Kategori;
-
-
-
+use App\Models\Produk;
 use Illuminate\Routing\Controller as BaseController;
 
 class Controller extends BaseController
@@ -58,9 +56,49 @@ class Controller extends BaseController
             return redirect()->back()->with('error', 'wrong usage');
         }
     }
+
+    public function updatestok()
+    {
+        if (isset($_POST['delete'])) {
+            $id = $_POST['id'];
+            $produk = Produk::findOrFail($id);
+            $produk->delete();
+            return redirect()->to('/stok');
+        } elseif (isset($_POST['edit'])) {
+            $id = $_POST['id'];
+            $produk = Produk::findOrFail($id);
+            $produk->update([
+                'nama' => $_POST['nama'],
+                'jenis' => $_POST['jenis'],
+                'deskripsi' => $_POST['deskripsi'],
+                'stok' => $_POST['stok'],
+                'harga_jual' => $_POST['harga_jual'],
+                'harga_beli' => $_POST['harga_beli'],
+                'terjual' => $_POST['terjual'],
+            ]);
+            return redirect()->to('/stok');
+        } elseif (isset($_POST['create'])) {
+            $user = User::where('id', session('user_id'))->first();
+            $produk = Produk::create([
+                'nama' => $_POST['nama'],
+                'jenis' => $_POST['jenis'],
+                'deskripsi' => $_POST['deskripsi'],
+                'stok' => $_POST['stok'],
+                'harga_jual' => $_POST['harga_jual'],
+                'harga_beli' => $_POST['harga_beli'],
+                'terjual' => $_POST['terjual'],
+                'user_id' => $_POST['user_id'],
+            ]);
+            return redirect()->to('/stok');
+        } else {
+            return redirect()->back()->with('error', 'wrong usage');
+        }
+    }
     public function histori($histori)
     {
-        $this->verify();
+        if (!Session::has('user_id')) {
+            return redirect()->to('/login');
+        }
 
         $user = User::where('id', session('user_id'))->first();
         if ($histori == "pengeluaran") {
@@ -165,15 +203,11 @@ class Controller extends BaseController
         return redirect()->to('/dashboard');
     }
 
-    public function verify()
+    public function dashboard()
     {
         if (!Session::has('user_id')) {
             return redirect()->to('/login');
         }
-    }
-    public function dashboard()
-    {
-        $this->verify();
         $user = User::where('id', session('user_id'))->first();
 
         return view('dashboard', [
@@ -183,7 +217,9 @@ class Controller extends BaseController
 
     public function pemasukan()
     {
-        $this->verify();
+        if (!Session::has('user_id')) {
+            return redirect()->to('/login');
+        }
         $user = User::where('id', session('user_id'))->first();
 
         $kategories_sum = Keuangan::select(
@@ -202,10 +238,24 @@ class Controller extends BaseController
             'kategories_sum' => $kategories_sum,
         ]);
     }
+    public function stok(){
+        if (!Session::has('user_id')) {
+            return redirect()->to('/login');
+        }
+        $user = User::where('id', session('user_id'))->first();
 
+        $produks = Produk::where('user_id', session('user_id'))->get();
+
+        return view('stok', [
+            'user' => $user,
+            'produks' => $produks,
+        ]);
+    }
     public function pengeluaran()
     {
-        $this->verify();
+        if (!Session::has('user_id')) {
+            return redirect()->to('/login');
+        }
         $user = User::where('id', session('user_id'))->first();
 
         $kategories_sum = Keuangan::select(

@@ -40,6 +40,9 @@ Route::post('/pengeluaran', [Controller::class, 'create_pengeluaran']);
 Route::get('/histori/{histori}', [Controller::class, 'histori']);
 Route::post('/histori/{histori}', [Controller::class, 'updateKeuangan']);
 
+Route::get('/stok', [Controller::class, 'stok']);
+Route::post('/stok', [Controller::class, 'updatestok']);
+
 
 Route::post('/logout', [Controller::class, 'logout']);
 
