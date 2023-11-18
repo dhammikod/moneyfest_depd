@@ -43,6 +43,9 @@ Route::post('/histori/{histori}', [Controller::class, 'updateKeuangan']);
 Route::get('/stok', [Controller::class, 'stok']);
 Route::post('/stok', [Controller::class, 'updatestok']);
 
+Route::get('/pegawai', [Controller::class, 'pegawai']);
+Route::post('/pegawai', [Controller::class, 'updatepegawai']);
+
 
 Route::post('/logout', [Controller::class, 'logout']);
 

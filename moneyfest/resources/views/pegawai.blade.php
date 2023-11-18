@@ -45,25 +45,16 @@
         </div>
         <div style="display: flex; justify-content: flex-end">
             <form method="post" action="" class="form" style="text-align: center">
-                <h2 style="font-weight: bold">Input New Expenditures</h2>
+                <h2 style="font-weight: bold">Input New Pegawais</h2>
                 @csrf
                 <input type="hidden" name="create" value="yes">
                 <input type="hidden" name="user_id" value="{{ $user->id }}">
-                <input type="text" name="nama" id="nama" placeholder="Nama"
-                     required style="border-color: #2F80ED; background-color: #E0E9F4">
-                <input type="text" name="jenis" id="jenis" placeholder="Jenis" 
-                    required style="border-color: #2F80ED; background-color: #E0E9F4">
-                    <input type="text" name="deskripsi" id="deskripsi" placeholder="deskripsi"
-                    required style="border-color: #2F80ED; background-color: #E0E9F4">
-                <input type="text" name="stok" id="Stok" placeholder="Stok"
-                     required style="border-color: #2F80ED; background-color: #E0E9F4">
-                <input type="number" name="harga_jual" id="harga_jual" placeholder="Harga_jual"
-                     required style="border-color: #2F80ED; background-color: #E0E9F4">
-                <input type="number" name="harga_beli" id="harga_beli" placeholder="Harga_beli"
-                    required style="border-color: #2F80ED; background-color: #E0E9F4">
-                <input type="number" name="terjual" id="terjual" placeholder="Terjual"
-                    required style="border-color: #2F80ED; background-color: #E0E9F4">
-
+                <input type="text" name="nama" id="nama" placeholder="Nama" required
+                    style="border-color: #2F80ED; background-color: #E0E9F4">
+                <input type="text" name="job_desc" id="job_desc" placeholder="job_desc" required
+                    style="border-color: #2F80ED; background-color: #E0E9F4">
+                <input type="number" name="gaji" id="gaji" placeholder="gaji" required
+                    style="border-color: #2F80ED; background-color: #E0E9F4">
                 <button type="submit"
                     style="background: white; padding: 8px 12px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold">SAVE</button>
             </form>
@@ -73,12 +64,8 @@
                 <thead>
                     <tr>
                         <th class="sort" data-sort="nama">nama</th>
-                        <th class="sort" data-sort="jenis">jenis</th>
-                        <th class="sort" data-sort="deskripsi">deskripsi</th>
-                        <th class="sort" data-sort="stok">stok</th>
-                        <th class="sort" data-sort="harga_jual">harga_jual</th>
-                        <th class="sort" data-sort="harga_beli">harga_beli</th>
-                        <th class="sort" data-sort="terjual">terjual</th>
+                        <th class="sort" data-sort="jenis">job_desc</th>
+                        <th class="sort" data-sort="deskripsi">gaji</th>
                         <th colspan="2">
                             <input type="text" class="search" placeholder="Search History" />
                         </th>
@@ -88,16 +75,12 @@
                     @php
                         $i = 1;
                     @endphp
-                    @foreach ($produks as $data)
+                    @foreach ($pegawais as $data)
                         <tr>
                             <td class="id" style="display:none;">{{ $i }}</td>
                             <td class="nama">{{ $data['nama'] }}</td>
-                            <td class="jenis">{{ $data['jenis'] }}</td>
-                            <td class="deksripsi">{{ $data['deksripsi'] }}</td>
-                            <td class="stok">{{ $data['stok'] }}</td>
-                            <td class="harga_jual">{{ $data['harga_jual'] }}</td>
-                            <td class="harga_beli">{{ $data['harga_beli'] }}</td>
-                            <td class="terjual">{{ $data['terjual'] }}</td>
+                            <td class="job_desc">{{ $data['job_desc'] }}</td>
+                            <td class="gaji">{{ $data['gaji'] }}</td>
                             <td class="edit"><button type="button" class="btn btn-warning" data-bs-toggle="modal"
                                     data-bs-target="#exampleModal{{ $data['id'] }}">
                                     Edit
@@ -133,27 +116,13 @@
                                             <input type="hidden" name="edit" value="true">
 
                                             <input type="hidden" name="id" value="{{ $data['id'] }}">
-                                            <input type="text" name="nama" id="nama"
-                                                placeholder="Name of Income" value="{{ $data['nama'] }}" required
+                                            <input type="text" name="nama" id="nama" placeholder="Nama"  value="{{ $data['nama'] }}"
+                                                required style="border-color: #2F80ED; background-color: #E0E9F4">
+                                            <input type="text" name="job_desc" id="job_desc" value="{{ $data['job_desc'] }}"
+                                                placeholder="job_desc" required
                                                 style="border-color: #2F80ED; background-color: #E0E9F4">
-                                            <input type="text" name="jenis" id="jenis"
-                                                placeholder="Nominal" value="{{ $data['jenis'] }}" required
-                                                style="border-color: #2F80ED; background-color: #E0E9F4">
-                                            <input type="text" name="deskripsi" id="deskripsi"
-                                                placeholder="Amount" value="{{ $data['deskripsi'] }}" required
-                                                style="border-color: #2F80ED; background-color: #E0E9F4">
-                                            <input type="text" name="stok" id="stok"
-                                                placeholder="Amount" value="{{ $data['stok'] }}" required
-                                                style="border-color: #2F80ED; background-color: #E0E9F4">
-                                            <input type="number" name="harga_jual" id="harga_jual"
-                                                placeholder="Unit" value="{{ $data['harga_jual'] }}" required
-                                                style="border-color: #2F80ED; background-color: #E0E9F4">
-                                            <input type="number" name="harga_beli" id="harga_beli"
-                                                placeholder="harga_beli" value="{{ $data['harga_beli'] }}" required
-                                                style="border-color: #2F80ED; background-color: #E0E9F4">
-                                            <input type="number" name="terjual" id="terjual" placeholder="Notes"
-                                                value="{{ $data['terjual'] }}" required
-                                                style="border-color: #2F80ED; background-color: #E0E9F4">
+                                            <input type="number" name="gaji" id="gaji" placeholder="gaji" value="{{ $data['gaji'] }}"
+                                                required style="border-color: #2F80ED; background-color: #E0E9F4">
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
@@ -206,7 +175,7 @@
         <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-        <script src="/assets/js/stok.js"></script>
+        <script src="/assets/js/histori.js"></script>
 
 </body>
 

@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use App\Models\Jenis_Kategori;
 use App\Models\Kategori;
+use App\Models\Pegawai;
 use App\Models\Produk;
 use Illuminate\Routing\Controller as BaseController;
 
@@ -90,6 +91,36 @@ class Controller extends BaseController
                 'user_id' => $_POST['user_id'],
             ]);
             return redirect()->to('/stok');
+        } else {
+            return redirect()->back()->with('error', 'wrong usage');
+        }
+    }
+
+    public function updatepegawai()
+    {
+        if (isset($_POST['delete'])) {
+            $id = $_POST['id'];
+            $produk = Pegawai::findOrFail($id);
+            $produk->delete();
+            return redirect()->to('/pegawai');
+        } elseif (isset($_POST['edit'])) {
+            $id = $_POST['id'];
+            $produk = Pegawai::findOrFail($id);
+            $produk->update([
+                'nama' => $_POST['nama'],
+                'job_desc' => $_POST['job_desc'],
+                'gaji' => $_POST['gaji'],
+            ]);
+            return redirect()->to('/pegawai');
+        } elseif (isset($_POST['create'])) {
+            $user = User::where('id', session('user_id'))->first();
+            $produk = Pegawai::create([
+                'nama' => $_POST['nama'],
+                'job_desc' => $_POST['job_desc'],
+                'gaji' => $_POST['gaji'],
+                'user_id' => $_POST['user_id'],
+            ]);
+            return redirect()->to('/pegawai');
         } else {
             return redirect()->back()->with('error', 'wrong usage');
         }
@@ -249,6 +280,20 @@ class Controller extends BaseController
         return view('stok', [
             'user' => $user,
             'produks' => $produks,
+        ]);
+    }
+
+    public function pegawai(){
+        if (!Session::has('user_id')) {
+            return redirect()->to('/login');
+        }
+        $user = User::where('id', session('user_id'))->first();
+
+        $pegawais = Pegawai::where('user_id', session('user_id'))->get();
+
+        return view('pegawai', [
+            'user' => $user,
+            'pegawais' => $pegawais,
         ]);
     }
     public function pengeluaran()
