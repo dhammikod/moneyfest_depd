@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>CapcAI Dashboard</title>
     <link rel="shortcut icon" type="image/png" href="../assets/images/logo/.png" />
-    <link rel="stylesheet" href="../assets/css/dashboard.css" />
+    <link rel="stylesheet" href="assets/css/dashboard.css" />
+    <link rel="stylesheet" href="../assets/css/dashboard2.css" />
 </head>
 
 <body>
@@ -18,7 +19,7 @@
             <!-- Sidebar scroll-->
             <div>
                 <div class="brand-logo d-flex align-items-center justify-content-between">
-                    <a href="./index.html" class="text-nowrap logo-img">
+                    <a href="/dashboard" class="text-nowrap logo-img">
                         <img src="../assets/images/logo/logo-dark.png" width="180" alt="" />
                     </a>
                     <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
@@ -42,22 +43,22 @@
                         </li>
                         <li class="nav-small-cap">
                             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                            <span class="hide-menu">UI COMPONENTS</span>
+                            <span class="hide-menu">FEATURES</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="./ui-buttons.html" aria-expanded="false">
+                            <a class="sidebar-link" href="/pemasukan" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-article"></i>
                                 </span>
-                                <span class="hide-menu">Buttons</span>
+                                <span class="hide-menu">Income</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="./ui-alerts.html" aria-expanded="false">
+                            <a class="sidebar-link" href="/pengeluaran" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-alert-circle"></i>
                                 </span>
-                                <span class="hide-menu">Alerts</span>
+                                <span class="hide-menu">Expenses</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
@@ -65,7 +66,7 @@
                                 <span>
                                     <i class="ti ti-cards"></i>
                                 </span>
-                                <span class="hide-menu">Card</span>
+                                <span class="hide-menu">Salary</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
@@ -73,7 +74,7 @@
                                 <span>
                                     <i class="ti ti-file-description"></i>
                                 </span>
-                                <span class="hide-menu">Forms</span>
+                                <span class="hide-menu">Profit</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
@@ -81,47 +82,7 @@
                                 <span>
                                     <i class="ti ti-typography"></i>
                                 </span>
-                                <span class="hide-menu">Typography</span>
-                            </a>
-                        </li>
-                        <li class="nav-small-cap">
-                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                            <span class="hide-menu">AUTH</span>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="./authentication-login.html" aria-expanded="false">
-                                <span>
-                                    <i class="ti ti-login"></i>
-                                </span>
-                                <span class="hide-menu">Login</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="./authentication-register.html" aria-expanded="false">
-                                <span>
-                                    <i class="ti ti-user-plus"></i>
-                                </span>
-                                <span class="hide-menu">Register</span>
-                            </a>
-                        </li>
-                        <li class="nav-small-cap">
-                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                            <span class="hide-menu">EXTRA</span>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="./icon-tabler.html" aria-expanded="false">
-                                <span>
-                                    <i class="ti ti-mood-happy"></i>
-                                </span>
-                                <span class="hide-menu">Icons</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="./sample-page.html" aria-expanded="false">
-                                <span>
-                                    <i class="ti ti-aperture"></i>
-                                </span>
-                                <span class="hide-menu">Sample Page</span>
+                                <span class="hide-menu">Stock</span>
                             </a>
                         </li>
                     </ul>
@@ -129,11 +90,11 @@
                         <div class="d-flex">
                             <div class="unlimited-access-title me-3">
                                 <h6 class="fw-semibold fs-4 mb-6 text-dark w-85">Upgrade to pro</h6>
-                                <a href="#" target="_blank" class="btn btn-primary fs-2 fw-semibold lh-sm">Buy
-                                    Pro</a>
+                                <a href="#" target="_blank"
+                                    class="btn btn-primary fs-2 fw-semibold lh-sm">Subscribe Now</a>
                             </div>
                             <div class="unlimited-access-img">
-                                <img src="../assets/images/backgrounds/rocket.png" alt="" class="img-fluid">
+                                <img src="assets/images/background/rocket.png" alt="" class="img-fluid">
                             </div>
                         </div>
                     </div>
@@ -177,12 +138,13 @@
                                             <i class="ti ti-mail fs-6"></i>
                                             <p class="mb-0 fs-3">My Account</p>
                                         </a>
-                                        <a href="javascript:void(0)"
-                                            class="d-flex align-items-center gap-2 dropdown-item">
-                                            <i class="ti ti-list-check fs-6"></i>
-                                            <p class="mb-0 fs-3">My Task</p>
-                                        </a>
-                                        <a href="/" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
+                                        <form action="/logout" method="post">
+                                            @csrf
+                                            <button type="submit" class="btn btn-outline-primary mx-3 mt-2 d-block">
+                                                <a>Logout</a>
+                                            </button>
+                                        </form>
+
                                     </div>
                                 </div>
                             </li>

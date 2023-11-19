@@ -40,16 +40,24 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
                     <ul id="sidebarnav">
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">Home</span>
+                        </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="./xxxxx.php" aria-expanded="false">
+                            <a class="sidebar-link" href="/dashboard" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-layout-dashboard"></i>
                                 </span>
                                 <span class="hide-menu">Dashboard</span>
                             </a>
                         </li>
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">FEATURES</span>
+                        </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="./dashboard" aria-expanded="false">
+                            <a class="sidebar-link" href="./pemasukan" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-article"></i>
                                 </span>
@@ -112,14 +120,46 @@
             <!--  Header Start -->
             <header class="app-header">
                 <nav class="navbar navbar-expand-lg navbar-light">
-                    <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item d-block d-xl-none">
+                            <a class="nav-link sidebartoggler nav-icon-hover" id="headerCollapse"
+                                href="javascript:void(0)">
+                                <i class="ti ti-menu-2"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="navbar-collapse justify-content-start px-0" id="navbarNav">
                         <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <img src="../assets/images/testimonials/avatar-1.png" alt=""
+                                        width="35" height="35" class="rounded-circle">
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up"
+                                    aria-labelledby="drop2">
+                                    <div class="message-body">
+                                        <a href="javascript:void(0)"
+                                            class="d-flex align-items-center gap-2 dropdown-item">
+                                            <i class="ti ti-user fs-6"></i>
+                                            <p class="mb-0 fs-3">My Profile</p>
+                                        </a>
+                                        <a href="javascript:void(0)"
+                                            class="d-flex align-items-center gap-2 dropdown-item">
+                                            <i class="ti ti-mail fs-6"></i>
+                                            <p class="mb-0 fs-3">My Account</p>
+                                        </a>
+                                        <form action="/logout" method="post">
+                                            @csrf
+                                            <button type="submit" class="btn btn-outline-primary mx-3 mt-2 d-block">
+                                                <a>Logout</a>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </li>
                             <div>
-                                <form action="/logout" method="post">
-                                    @csrf
-                                    <button type="submit" class="btn btn-primary"
-                                        style="font-size: 12px;  background: #2D36A1; color: white; padding: 8px 12px; border: none; border-radius: 4px; cursor: pointer;">Logout</button>
-                                </form>
+
                             </div>
                         </ul>
                     </div>
@@ -142,7 +182,8 @@
                                                         <h5 class="card-title">{{ $item['kategori'] }}</h5>
                                                     </td>
                                                     <td>
-                                                        <h6 class="card-subtitle mb-2 text-muted">{{ $item['total_category'] }}</h6>
+                                                        <h6 class="card-subtitle mb-2 text-muted">
+                                                            {{ $item['total_category'] }}</h6>
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -156,14 +197,15 @@
                                 <h2 style="font-weight: bold">Input New Expense</h2>
                                 @csrf
                                 <input type="hidden" name="jenis" value="pengeluaran">
-                
-                                <select id="kategori" name="kategori" style="border-color: #2F80ED; background-color: #E0E9F4">
+
+                                <select id="kategori" name="kategori"
+                                    style="border-color: #2F80ED; background-color: #E0E9F4">
                                     <!-- Options will be dynamically populated using JavaScript -->
                                 </select>
-                
+
                                 <input type="hidden" name="user_id" value="{{ $user->id }}">
-                                <input type="text" name="name" id="name" placeholder="Name of Expense" required
-                                    style="border-color: #2F80ED; background-color: #E0E9F4">
+                                <input type="text" name="name" id="name" placeholder="Name of Expense"
+                                    required style="border-color: #2F80ED; background-color: #E0E9F4">
                                 <input type="number" name="nominal" id="nominal" placeholder="Nominal" required
                                     style="border-color: #2F80ED; background-color: #E0E9F4">
                                 <input type="number" name="jumlah" id="jumlah" placeholder="Amount" required
@@ -174,7 +216,7 @@
                                     style="border-color: #2F80ED; background-color: #E0E9F4">
                                 <input type="text" name="catatan" id="catatan" placeholder="Notes" required
                                     style="border-color: #2F80ED; background-color: #E0E9F4">
-                
+
                                 <button type="submit"
                                     style="background: white; padding: 8px 12px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold">SAVE</button>
                             </form>
