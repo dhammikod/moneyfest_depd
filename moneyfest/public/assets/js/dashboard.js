@@ -160,6 +160,60 @@ $(function () {
   chart.render();
 
 
+  // =====================================
+  // Breakups
+  // =====================================
+
+  var breakups = {
+    color: "#f05948",
+    series: [38, 40, 25],
+    labels: ["2022", "2021", "2020"],
+    chart: {
+      width: 180,
+      type: "donut",
+      fontFamily: "Plus Jakarta Sans', sans-serif",
+      foreColor: "#f05948",
+    },
+    plotOptions: {
+      pie: {
+        startAngle: 0,
+        endAngle: 360,
+        donut: {
+          size: '75%',
+        },
+      },
+    },
+    stroke: {
+      show: false,
+    },
+
+    dataLabels: {
+      enabled: false,
+    },
+
+    legend: {
+      show: false,
+    },
+    colors: ["#f05948", "#ecf2ff", "#F9F9FD"],
+
+    responsive: [
+      {
+        breakpoint: 991,
+        options: {
+          chart: {
+            width: 150,
+          },
+        },
+      },
+    ],
+    tooltip: {
+      theme: "dark",
+      fillSeriesColor: false,
+    },
+  };
+
+  var chart = new ApexCharts(document.querySelector("#breakups"), breakups);
+  chart.render();
 
   // =====================================
   // Earning
@@ -208,4 +262,53 @@ $(function () {
     },
   };
   new ApexCharts(document.querySelector("#earning"), earning).render();
+
+
+    // =====================================
+  // Earnings
+  // =====================================
+  var earnings = {
+    chart: {
+      id: "sparkline3",
+      type: "area",
+      height: 60,
+      sparkline: {
+        enabled: true,
+      },
+      group: "sparklines",
+      fontFamily: "Plus Jakarta Sans', sans-serif",
+      foreColor: "#adb0bb",
+    },
+    series: [
+      {
+        name: "Earnings",
+        color: "#f05948",
+        data: [25, 66, 20, 19, 12, 58, 20],
+      },
+    ],
+    stroke: {
+      curve: "smooth",
+      width: 2,
+    },
+    fill: {
+      colors: ["#f05948"],
+      type: "solid",
+      opacity: 0.05,
+    },
+
+    markers: {
+      size: 0,
+    },
+    tooltip: {
+      theme: "dark",
+      fixed: {
+        enabled: true,
+        position: "right",
+      },
+      x: {
+        show: false,
+      },
+    },
+  };
+  new ApexCharts(document.querySelector("#earnings"), earnings).render();
 })
