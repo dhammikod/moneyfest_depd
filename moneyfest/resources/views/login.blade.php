@@ -49,10 +49,6 @@
         <!-- End .navbar-->
     </header>
 
-    @if ($invalid)
-        {{ 'invalid' }}
-    @endif
-
     <section class="background-radial-gradient overflow-hidden vh-200">
         <div class="container py-5 h-100">
             <div class="row d-flex align-items-center justify-content-center h-100">
@@ -87,18 +83,22 @@
                         </div>
                         </div>
                         <div class="col-md-12 mb-4">
-                        <div class="form-outline mb-4">
+                        <div class="form-outline mb-3">
                             <label class="form-label" for="form1Example23">Password</label>
                             <input type="password" name="password" id="" class="form-control form-control-lg"
                                 required />
                         </div>
                         </div>
 
-                        <div class="d-flex align-items-left mb-4">
+                        <div class="d-flex align-items-left mb-3">
                             <a>Don't have an account? &nbsp; </a><a href="register"> Register</a>
                         </div>
 
                         <button type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
+
+                        @if ($invalid)
+                            <div style="color: red; " class="mt-3 text-center">Invalid credentials. Please try again.</div>
+                        @endif
 
                     </div>
 
