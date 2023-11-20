@@ -235,7 +235,6 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="assets/js/autoload_form.js"></script>
-    <script src="../assets/js/dashboard.js"></script>
 </body>
 
 </html>

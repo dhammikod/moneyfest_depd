@@ -32,6 +32,7 @@
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script>
     <link rel="stylesheet" href="/assets/css/dashboard.css">
+    <link rel="stylesheet" href="assets/css/dashboard2.css">
 </head>
 
 <body>
@@ -51,7 +52,7 @@
                     </div>
                 </div>
                 <!-- Sidebar navigation-->
-                <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+                <nav class="sidebar-nav scroll-sidebar"  data-simplebar="">
                     <ul id="sidebarnav">
                         <li class="nav-small-cap">
                             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
@@ -365,9 +366,9 @@
                                             aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body" >
-                                        
+
                             <form method="post" action="" class="form" style="text-align: center">
-                                
+
                                 @csrf
                                 <input type="hidden" name="create" value="yes">
 
@@ -394,7 +395,7 @@
                                 <input type="number" name="terjual" id="terjual" placeholder="Terjual" required
                                     style="border-color: #2F80ED; background-color: #E0E9F4">
 
-                                
+
                                     </div>
                                     <div class="modal-footer">
                                         <button type="submit"
@@ -405,19 +406,21 @@
                             </div>
                         </div>
 
-                     
-
-
                     </div>
                 </div>
             </div>
 
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
-
+            <script src="../assets/js/sidebarmenu.js"></script>
+            <script src="../assets/js/app.min.js"></script>
             <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
             <script src="/assets/js/stok.js"></script>
+            <script src="../assets/js/dashboard.js"></script>
+            <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+            <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+            <script src="../assets/libs/simplebar/dist/simplebar.js"></script>
 
 
 </body>
