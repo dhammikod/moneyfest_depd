@@ -1,0 +1,77 @@
+document.addEventListener('DOMContentLoaded', function () {
+    createAdditionalDropdown();
+
+    flatpickr("#tanggal", {
+        enableTime: true,
+        dateFormat: "Y-m-d H:i",
+    });
+
+    // Fetch data for jenis dropdown on page load
+    populateDropdown('kategori', '/api/kategoris/2');
+
+    document.getElementById('kategori').addEventListener('change', function () {
+        const selectedKategoriValue = this.value;
+
+        if (selectedKategoriValue == 12) {
+            // alert("Selected Kategori Value:" + selectedKategoriValue)
+            createAdditionalDropdown();
+        } else {
+            removeAdditionalDropdown();
+        }
+    });
+
+    // Function to populate dropdown options using API
+    function populateDropdown(dropdownId, apiUrl) {
+        const dropdown = document.getElementById(dropdownId);
+    
+        axios.get(apiUrl)
+            .then(function (response) {
+                // Clear existing options
+                dropdown.innerHTML = "";
+    
+                // Check if the response is an array and not empty
+                if (Array.isArray(response.data) && response.data.length > 0) {
+                    const innerArray = response.data[0];
+    
+                    // Populate options
+                    innerArray.forEach(function (item) {
+                        const option = document.createElement('option');
+                        option.value = item.id;
+                        option.text = item.nama; // Assuming 'nama' is the property you want to display
+                        dropdown.add(option);
+                    });
+                }
+            })
+            .catch(function (error) {
+                console.error('Error fetching data:', error);
+            });
+    }
+    
+
+    // Function to create additional dropdown
+    function createAdditionalDropdown() {
+        // Create a div container for the additional dropdown
+        const additionalSelectContainer = document.getElementById('additionalSelectContainer');
+    
+        // Create the additional dropdown
+        const additionalDropdown = document.createElement('select');
+        additionalDropdown.id = 'additionalDropdown';
+        additionalDropdown.name = 'additionalDropdown';
+        additionalDropdown.style="border-color: #2F80ED; background-color: #E0E9F4"
+    
+        // Add options to the additional dropdown
+        populateDropdown('additionalDropdown', '/api/produk');
+    
+        // Append the additional dropdown to the container
+        additionalSelectContainer.appendChild(additionalDropdown);
+    }
+    
+
+    // Function to remove additional dropdown
+    function removeAdditionalDropdown() {
+        const additionalDropdown = document.getElementById('additionalDropdown');
+        if (additionalDropdown) {
+            additionalDropdown.remove();
+        }
+    }
+});

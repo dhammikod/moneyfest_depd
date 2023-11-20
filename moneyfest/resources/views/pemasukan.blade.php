@@ -21,6 +21,7 @@
 </head>
 
 <body>
+    {{-- {{$produk}} --}}
     <!--  Body Wrapper -->
     <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
         data-sidebar-position="fixed" data-header-position="fixed">
@@ -227,6 +228,10 @@
                                     <!-- Options will be dynamically populated using JavaScript -->
                                 </select>
 
+                                <div id="additionalSelectContainer">
+                                    <!-- Additional select will be added here -->
+                                </div>
+
                                 <input type="hidden" name="user_id" value="{{ $user->id }}">
                                 <input type="text" name="name" id="name" placeholder="Name of Income"
                                     required style="border-color: #2F80ED; background-color: #E0E9F4"
@@ -257,13 +262,13 @@
 
         </div>
     </div>
-    <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+    {{-- <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
     <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/sidebarmenu.js"></script>
     <script src="../assets/js/app.min.js"></script>
     <script src="../assets/libs/apexcharts/dist/apexcharts.min.js"></script>
     <script src="../assets/libs/simplebar/dist/simplebar.js"></script>
-    <script src="../assets/js/dashboard.js"></script>
+    <script src="../assets/js/dashboard.js"></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="assets/js/autoload_form.js"></script>

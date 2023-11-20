@@ -175,7 +175,7 @@
         <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-        <script src="/assets/js/histori.js"></script>
+        <script src="/assets/js/pegawai.js"></script>
 
 </body>
 
