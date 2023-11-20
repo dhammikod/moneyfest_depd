@@ -18,15 +18,6 @@
 
     <!-- Include DataTables JS -->
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
-
-    <style>
-        @media (min-width: 768px) {
-            .center-content {
-                display: flex;
-                justify-content: space-evenly;
-            }
-        }
-    </style>
 </head>
 
 <body>
