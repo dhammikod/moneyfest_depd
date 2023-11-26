@@ -1,36 +1,13 @@
 $(function () {
 
-  //==========================================
-  //==============1 TABEL BESAR===============
-  //==========================================
-  axios.get('api/dashboard2')
-    .then(function (response) {
-      var selectDropdown = document.getElementById('month_select');
-
-      // Loop through the API response and populate the dropdown
-      response.data.forEach(function (item, index) {
-        // Create an option element
-        var option = document.createElement('option');
-
-        // Set the value and text of the option
-        option.value = item.value;  // Assuming your values start from 1
-        option.text = item.tanggal;
-
-        // Append the option to the select element
-        selectDropdown.add(option);
-      });
-    })
-    .catch(function (error) {
-      console.error('Error fetching data:', error);
-    });
 
   // =====================================
   // Main chart
   // =====================================
   var chart = {
     series: [
-      { name: "Earnings this month:", data: [355, 390, 300, 350, 390, 180, 355, 390,100,240] },
-      { name: "Expense this month:", data: [280, 250, 325, 215, 250, 310, 280, 250,150,300] },
+      { name: "Earnings this month:", data: [355, 390, 300, 350, 390, 180, 355, 390] },
+      { name: "Expense this month:", data: [280, 250, 325, 215, 250, 310, 280, 250] },
     ],
 
     chart: {
@@ -80,7 +57,7 @@ $(function () {
 
     xaxis: {
       type: "category",
-      categories: ["16/08", "17/08", "18/08", "19/08", "20/08", "21/08", "22/08", "23/08",'24/08','25/08'],
+      categories: ["16/08", "17/08", "18/08", "19/08", "20/08", "21/08", "22/08", "23/08"],
       labels: {
         style: { cssClass: "grey--text lighten-2--text fill-color" },
       },
@@ -138,10 +115,6 @@ $(function () {
   let colors = ['#5D87FF', '#FF0000', '#808080', '#800080', '#FFFFFF'];
   var earning_colors = [];
   var expense_colors = [];
-
-  //==========================================
-  //==============2 TABEL KECIL===============
-  //==========================================
 
   axios.get("api/dashboard")
     .then(function (response) {
@@ -212,6 +185,7 @@ $(function () {
     } else if (percentage < 0) {
       spanElement.className = "me-1 rounded-circle bg-light-danger round-20 d-flex align-items-center justify-content-center";
       spanElement.innerHTML = '<i class="ti ti-arrow-down-left text-danger"></i>';
+      percentage_string = '-' + percentage_string;
     }
     container.appendChild(spanElement);
 

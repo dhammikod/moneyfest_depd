@@ -21,18 +21,6 @@ class KeuanganSeeder extends Seeder
                 'kategori' => 6,
                 'jumlah' => 5,
                 'satuan' => "buah",
-                'tanggal' => Carbon::parse("2022-11-10"),
-                'catatan' => "-",
-                'user_id' => 1,
-            ]
-        );
-        Keuangan::create(
-            [
-                'nama' => "pembelian bahan baku",
-                'nominal' => 40000,
-                'kategori' => 6,
-                'jumlah' => 5,
-                'satuan' => "buah",
                 'tanggal' => Carbon::parse("2023-11-10"),
                 'catatan' => "-",
                 'user_id' => 1,

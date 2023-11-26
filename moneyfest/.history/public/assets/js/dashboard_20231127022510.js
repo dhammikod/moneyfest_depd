@@ -30,7 +30,7 @@ $(function () {
   var chart = {
     series: [
       { name: "Earnings this month:", data: [355, 390, 300, 350, 390, 180, 355, 390,100,240] },
-      { name: "Expense this month:", data: [280, 250, 325, 215, 250, 310, 280, 250,150,300] },
+      { name: "Expense this month:", data: [280, 250, 325, 215, 250, 310, 280, 250150,300] },
     ],
 
     chart: {
