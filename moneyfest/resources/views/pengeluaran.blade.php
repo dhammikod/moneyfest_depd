@@ -169,29 +169,36 @@
 
             <div class="container-fluid">
                 <div class="card w-100 h-100 position-relative overflow-hidden">
-                    <div class="card-body" style="background-color: #CEDCEE">
-                        <div style="display: flex; justify-content: flex-start">
-                            <div class="col-md-4">
-                                <h5 class="card-title fw-semibold mb-4">Expense Patterns</h5>
-                                <div class="card">
-                                    <div class="card-body">
-                                        <table>
-                                            @foreach ($kategories_sum as $item)
-                                                <tr>
-                                                    <td>
-                                                        <h5 class="card-title">{{ $item['kategori'] }}</h5>
-                                                    </td>
-                                                    <td>
-                                                        <h6 class="card-subtitle mb-2 text-muted">
-                                                            {{ $item['total_category'] }}</h6>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="card-body center-content flex-wrap"
+                        style="background-color: #CEDCEE; display: flex; flex-wrap: wrap">
+                        <div class="col-lg-6 col-md-12 mb-3">
+                            <h5 class="card-title mb-4"><b>Expenses Patterns</b></h5>
+                            <!-- Dropdown untuk memilih kategori -->
+                <select id="kategoriDropdown" class="form-select mb-3" onchange="filterByCategory(this.value)">
+                    <option value="all">All Categories</option>
+                    <option value="transportasi">transportasi</option>
+                    <option value="asuransi">asuransi</option>
+                    <option value="gaji pegawai">gaji pegawai</option>
+                    <option value="pembelian produk">pembelian produk</option>
+                    <option value="bahan habis pakai">bahan habis pakai</option>
+                    <option value="operasional">operasional</option>
+                    <option value="administrasi">administrasi</option>
+                    <option value="distribusi">distribusi</option>
+                    <option value="pengiriman">pengiriman</option>
+                    <option value="lain-lain">lain-lain</option>
+                </select>
+
+                @foreach ($kategories_sum as $item)
+                <div class="card mb-3 category" data-category="{{$item['kategori']}}">
+                    <div class="card-body d-flex justify-content-between align-items-center">
+                        <h5 class="card-title mb-0">{{ $item['kategori'] }}</h5>
+                        <h6 class="card-subtitle text-muted">{{ $item['total_category'] }}</h6>
+                    </div>
+                </div>
+            @endforeach
+
                         </div>
+
                         <div style="display: flex; justify-content: flex-end">
                             <form method="post" action="" class="form" style="text-align: center">
                                 <h2 style="font-weight: bold">Input New Expense</h2>
@@ -228,6 +235,23 @@
                     </div>
                 </div>
             </div>
+
+            <script>
+                function filterByCategory() {
+                    const selectedCategory = document.getElementById('kategoriDropdown').value;
+                    const categories = document.querySelectorAll('.category');
+
+                    categories.forEach(category => {
+                        const categoryData = category.getAttribute('data-category');
+                        if (selectedCategory === 'all' || categoryData === selectedCategory) {
+                            category.style.display = 'block';
+                        } else {
+                            category.style.display = 'none';
+                        }
+                    });
+                }
+            </script>
+
         </div>
     </div>
     <script src="../assets/libs/jquery/dist/jquery.min.js"></script>

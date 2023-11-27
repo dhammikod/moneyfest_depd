@@ -187,7 +187,6 @@
                     <option value="layanan konsultasi">layanan konsultasi</option>
                     <option value="penjualan aset">penjualan aset</option>
                     <option value="lain-lain">lain-lain</option>
-                    <!-- Tambahkan opsi lainnya sesuai dengan kategori yang Anda miliki -->
                 </select>
 
                             {{-- @foreach ($kategories_sum as $item)
