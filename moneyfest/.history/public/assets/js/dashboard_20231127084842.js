@@ -12,12 +12,10 @@ $(function () {
   const quartilSelect = document.getElementById("quartil_select");
 
   monthSelect.addEventListener("change", function () {
-    resetTable();
     getapi(monthSelect.value, quartilSelect.value);
   });
   
   quartilSelect.addEventListener("change", function () {
-    resetTable();
     getapi(monthSelect.value, quartilSelect.value);
   });
 
@@ -26,7 +24,7 @@ $(function () {
     axios.get($url)
     .then(function (response) {
       response.data.forEach(function (item) {
-        var date = item.day.toString() +'/'+ item.month.toString();
+        var date = item.day.toString() + item.month.toString();
 
         tanggal.push(date);
         pendapatan.push(item.pemasukan);
@@ -47,17 +45,17 @@ $(function () {
   axios.get('api/dashboard2')
     .then(function (response) {
       var selectDropdown = document.getElementById('month_select');
-      var index = 0;
+
+      // Loop through the API response and populate the dropdown
       response.data.forEach(function (item, index) {
+        // Create an option element
         var option = document.createElement('option');
 
-        if(index == 0){
-          index++;
-          getapi(item.value, 1);
-        }
-        option.value = item.value;
+        // Set the value and text of the option
+        option.value = item.value;  // Assuming your values start from 1
         option.text = item.tanggal;
 
+        // Append the option to the select element
         selectDropdown.add(option);
       });
     })
@@ -68,19 +66,6 @@ $(function () {
   // =====================================
   // Main chart
   // =====================================
-  function resetTable() {
-    // Clear existing data
-    tanggal = [];
-    pendapatan = [];
-    pengeluaran = [];
-  
-    // Remove existing chart from the DOM
-    const existingChart = document.getElementById("chart");
-    if (existingChart) {
-      existingChart.innerHTML = "";
-    }
-  }
-
   function create_big_table() {
     var chart = {
       series: [
@@ -334,10 +319,12 @@ $(function () {
 
   }
   function create_graph() {
+    // alert(earning_value);
 
     // =====================================
     // Grafik earning
     // =====================================
+    // alert(earning_value);
     var breakup = {
       color: "#adb5bd",
       series: earning_value,

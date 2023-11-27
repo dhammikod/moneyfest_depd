@@ -331,19 +331,19 @@
                                         <thead class="text-dark fs-4">
                                             <tr>
                                                 <th class="border-bottom-0">
-                                                    <h6 class="fw-semibold mb-0">No</h6>
+                                                    <h6 class="fw-semibold mb-0">Id</h6>
                                                 </th>
                                                 <th class="border-bottom-0">
-                                                    <h6 class="fw-semibold mb-0">Nama</h6>
+                                                    <h6 class="fw-semibold mb-0">Assigned</h6>
                                                 </th>
                                                 <th class="border-bottom-0">
-                                                    <h6 class="fw-semibold mb-0">Catatan</h6>
+                                                    <h6 class="fw-semibold mb-0">Name</h6>
                                                 </th>
                                                 <th class="border-bottom-0">
-                                                    <h6 class="fw-semibold mb-0">Jenis</h6>
+                                                    <h6 class="fw-semibold mb-0">Priority</h6>
                                                 </th>
                                                 <th class="border-bottom-0">
-                                                    <h6 class="fw-semibold mb-0">Total</h6>
+                                                    <h6 class="fw-semibold mb-0">Budget</h6>
                                                 </th>
                                             </tr>
                                         </thead>
@@ -369,7 +369,7 @@
                                                     <td class="border-bottom-0">
                                                         <div class="d-flex align-items-center gap-2">
                                                             <span
-                                                                class="badge bg-danger rounded-3 fw-semibold">{{$item['kategori']}}</span>
+                                                                class="badge bg-primary rounded-3 fw-semibold">{{$item['kategori'] == 'pengeluaran'}}</span>
                                                         </div>
                                                     </td>
                                                     @endif

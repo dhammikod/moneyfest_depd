@@ -28,54 +28,6 @@ class KeuanganSeeder extends Seeder
         );
         Keuangan::create(
             [
-                'nama' => "pembelian poster",
-                'nominal' => 1000000,
-                'kategori' => 6,
-                'jumlah' => 1,
-                'satuan' => "buah",
-                'tanggal' => Carbon::parse("2022-11-10"),
-                'catatan' => "-",
-                'user_id' => 1,
-            ]
-        );
-        Keuangan::create(
-            [
-                'nama' => "pembelian bahan baku",
-                'nominal' => 30000,
-                'kategori' => 6,
-                'jumlah' => 5,
-                'satuan' => "buah",
-                'tanggal' => Carbon::parse("2022-11-7"),
-                'catatan' => "-",
-                'user_id' => 1,
-            ]
-        );
-        Keuangan::create(
-            [
-                'nama' => "pembelian bahan baku",
-                'nominal' => 30000,
-                'kategori' => 6,
-                'jumlah' => 5,
-                'satuan' => "buah",
-                'tanggal' => Carbon::parse("2022-11-8"),
-                'catatan' => "-",
-                'user_id' => 1,
-            ]
-        );
-        Keuangan::create(
-            [
-                'nama' => "pembelian bahan baku",
-                'nominal' => 30000,
-                'kategori' => 6,
-                'jumlah' => 5,
-                'satuan' => "buah",
-                'tanggal' => Carbon::parse("2022-11-9"),
-                'catatan' => "-",
-                'user_id' => 1,
-            ]
-        );
-        Keuangan::create(
-            [
                 'nama' => "pembelian bahan baku",
                 'nominal' => 40000,
                 'kategori' => 6,

@@ -252,7 +252,7 @@ class Controller extends BaseController
 
     public function dashboard()
     {
-        $result = Keuangan::select('keuangans.*', 'jenis__kategoris.jenis_kategori AS kategori')
+        $result = Keuangan::select('keuangans.*', 'jenis__kategoris.jenis_kategori AS nama')
             ->join('kategoris', 'keuangans.kategori', '=', 'kategoris.id')
             ->join('jenis__kategoris', 'kategoris.id_jenis_kategori', '=', 'jenis__kategoris.id')
             ->orderByDesc('keuangans.tanggal')
@@ -266,7 +266,7 @@ class Controller extends BaseController
 
         return view('dashboard', [
             'user' => $user,
-            'transactions' => $result,
+            'transactions' => $result
         ]);
     }
 

@@ -14,39 +14,29 @@ class KeuanganController extends Controller
      */
     public function api()
     {
-        $userId = session('user_id');
-
         $results = DB::table('keuangans as k')
             ->join('kategoris as kat', 'k.kategori', '=', 'kat.id')
             ->join('jenis__kategoris as jen', 'kat.id_jenis_kategori', '=', 'jen.id')
             ->select(
-                'k.user_id',
                 DB::raw('YEAR(k.tanggal) as year'),
                 DB::raw('SUM(k.nominal * k.jumlah) as total'),
                 'jen.jenis_kategori as kategori'
             )
-            ->where('user_id', $userId)
-            ->groupBy('user_id', 'year', 'kategori')
-            ->orderBy('user_id')
+            ->groupBy('year', 'kategori')
             ->orderBy('year')
             ->get();
-
 
         return response()->json($results);
     }
 
     public function api2()
     {
-        $userId = session('user_id');
-
         $results = DB::table('keuangans')
             ->select(
                 DB::raw("CONCAT(MONTHNAME(tanggal), ' ', YEAR(tanggal)) AS tanggal"),
-                DB::raw("DATE_FORMAT(tanggal, '%m-%Y') AS value"),
-                'user_id'
+                DB::raw("DATE_FORMAT(tanggal, '%m-%Y') AS value")
             )
             ->distinct()
-            ->where('keuangans.user_id', $userId)
             ->orderByRaw('YEAR(tanggal), MONTH(tanggal)')
             ->get();
 
@@ -63,39 +53,26 @@ class KeuanganController extends Controller
         if (($quartil < 1 || $quartil > 3) || !preg_match('/^\d{2}-\d{4}$/', $date)) {
             return ('wrong usage');
         }
-
-        if ($quartil == 1) {
-            $end = 11;
-            $start = 0;
-        } else if ($quartil == 2) {
-            $end = 21;
-            $start = 10;
-        } else {
-            $end = 32;
-            $start = 20;
-        }
         $results = Keuangan::select(
             DB::raw('YEAR(tanggal) as year'),
             DB::raw('MONTH(tanggal) as month'),
             DB::raw('DAY(tanggal) as day'),
             'tanggal',
-            DB::raw('SUM(CASE WHEN jenis__kategoris.jenis_kategori = "pengeluaran" THEN nominal * jumlah ELSE 0 END) as pengeluaran'),
-            DB::raw('SUM(CASE WHEN jenis__kategoris.jenis_kategori = "pendapatan" THEN nominal * jumlah ELSE 0 END) as pemasukan'),
+            DB::raw('SUM(nominal * jumlah) as total'),
+            'jenis__kategoris.jenis_kategori as kategori',
             'user_id'
         )
             ->join('kategoris', 'keuangans.kategori', '=', 'kategoris.id')
             ->join('jenis__kategoris', 'kategoris.id_jenis_kategori', '=', 'jenis__kategoris.id')
             ->whereMonth('tanggal', '=', $month)
             ->whereYear('tanggal', '=', $year)
-            ->whereDay('tanggal', '<', $end)
-            ->whereDay('tanggal', '>', $start)
+            ->whereDay('tanggal', '<', 11)
             ->where('keuangans.user_id', $userId)
-            ->groupBy('year', 'month', 'day', 'tanggal', 'user_id')
+            ->groupBy('year', 'month', 'day', 'kategori', 'tanggal', 'user_id')
             ->orderBy('year')
             ->orderBy('month')
             ->orderBy('day')
             ->get();
-
 
         return response()->json($results);
     }

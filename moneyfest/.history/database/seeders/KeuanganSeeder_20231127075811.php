@@ -28,10 +28,10 @@ class KeuanganSeeder extends Seeder
         );
         Keuangan::create(
             [
-                'nama' => "pembelian poster",
+                'nama' => "pembelian bahan baku",
                 'nominal' => 1000000,
                 'kategori' => 6,
-                'jumlah' => 1,
+                'jumlah' => 5,
                 'satuan' => "buah",
                 'tanggal' => Carbon::parse("2022-11-10"),
                 'catatan' => "-",

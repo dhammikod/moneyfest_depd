@@ -61,7 +61,7 @@ Route::get('/api/produk', [ProdukController::class, 'index']);
 Route::get('/api/produk/{jual}/{jenis}', [ProdukController::class, 'produkspes']);
 Route::get('/api/dashboard', [KeuanganController::class, 'api']);
 Route::get('/api/dashboard2', [KeuanganController::class, 'api2']);
-Route::get('/api/dashboard3/{date}/{quartil}', [KeuanganController::class, 'api3']);
+Route::get('/api/dashboard3', [KeuanganController::class, 'api3']);
 
 
 

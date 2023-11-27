@@ -331,19 +331,19 @@
                                         <thead class="text-dark fs-4">
                                             <tr>
                                                 <th class="border-bottom-0">
-                                                    <h6 class="fw-semibold mb-0">No</h6>
+                                                    <h6 class="fw-semibold mb-0">Id</h6>
                                                 </th>
                                                 <th class="border-bottom-0">
-                                                    <h6 class="fw-semibold mb-0">Nama</h6>
+                                                    <h6 class="fw-semibold mb-0">Assigned</h6>
                                                 </th>
                                                 <th class="border-bottom-0">
-                                                    <h6 class="fw-semibold mb-0">Catatan</h6>
+                                                    <h6 class="fw-semibold mb-0">Name</h6>
                                                 </th>
                                                 <th class="border-bottom-0">
-                                                    <h6 class="fw-semibold mb-0">Jenis</h6>
+                                                    <h6 class="fw-semibold mb-0">Priority</h6>
                                                 </th>
                                                 <th class="border-bottom-0">
-                                                    <h6 class="fw-semibold mb-0">Total</h6>
+                                                    <h6 class="fw-semibold mb-0">Budget</h6>
                                                 </th>
                                             </tr>
                                         </thead>
@@ -352,6 +352,7 @@
                                                 $a = 1;
                                             @endphp
                                             @foreach ($transactions as $item)
+                                            {{$item}}
                                                 <tr>
                                                     <td class="border-bottom-0">
                                                         <h6 class="fw-semibold mb-0">{{$a}}</h6>
@@ -365,30 +366,18 @@
                                                     <td class="border-bottom-0">
                                                         <p class="mb-0 fw-normal">{{$item['catatan']}}</p>
                                                     </td>
-                                                    @if ($item['kategori'] == 'pengeluaran')
                                                     <td class="border-bottom-0">
                                                         <div class="d-flex align-items-center gap-2">
                                                             <span
-                                                                class="badge bg-danger rounded-3 fw-semibold">{{$item['kategori']}}</span>
+                                                                class="badge bg-primary rounded-3 fw-semibold">Low</span>
                                                         </div>
                                                     </td>
-                                                    @endif
-
-                                                    @if ($item['kategori'] == 'pendapatan')
-                                                    <td class="border-bottom-0">
-                                                        <div class="d-flex align-items-center gap-2">
-                                                            <span
-                                                                class="badge bg-primary rounded-3 fw-semibold">{{$item['kategori']}}</span>
-                                                        </div>
-                                                    </td>
-                                                    @endif
-                                                    
                                                     <td class="border-bottom-0">
                                                         <h6 class="fw-semibold mb-0 fs-4">{{$item['nominal']*$item['jumlah']}}</h6>
                                                     </td>
                                                 </tr>
                                             @endforeach
-                                            {{-- <tr>
+                                            <tr>
                                                 <td class="border-bottom-0">
                                                     <h6 class="fw-semibold mb-0">4</h6>
                                                 </td>
@@ -408,7 +397,7 @@
                                                 <td class="border-bottom-0">
                                                     <h6 class="fw-semibold mb-0 fs-4">$2.4k</h6>
                                                 </td>
-                                            </tr> --}}
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>

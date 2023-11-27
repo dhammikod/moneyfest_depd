@@ -1,5 +1,5 @@
 $(function () {
-  let maxPoint = 0
+
   //==========================================
   //==============1 TABEL BESAR===============
   //==========================================
@@ -8,56 +8,35 @@ $(function () {
   let pendapatan = [];
   let tanggal = [];
 
-  const monthSelect = document.getElementById("month_select");
-  const quartilSelect = document.getElementById("quartil_select");
-
-  monthSelect.addEventListener("change", function () {
-    resetTable();
-    getapi(monthSelect.value, quartilSelect.value);
-  });
-  
-  quartilSelect.addEventListener("change", function () {
-    resetTable();
-    getapi(monthSelect.value, quartilSelect.value);
-  });
-
-  function getapi($date, $quartil) {
-    var $url = 'api/dashboard3/' + $date+'/'+$quartil;
-    axios.get($url)
+  axios.get("api/dashboard3/11-2022/1")
     .then(function (response) {
       response.data.forEach(function (item) {
-        var date = item.day.toString() +'/'+ item.month.toString();
+        // alert(item);
+        var date = item.day.toString() + item.month.toString();
 
         tanggal.push(date);
         pendapatan.push(item.pemasukan);
         pengeluaran.push(item.pengeluaran);
-      }
-
-      );
-      maxPoint = Math.max(...pengeluaran, ...pendapatan);
-      create_big_table();
-    }
-    )
+      });
+    })
     .catch(function (error) {
       console.error('Error fetching data:', error);
     });
-  }
-  
 
   axios.get('api/dashboard2')
     .then(function (response) {
       var selectDropdown = document.getElementById('month_select');
-      var index = 0;
+
+      // Loop through the API response and populate the dropdown
       response.data.forEach(function (item, index) {
+        // Create an option element
         var option = document.createElement('option');
 
-        if(index == 0){
-          index++;
-          getapi(item.value, 1);
-        }
-        option.value = item.value;
+        // Set the value and text of the option
+        option.value = item.value;  // Assuming your values start from 1
         option.text = item.tanggal;
 
+        // Append the option to the select element
         selectDropdown.add(option);
       });
     })
@@ -68,120 +47,108 @@ $(function () {
   // =====================================
   // Main chart
   // =====================================
-  function resetTable() {
-    // Clear existing data
-    tanggal = [];
-    pendapatan = [];
-    pengeluaran = [];
-  
-    // Remove existing chart from the DOM
-    const existingChart = document.getElementById("chart");
-    if (existingChart) {
-      existingChart.innerHTML = "";
-    }
-  }
+  var chart = {
+    series: [
+      { name: "Earnings this month:", data: [355, 390, 300, 350, 390, 180, 355, 390, 100, 240] },
+      { name: "Expense this month:", data: [280, 250, 325, 215, 250, 310, 280, 250, 150, 300] },
+    ],
 
-  function create_big_table() {
-    var chart = {
-      series: [
-        { name: "Earnings this month:", data: pendapatan },
-        { name: "Expense this month:", data: pengeluaran },
-      ],
+    chart: {
+      type: "bar",
+      height: 345,
+      offsetX: -15,
+      toolbar: { show: true },
+      foreColor: "#adb0bb",
+      fontFamily: 'inherit',
+      sparkline: { enabled: false },
+    },
 
-      chart: {
-        type: "bar",
-        height: 345,
-        offsetX: -15,
-        toolbar: { show: true },
-        foreColor: "#adb0bb",
-        fontFamily: 'inherit',
-        sparkline: { enabled: false },
+
+    colors: ["#5D87FF", "#49BEFF"],
+
+
+    plotOptions: {
+      bar: {
+        horizontal: false,
+        columnWidth: "35%",
+        borderRadius: [6],
+        borderRadiusApplication: 'end',
+        borderRadiusWhenStacked: 'all'
       },
+    },
+    markers: { size: 0 },
+
+    dataLabels: {
+      enabled: false,
+    },
 
 
-      colors: ["#5D87FF", "#49BEFF"],
+    legend: {
+      show: false,
+    },
 
 
-      plotOptions: {
-        bar: {
-          horizontal: false,
-          columnWidth: "35%",
-          borderRadius: [6],
-          borderRadiusApplication: 'end',
-          borderRadiusWhenStacked: 'all'
-        },
-      },
-      markers: { size: 0 },
-
-      dataLabels: {
-        enabled: false,
-      },
-
-
-      legend: {
-        show: false,
-      },
-
-
-      grid: {
-        borderColor: "rgba(0,0,0,0.1)",
-        strokeDashArray: 3,
-        xaxis: {
-          lines: {
-            show: false,
-          },
-        },
-      },
-
+    grid: {
+      borderColor: "rgba(0,0,0,0.1)",
+      strokeDashArray: 3,
       xaxis: {
-        type: "category",
-        categories: tanggal,
-        labels: {
-          style: { cssClass: "grey--text lighten-2--text fill-color" },
+        lines: {
+          show: false,
         },
       },
+    },
+
+    xaxis: {
+      type: "category",
+      categories: ["16/08", "17/08", "18/08", "19/08", "20/08", "21/08", "22/08", "23/08", '24/08', '25/08'],
+      labels: {
+        style: { cssClass: "grey--text lighten-2--text fill-color" },
+      },
+    },
 
 
-      yaxis: {
-        show: true,
-        min: 0,
-        max: maxPoint,
-        tickAmount: 4,
-        labels: {
-          style: {
-            cssClass: "grey--text lighten-2--text fill-color",
+    yaxis: {
+      show: true,
+      min: 0,
+      max: 400,
+      tickAmount: 4,
+      labels: {
+        style: {
+          cssClass: "grey--text lighten-2--text fill-color",
+        },
+      },
+    },
+    stroke: {
+      show: true,
+      width: 3,
+      lineCap: "butt",
+      colors: ["transparent"],
+    },
+
+
+    tooltip: { theme: "light" },
+
+    responsive: [
+      {
+        breakpoint: 600,
+        options: {
+          plotOptions: {
+            bar: {
+              borderRadius: 3,
+            }
           },
-        },
-      },
-      stroke: {
-        show: true,
-        width: 3,
-        lineCap: "butt",
-        colors: ["transparent"],
-      },
-
-
-      tooltip: { theme: "light" },
-
-      responsive: [
-        {
-          breakpoint: 600,
-          options: {
-            plotOptions: {
-              bar: {
-                borderRadius: 3,
-              }
-            },
-          }
         }
-      ]
+      }
+    ]
 
 
-    };
+  };
 
-    var chart = new ApexCharts(document.querySelector("#chart"), chart);
-    chart.render();
-  }
+  var chart = new ApexCharts(document.querySelector("#chart"), chart);
+  chart.render();
+
+
+
 
 
   var earning_year = [];
@@ -334,10 +301,12 @@ $(function () {
 
   }
   function create_graph() {
+    // alert(earning_value);
 
     // =====================================
     // Grafik earning
     // =====================================
+    // alert(earning_value);
     var breakup = {
       color: "#adb5bd",
       series: earning_value,

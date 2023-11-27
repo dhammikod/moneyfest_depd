@@ -53,7 +53,8 @@ $(function () {
 
         if(index == 0){
           index++;
-          getapi(item.value, 1);
+          alert(item.value);
+          // getapi(monthSelect.value, quartilSelect.value);
         }
         option.value = item.value;
         option.text = item.tanggal;
@@ -334,10 +335,12 @@ $(function () {
 
   }
   function create_graph() {
+    // alert(earning_value);
 
     // =====================================
     // Grafik earning
     // =====================================
+    // alert(earning_value);
     var breakup = {
       color: "#adb5bd",
       series: earning_value,
