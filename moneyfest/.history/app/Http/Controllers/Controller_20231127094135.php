@@ -257,7 +257,7 @@ class Controller extends BaseController
             ->join('jenis__kategoris', 'kategoris.id_jenis_kategori', '=', 'jenis__kategoris.id')
             ->orderByDesc('keuangans.tanggal')
             ->where('keuangans.user_id', session('user_id'))
-            ->limit(5)
+                        ->limit(5)
             ->get();
 
         if (!Session::has('user_id')) {
