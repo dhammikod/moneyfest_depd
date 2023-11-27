@@ -52,7 +52,7 @@
                     </div>
                 </div>
                 <!-- Sidebar navigation-->
-                <nav class="sidebar-nav scroll-sidebar"  data-simplebar="">
+                <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
                     <ul id="sidebarnav">
                         <li class="nav-small-cap">
                             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
@@ -178,176 +178,192 @@
                 </nav>
             </header>
             <!--  Header End -->
-            <div class="container-fluid">
+            <div class="container-fluid ">
                 <div class="card w-100 h-100 position-relative overflow-hidden">
                     <div class="card-body" style="background-color: #CEDCEE">
-                        <div style="display: flex; justify-content: flex-start">
+                        
                             <div class="col-md-12">
                                 <h5 class="card-title fw-semibold mb-4">Stock Product</h5>
-                                <div class="card">
-                                    <div id="contacts">
-                                        <table class="table table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col" class="sort" data-sort="nama">Nama</th>
-                                                    <th scope="col" class="sort" data-sort="jenis">Jenis</th>
-                                                    <th scope="col" class="sort" data-sort="deskripsi">Deskripsi
-                                                    </th>
-                                                    <th scope="col" class="sort" data-sort="stok">Stok</th>
-                                                    <th scope="col" class="sort" data-sort="harga_jual">Harga
-                                                        Jual</th>
-                                                    <th scope="col" class="sort" data-sort="harga_beli">Harga
-                                                        Beli</th>
-                                                    <th scope="col" class="sort" data-sort="terjual">Terjual
-                                                    </th>
-                                                    <th colspan="2">
-                                                        <input type="text" class="search"
-                                                            placeholder="Search Items" />
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody class="list">
-                                                @php
-                                                    $i = 1;
-                                                @endphp
-                                                @foreach ($produks as $data)
+                                <div class="card table-responsive">
+                                    <div id="contacts" class="table-responsive">
+                                        
+                                            <table class="table table-striped ">
+                                                <thead>
                                                     <tr>
-                                                        <td class="id" style="display:none;">{{ $i }}
-                                                        </td>
-                                                        <td class="nama">{{ $data['nama'] }}</td>
-                                                        <td class="jenis">{{ $data['jenis'] }}</td>
-                                                        <td class="deksripsi">{{ $data['deksripsi'] }}</td>
-                                                        <td class="stok">{{ $data['stok'] }}</td>
-                                                        <td class="harga_jual">{{ $data['harga_jual'] }}</td>
-                                                        <td class="harga_beli">{{ $data['harga_beli'] }}</td>
-                                                        <td class="terjual">{{ $data['terjual'] }}</td>
-                                                        <td class="edit"><button type="button"
-                                                                class="btn btn-warning" data-bs-toggle="modal"
-                                                                data-bs-target="#exampleModal{{ $data['id'] }}">
-                                                                Edit
-                                                            </button></td>
-                                                        <td class="remove"><button type="button"
-                                                                class="btn btn-danger" data-bs-toggle="modal"
-                                                                data-bs-target="#deleteModal{{ $data['id'] }}">
-                                                                Delete
-                                                            </button></td>
+                                                        <th scope="col" class="sort" data-sort="nama">Nama</th>
+                                                        <th scope="col" class="sort" data-sort="jenis">Jenis
+                                                        </th>
+                                                        <th scope="col" class="sort" data-sort="deskripsi">
+                                                            Deskripsi
+                                                        </th>
+                                                        <th scope="col" class="sort" data-sort="stok">Stok</th>
+                                                        <th scope="col" class="sort" data-sort="harga_jual">
+                                                            Harga
+                                                            Jual</th>
+                                                        <th scope="col" class="sort" data-sort="harga_beli">
+                                                            Harga
+                                                            Beli</th>
+                                                        <th scope="col" class="sort" data-sort="terjual">Terjual
+                                                        </th>
+                                                        <th colspan="2">
+                                                            <input type="text" class="search"
+                                                                placeholder="Search Items" />
+                                                        </th>
                                                     </tr>
+                                                </thead>
+                                                <tbody class="list">
                                                     @php
-                                                        $i++;
+                                                        $i = 1;
                                                     @endphp
+                                                    @foreach ($produks as $data)
+                                                        <tr>
+                                                            <td class="id" style="display:none;">
+                                                                {{ $i }}
+                                                            </td>
+                                                            <td class="nama">{{ $data['nama'] }}</td>
+                                                            <td class="jenis">{{ $data['jenis'] }}</td>
+                                                            <td class="deksripsi">{{ $data['deskripsi'] }}</td>
+                                                            <td class="stok">{{ $data['stok'] }}</td>
+                                                            <td class="harga_jual">{{ $data['harga_jual'] }}</td>
+                                                            <td class="harga_beli">{{ $data['harga_beli'] }}</td>
+                                                            <td class="terjual">{{ $data['terjual'] }}</td>
+                                                            <td class="edit"><button type="button"
+                                                                    class="btn btn-warning" data-bs-toggle="modal"
+                                                                    data-bs-target="#exampleModal{{ $data['id'] }}">
+                                                                    Edit
+                                                                </button></td>
+                                                            <td class="remove"><button type="button"
+                                                                    class="btn btn-danger" data-bs-toggle="modal"
+                                                                    data-bs-target="#deleteModal{{ $data['id'] }}">
+                                                                    Delete
+                                                                </button></td>
+                                                        </tr>
+                                                        @php
+                                                            $i++;
+                                                        @endphp
 
-                                                    {{-- Modal section --}}
-                                                    {{-- Modal section --}}
-                                                    {{-- Modal section --}}
-                                                    <!-- Modal -->
-                                                    <div class="modal fade" id="exampleModal{{ $data['id'] }}"
-                                                        tabindex="-1" aria-labelledby="exampleModalLabel"
-                                                        aria-hidden="true">
+                                                        {{-- Modal section --}}
+                                                        {{-- Modal section --}}
+                                                        {{-- Modal section --}}
+                                                        <!-- Modal -->
+                                                        <div class="modal fade" id="exampleModal{{ $data['id'] }}"
+                                                            tabindex="-1" aria-labelledby="exampleModalLabel"
+                                                            aria-hidden="true">
 
-                                                        <div class="modal-dialog">
+                                                            <div class="modal-dialog">
 
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <button type="button" class="btn-close"
-                                                                        data-bs-dismiss="modal"
-                                                                        aria-label="Close"></button>
-                                                                </div>
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <button type="button" class="btn-close"
+                                                                            data-bs-dismiss="modal"
+                                                                            aria-label="Close"></button>
+                                                                    </div>
 
-                                                                <div class="modal-body">
-                                                                    <h2 style="font-weight: bold">Edit Item</h2>
-                                                                    <form method="post" action=""
-                                                                        style="text-align: center">
-                                                                        @csrf
-                                                                        <input type="hidden" name="edit"
-                                                                            value="true">
-
-                                                                        <input type="hidden" name="id"
-                                                                            value="{{ $data['id'] }}">
-                                                                        <input type="text" name="nama"
-                                                                            id="nama"
-                                                                            placeholder="Name of Income"
-                                                                            value="{{ $data['nama'] }}" required
-                                                                            style="border-color: #2F80ED; background-color: #E0E9F4">
-                                                                        <input type="text" name="jenis"
-                                                                            id="jenis" placeholder="Nominal"
-                                                                            value="{{ $data['jenis'] }}" required
-                                                                            style="border-color: #2F80ED; background-color: #E0E9F4">
-                                                                        <input type="text" name="deskripsi"
-                                                                            id="deskripsi" placeholder="Amount"
-                                                                            value="{{ $data['deskripsi'] }}" required
-                                                                            style="border-color: #2F80ED; background-color: #E0E9F4">
-                                                                        <input type="text" name="stok"
-                                                                            id="stok" placeholder="Amount"
-                                                                            value="{{ $data['stok'] }}" required
-                                                                            style="border-color: #2F80ED; background-color: #E0E9F4">
-                                                                        <input type="number" name="harga_jual"
-                                                                            id="harga_jual" placeholder="Unit"
-                                                                            value="{{ $data['harga_jual'] }}" required
-                                                                            style="border-color: #2F80ED; background-color: #E0E9F4">
-                                                                        <input type="number" name="harga_beli"
-                                                                            id="harga_beli" placeholder="harga_beli"
-                                                                            value="{{ $data['harga_beli'] }}" required
-                                                                            style="border-color: #2F80ED; background-color: #E0E9F4">
-                                                                        <input type="number" name="terjual"
-                                                                            id="terjual" placeholder="Notes"
-                                                                            value="{{ $data['terjual'] }}" required
-                                                                            style="border-color: #2F80ED; background-color: #E0E9F4">
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary"
-                                                                        data-bs-dismiss="modal">Close</button>
-                                                                    <button type="submit"
-                                                                        class="btn btn-primary">Save changes</button>
-                                                                    </form>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    {{-- Model Delete --}}
-                                                    {{-- Model Delete --}}
-                                                    {{-- Model Delete --}}
-                                                    <div class="modal fade" id="deleteModal{{ $data['id'] }}"
-                                                        tabindex="-1" aria-labelledby="exampleModalLabel"
-                                                        aria-hidden="true">
-
-                                                        <div class="modal-dialog">
-
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <button type="button" class="btn-close"
-                                                                        data-bs-dismiss="modal"
-                                                                        aria-label="Close"></button>
-                                                                </div>
-
-                                                                <div class="modal-body">
-                                                                    <h2 style="font-weight: bold">Are you sure?</h2>
-                                                                    <h5 style="font-weight: bold">Delete data</h2>
+                                                                    <div class="modal-body">
+                                                                        <h2 style="font-weight: bold">Edit Item</h2>
                                                                         <form method="post" action=""
                                                                             style="text-align: center">
                                                                             @csrf
-                                                                            <input type="hidden" name="delete"
+                                                                            <input type="hidden" name="edit"
                                                                                 value="true">
+
                                                                             <input type="hidden" name="id"
                                                                                 value="{{ $data['id'] }}">
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary"
-                                                                        data-bs-dismiss="modal">Close</button>
-                                                                    <button type="submit"
-                                                                        class="btn btn-danger">Delete</button>
-                                                                    </form>
+                                                                            <input type="text" name="nama"
+                                                                                id="nama"
+                                                                                placeholder="Name of Income"
+                                                                                value="{{ $data['nama'] }}" required
+                                                                                style="border-color: #2F80ED; background-color: #E0E9F4">
+                                                                            <input type="text" name="jenis"
+                                                                                id="jenis" placeholder="Nominal"
+                                                                                value="{{ $data['jenis'] }}" required
+                                                                                style="border-color: #2F80ED; background-color: #E0E9F4">
+                                                                            <input type="text" name="deskripsi"
+                                                                                id="deskripsi" placeholder="Amount"
+                                                                                value="{{ $data['deskripsi'] }}"
+                                                                                required
+                                                                                style="border-color: #2F80ED; background-color: #E0E9F4">
+                                                                            <input type="text" name="stok"
+                                                                                id="stok" placeholder="Amount"
+                                                                                value="{{ $data['stok'] }}" required
+                                                                                style="border-color: #2F80ED; background-color: #E0E9F4">
+                                                                            <input type="number" name="harga_jual"
+                                                                                id="harga_jual" placeholder="Unit"
+                                                                                value="{{ $data['harga_jual'] }}"
+                                                                                required
+                                                                                style="border-color: #2F80ED; background-color: #E0E9F4">
+                                                                            <input type="number" name="harga_beli"
+                                                                                id="harga_beli"
+                                                                                placeholder="harga_beli"
+                                                                                value="{{ $data['harga_beli'] }}"
+                                                                                required
+                                                                                style="border-color: #2F80ED; background-color: #E0E9F4">
+                                                                            <input type="number" name="terjual"
+                                                                                id="terjual" placeholder="Notes"
+                                                                                value="{{ $data['terjual'] }}"
+                                                                                required
+                                                                                style="border-color: #2F80ED; background-color: #E0E9F4">
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button"
+                                                                            class="btn btn-secondary"
+                                                                            data-bs-dismiss="modal">Close</button>
+                                                                        <button type="submit"
+                                                                            class="btn btn-primary">Save
+                                                                            changes</button>
+                                                                        </form>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                @endforeach
-                                            </tbody>
-                                        </table>
+
+                                                        {{-- Model Delete --}}
+                                                        {{-- Model Delete --}}
+                                                        {{-- Model Delete --}}
+                                                        <div class="modal fade" id="deleteModal{{ $data['id'] }}"
+                                                            tabindex="-1" aria-labelledby="exampleModalLabel"
+                                                            aria-hidden="true">
+
+                                                            <div class="modal-dialog">
+
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <button type="button" class="btn-close"
+                                                                            data-bs-dismiss="modal"
+                                                                            aria-label="Close"></button>
+                                                                    </div>
+
+                                                                    <div class="modal-body">
+                                                                        <h2 style="font-weight: bold">Are you sure?
+                                                                        </h2>
+                                                                        <h5 style="font-weight: bold">Delete data</h2>
+                                                                            <form method="post" action=""
+                                                                                style="text-align: center">
+                                                                                @csrf
+                                                                                <input type="hidden" name="delete"
+                                                                                    value="true">
+                                                                                <input type="hidden" name="id"
+                                                                                    value="{{ $data['id'] }}">
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button"
+                                                                            class="btn btn-secondary"
+                                                                            data-bs-dismiss="modal">Close</button>
+                                                                        <button type="submit"
+                                                                            class="btn btn-danger">Delete</button>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                       
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        
 
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                             data-bs-target="#staticBackdrop">
@@ -358,49 +374,57 @@
                         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
                             data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
                             aria-hidden="true" style="text-align: center">>
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h3 style="font-weight: bold" class="modal-title" id="staticBackdropLabel">Input new Item</h3>
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content text-center">
+                                    <div class="modal-header text-center">
+                                        <h3 style="font-weight: bold" class="modal-title text-center" id="staticBackdropLabel">
+                                            Input new Item</h3>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
-                                    <div class="modal-body" >
+                                    <div class="modal-body text-center">
 
-                            <form method="post" action="" class="form" style="text-align: center">
+                                        <form method="post" action="" class="mb-3"
+                                            style="text-align: center">
 
-                                @csrf
-                                <input type="hidden" name="create" value="yes">
+                                            @csrf
+                                            <input type="hidden" name="create" value="yes">
 
-                                <input type="hidden" name="user_id" value="{{ $user->id }}">
+                                            <input type="hidden" name="user_id" value="{{ $user->id }}">
 
-                                <input type="text" name="nama" id="nama" placeholder="Nama" required
-                                    style="border-color: #2F80ED; background-color: #E0E9F4">
+                                            
+                                            <input type="text" class="form-control mb-2" name="nama" id="nama" placeholder="Nama"
+                                                required style="border-color: #2F80ED; background-color: #E0E9F4">
+                                            
 
-                                <input type="text" name="jenis" id="jenis" placeholder="Jenis" required
-                                    style="border-color: #2F80ED; background-color: #E0E9F4">
+                                            <input type="text" class="form-control mb-2" name="jenis" id="jenis" placeholder="Jenis"
+                                                required style="border-color: #2F80ED; background-color: #E0E9F4">
 
-                                <input type="text" name="deskripsi" id="deskripsi" placeholder="deskripsi"
-                                    required style="border-color: #2F80ED; background-color: #E0E9F4">
+                                            <input type="text" class="form-control mb-2" name="deskripsi" id="deskripsi"
+                                                placeholder="deskripsi" required
+                                                style="border-color: #2F80ED; background-color: #E0E9F4">
 
-                                <input type="text" name="stok" id="Stok" placeholder="Stok" required
-                                    style="border-color: #2F80ED; background-color: #E0E9F4">
+                                            <input type="text" class="form-control mb-2" name="stok" id="Stok" placeholder="Stok"
+                                                required style="border-color: #2F80ED; background-color: #E0E9F4">
 
-                                <input type="number" name="harga_jual" id="harga_jual" placeholder="Harga_jual"
-                                    required style="border-color: #2F80ED; background-color: #E0E9F4">
+                                            <input type="number" class="form-control mb-2" name="harga_jual" id="harga_jual"
+                                                placeholder="Harga_jual" required
+                                                style="border-color: #2F80ED; background-color: #E0E9F4">
 
-                                <input type="number" name="harga_beli" id="harga_beli" placeholder="Harga_beli"
-                                    required style="border-color: #2F80ED; background-color: #E0E9F4">
+                                            <input type="number" class="form-control mb-2" name="harga_beli" id="harga_beli"
+                                                placeholder="Harga_beli" required
+                                                style="border-color: #2F80ED; background-color: #E0E9F4">
 
-                                <input type="number" name="terjual" id="terjual" placeholder="Terjual" required
-                                    style="border-color: #2F80ED; background-color: #E0E9F4">
+                                            <input type="number" class="form-control mb-2" name="terjual" id="terjual"
+                                                placeholder="Terjual" required
+                                                style="border-color: #2F80ED; background-color: #E0E9F4">
 
 
                                     </div>
-                                    <div class="modal-footer">
-                                        <button type="submit"
-                                class="btn btn-primary" style="padding: 8px 12px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold">SAVE</button>
-                            </form>
+                                    <div class="modal-footer text-center">
+                                        <button type="submit" class="btn btn-primary"
+                                            style="padding: 8px 12px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold">SAVE</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
