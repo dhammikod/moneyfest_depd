@@ -175,19 +175,20 @@
                         <div class="col-lg-6 col-md-12 mb-3">
                             <h5 class="card-title mb-4"><b>Income Patterns</b></h5>
                             <!-- Dropdown untuk memilih kategori -->
-                <select id="kategoriDropdown" class="form-select mb-3" onchange="filterByCategory(this.value)">
-                    <option value="all">All Categories</option>
-                    <option value="penjualan produk">penjualan produk</option>
-                    <option value="iklan">iklan</option>
-                    <option value="lisensi">lisensi</option>
-                    <option value="royalti">royalti</option>
-                    <option value="donasi">donasi</option>
-                    <option value="langganan">langganan</option>
-                    <option value="afiliasi">afiliasi</option>
-                    <option value="layanan konsultasi">layanan konsultasi</option>
-                    <option value="penjualan aset">penjualan aset</option>
-                    <option value="lain-lain">lain-lain</option>
-                </select>
+                            <select id="kategoriDropdown" class="form-select mb-3"
+                                onchange="filterByCategory(this.value)">
+                                <option value="all">All Categories</option>
+                                <option value="penjualan produk">penjualan produk</option>
+                                <option value="iklan">iklan</option>
+                                <option value="lisensi">lisensi</option>
+                                <option value="royalti">royalti</option>
+                                <option value="donasi">donasi</option>
+                                <option value="langganan">langganan</option>
+                                <option value="afiliasi">afiliasi</option>
+                                <option value="layanan konsultasi">layanan konsultasi</option>
+                                <option value="penjualan aset">penjualan aset</option>
+                                <option value="lain-lain">lain-lain</option>
+                            </select>
 
                             {{-- @foreach ($kategories_sum as $item)
                                 <div class="card mb-3">
@@ -200,13 +201,15 @@
 
 
                             @foreach ($kategories_sum as $item)
-                            <div class="card mb-3 category" data-category="{{$item['kategori']}}">
-                                <div class="card-body d-flex justify-content-between align-items-center">
-                                    <h5 class="card-title mb-0">{{ $item['kategori'] }}</h5>
-                                    <h6 class="card-subtitle text-muted">{{ $item['total_category'] }}</h6>
-                                </div>
-                            </div>
-                        @endforeach
+                                <a href="/histori/pemasukan">
+                                    <div class="card mb-3 category" data-category="{{ $item['kategori'] }}">
+                                        <div class="card-body d-flex justify-content-between align-items-center">
+                                            <h5 class="card-title mb-0">{{ $item['kategori'] }}</h5>
+                                            <h6 class="card-subtitle text-muted">{{ $item['total_category'] }}</h6>
+                                        </div>
+                                    </div>
+                                </a>
+                            @endforeach
 
 
 
@@ -303,4 +306,5 @@
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="assets/js/autoload_form.js"></script>
 </body>
+
 </html>
