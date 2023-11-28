@@ -245,7 +245,7 @@
                                     <!-- Options will be dynamically populated using JavaScript -->
                                 </select>
 
-                                <div id="additionalSelectContainer">
+                                <div id="additionalSelectContainer" class="mb-3">
                                     <!-- Additional select will be added here -->
                                 </div>
 
