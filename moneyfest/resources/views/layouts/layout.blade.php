@@ -18,7 +18,10 @@
     -->
     <link href="assets/css/vendor.min.css" rel="stylesheet" />
     <link href="assets/css/style.css" rel="stylesheet" />
+    <link href="assets/css/vendor/fontawesome.css" rel="stylesheet" />
 
+  <!-- Template Our Features landing page File -->
+  <link href="assets/css/ourfeatures.css" rel="stylesheet">
     <!--  Slick Slider
     -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css">
@@ -41,8 +44,8 @@
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active"><a class="nav-link" data-scroll="scrollTo" href="/">Home</a>
                         </li>
-                        <li class="nav-item"><a class="nav-link" data-scroll="scrollTo" href="/">About Us</a></li>
-                        <li class="nav-item"><a class="nav-link" data-scroll="scrollTo" href="/">Pricing</a></li>
+                        <li class="nav-item"><a class="nav-link" data-scroll="scrollTo" href="#about">About Us</a></li>
+                        <li class="nav-item"><a class="nav-link" data-scroll="scrollTo" href="#pricing">Pricing</a></li>
                     </ul>
                     <div class="module-container">
                         <!--module-btn-->
@@ -99,6 +102,7 @@
     <script src="assets/js/vendor/jquery-3.4.1.min.js"></script>
     <script src="assets/js/vendor.min.js"></script>
     <script src="assets/js/functions.js"></script>
+
 
     <!-- Jquery CDN link  -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

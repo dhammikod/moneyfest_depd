@@ -21,8 +21,8 @@
                                 <div class="hero-action text-center">
 
                                     <a href="login"
-                                        class="btn btn--secondary justify-content-center d-flex align-item-center"><span>Join
-                                            Us!</span></a>
+                                        class="btn btn--secondary justify-content-center d-flex align-item-center"><span> Try
+                                            Demo!</span></a>
                                 </div>
                             </div>
                         </div>
@@ -57,8 +57,8 @@
                 <div class="row clearfix">
                     <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
                         <div class="heading text-center">
-                            <h2 class="heading-title">Our Clients</h2>
-                            <p class="heading-desc">We have been working with some start up business clients</p>
+                            <h2 class="heading-title">Has your business experienced this below?</h2>
+                            <p class="heading-desc"></p>
                         </div>
                     </div>
                     <!-- End .col-lg-6 -->
@@ -73,8 +73,9 @@
                                 </div><img src="assets/images/icons/icon-dollar.svg" alt="Dollar Icon" />
                             </div>
                             <div class="feature-content">
-                                <h3>Fullyours</h3>
-                                <p>Clothing Brand bussiness</p>
+                                <h3>Lack of Financial Planning</h3>
+                                <p>insufficient to obtain assistance and support,
+                                     along with a lack of financial management expertise and knowledge</p>
                             </div>
                         </div>
                         <!-- End .feature-panel -->
@@ -88,9 +89,8 @@
                                 </div><img src="assets/images/icons/icon-cup.svg" alt="Cup Icon" />
                             </div>
                             <div class="feature-content">
-                                <h3>Socialign</h3>
-                                <p>Your logo is the very heart of your identity and branding, let our designers deliver
-                                    the perfect & dreamy design, make a lasting impression.</p>
+                                <h3>Difficulty in managing cash flow</h3>
+                                <p>insufficient expertise and experience in financial management</p>
                             </div>
                         </div>
                         <!-- End .feature-panel -->
@@ -104,9 +104,8 @@
                                 </div><img src="assets/images/icons/icon-delivery.svg" alt="Delivery Icon" />
                             </div>
                             <div class="feature-content">
-                                <h3>Crochet</h3>
-                                <p>What separates our agency from all other web design agencies is the ability to offer
-                                    the most Friendly Experience you can imagine.</p>
+                                <h3>Difficulty in managing stock</h3>
+                                <p>inexperience and lack of expertise in inventory management</p>
                             </div>
                         </div>
                         <!-- End .feature-panel -->
@@ -131,8 +130,8 @@
                     </div>
                     <div class="col-12 col-md-12 col-lg-6">
                         <div class="heading">
-                            <h2 class="heading-title">About The CapcAI</h2>
-                            <p class="heading-desc"> Is an intelligent income and expense tracking platform powered by
+                            <h2 class="heading-title">Meet CapcAI</h2>
+                            <p class="heading-desc">The intelligent income and expense tracking platform powered by
                                 AI. Our business revolves around offering a money management website, but with a unique
                                 twist. We provide users with the ability to not only record their financial transactions
                                 but also harness the predictive capabilities of artificial intelligence.</p>
@@ -207,7 +206,52 @@
       Author
       =============================================
       -->
+ <!-- ======= Services Section ======= -->
+ <section id="services" class="services section-bg">
+    <div class="container" data-aos="fade-up">
 
+      <div class="section-title">
+        <h2 class="text-center">We provide you..</h2>
+        <p class="text-center">Check out the great services we offer</p>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+          <div class="icon-box">
+            <div class="icon"><i class="fab fa-ello"></i></div>
+            <h4 class="title"><a href="">Categorizing income and expenses</a></h4>
+            <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
+          <div class="icon-box">
+            <div class="icon"><i class="fab fa-dribbble"></i></div>
+            <h4 class="title"><a href="">Real-time income and expense tracking</a></h4>
+            <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="300">
+          <div class="icon-box">
+            <div class="icon"><i class="fab fa-calendar"></i></div>
+            <h4 class="title"><a href="">Monthly turnover goal and performance graph</a></h4>
+            <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="400">
+          <div class="icon-box">
+            <div class="icon"><i class="fab fa-business-time"></i></div>
+            <h4 class="title"><a href="">Displaying full history and categorizing it</a></h4>
+            <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section><!-- End Services Section -->
         <!--
       Pricing Table #1
       =============================================
@@ -217,7 +261,7 @@
                 <div class="row clearfix">
                     <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
                         <div class="heading text-center">
-                            <h2 class="heading-title">Pricing</h2>
+                            <h2 class="heading-title">With The Best Price To Manage Your Business Financial</h2>
                             <p class="heading-desc">Our price from standart until premium</p>
                         </div>
                     </div>
@@ -276,7 +320,7 @@
                         <div class="accordion accordion-1" id="accordion01">
                             <div class="card style-1">
                                 <div class="card-heading"><a class="card-link collapsed" data-toggle="collapse"
-                                        data-parent="#accordion01" href="#collapse01-1">Our Features!</a></div>
+                                        data-parent="#accordion01" href="#collapse01-1">Information</a></div>
                                 <div class="collapse show" id="collapse01-1" data-parent="#accordion01">
                                     <div class="card-body">With any financial product that you buy, it is important
                                         that you know you are getting the best advice from a reputable company as often
@@ -399,8 +443,7 @@
                 <div class="hero-action text-center">
 
                     <a href="login"
-                        class="btn btn-outline-primary justify-content-center align-item-center"><span>Join
-                            Us!</span></a>
+                        class="btn btn-outline-primary justify-content-center align-item-center"><span>Try Demo!</span></a>
                 </div>
                 <div class="col-12 col-md-12 col-lg-6 text-md-center mx-md-auto mt-3">
                     <img
