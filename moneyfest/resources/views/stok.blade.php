@@ -178,6 +178,7 @@
                 </nav>
             </header>
             <!--  Header End -->
+
             <div class="container-fluid ">
                 <div class="card w-100 h-100 position-relative overflow-hidden">
                     <div class="card-body" style="background-color: #CEDCEE">
@@ -367,7 +368,7 @@
 
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                             data-bs-target="#staticBackdrop">
-                            Add new Item
+                            Add New Item
                         </button>
 
 
@@ -378,7 +379,7 @@
                                 <div class="modal-content text-center">
                                     <div class="modal-header text-center">
                                         <h3 style="font-weight: bold" class="modal-title text-center" id="staticBackdropLabel">
-                                            Input new Item</h3>
+                                            Input New Item</h3>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
@@ -401,18 +402,18 @@
                                                 required style="border-color: #2F80ED; background-color: #E0E9F4">
 
                                             <input type="text" class="form-control mb-2" name="deskripsi" id="deskripsi"
-                                                placeholder="deskripsi" required
+                                                placeholder="Deskripsi" required
                                                 style="border-color: #2F80ED; background-color: #E0E9F4">
 
                                             <input type="text" class="form-control mb-2" name="stok" id="Stok" placeholder="Stok"
                                                 required style="border-color: #2F80ED; background-color: #E0E9F4">
 
                                             <input type="number" class="form-control mb-2" name="harga_jual" id="harga_jual"
-                                                placeholder="Harga_jual" required
+                                                placeholder="Harga Jual" required
                                                 style="border-color: #2F80ED; background-color: #E0E9F4">
 
                                             <input type="number" class="form-control mb-2" name="harga_beli" id="harga_beli"
-                                                placeholder="Harga_beli" required
+                                                placeholder="Harga Beli" required
                                                 style="border-color: #2F80ED; background-color: #E0E9F4">
 
                                             <input type="number" class="form-control mb-2" name="terjual" id="terjual"
