@@ -30,7 +30,10 @@ Route::get('/register', [Controller::class, 'registerpage']);
 Route::post('/register', [Controller::class, 'registerlogic']);
 
 Route::get('/stock', [Controller::class, 'stock']);
-
+// Route::get('/profit', [Controller::class, 'keuntungan']);
+Route::get('/profit', function () {
+    return view('keuntungan');
+});
 Route::get('/dashboard', [Controller::class, 'dashboard']);
 Route::get('/pemasukan', [Controller::class, 'pemasukan']);
 Route::get('/pengeluaran', [Controller::class, 'pengeluaran']);

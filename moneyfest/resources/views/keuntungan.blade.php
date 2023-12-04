@@ -157,7 +157,35 @@
                 <!--  Row 1 -->
                 <div class="row">
                     <div class="col-lg-8 d-flex align-items-strech">
-                        <div class="card w-100">
+                        <div class="card col-lg-8 align-items-strech">
+                            <div class="card-body">
+                                <div class="row alig n-items-start">
+                                    <div class="col-8">
+                                        <h5 class="card-title mb-9 fw-semibold"> Monthly Earnings </h5>
+                                        <h4 class="fw-semibold mb-3">$6,820</h4>
+                                        <div class="d-flex align-items-center pb-1">
+                                            <span
+                                                class="me-2 rounded-circle bg-light-danger round-20 d-flex align-items-center justify-content-center">
+                                                <i class="ti ti-arrow-down-right text-danger"></i>
+                                            </span>
+                                            <p class="text-dark me-1 fs-3 mb-0">+9%</p>
+                                            <p class="fs-3 mb-0">last year</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="d-flex justify-content-end">
+                                            <div
+                                                class="text-white bg-secondary rounded-circle p-6 d-flex align-items-center justify-content-center">
+                                                <i class="ti ti-currency-dollar fs-6"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="earning"></div>
+                        </div>
+
+                        {{-- <div class="card w-100">
                             <div class="card-body">
                                 <div class="d-sm-flex d-block align-items-center justify-content-between mb-9">
                                     <div class="mb-3 mb-sm-0">
@@ -176,7 +204,7 @@
                                 </div>
                                 <div id="chart"></div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="col-lg-4">
                         <div class="row">
@@ -201,6 +229,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -322,7 +351,7 @@
                             </div>
                         </div>
                     </div> --}}
-                    <div class="col-lg-8 d-flex align-items-stretch">
+                    {{-- <div class="col-lg-8 d-flex align-items-stretch">
                         <div class="card w-100">
                             <div class="card-body p-4">
                                 <h5 class="card-title fw-semibold mb-4">Recent Transactions</h5>
@@ -347,74 +376,11 @@
                                                 </th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            @php
-                                                $a = 1;
-                                            @endphp
-                                            @foreach ($transactions as $item)
-                                                <tr>
-                                                    <td class="border-bottom-0">
-                                                        <h6 class="fw-semibold mb-0">{{$a}}</h6>
-                                                    </td>
-                                                    @php
-                                                        $a++;
-                                                    @endphp
-                                                    <td class="border-bottom-0">
-                                                        <h6 class="fw-semibold mb-1">{{$item['nama']}}</h6>
-                                                    </td>
-                                                    <td class="border-bottom-0">
-                                                        <p class="mb-0 fw-normal">{{$item['catatan']}}</p>
-                                                    </td>
-                                                    @if ($item['kategori'] == 'pengeluaran')
-                                                    <td class="border-bottom-0">
-                                                        <div class="d-flex align-items-center gap-2">
-                                                            <span
-                                                                class="badge bg-danger rounded-3 fw-semibold">{{$item['kategori']}}</span>
-                                                        </div>
-                                                    </td>
-                                                    @endif
-
-                                                    @if ($item['kategori'] == 'pendapatan')
-                                                    <td class="border-bottom-0">
-                                                        <div class="d-flex align-items-center gap-2">
-                                                            <span
-                                                                class="badge bg-primary rounded-3 fw-semibold">{{$item['kategori']}}</span>
-                                                        </div>
-                                                    </td>
-                                                    @endif
-
-                                                    <td class="border-bottom-0">
-                                                        <h6 class="fw-semibold mb-0 fs-4">{{$item['nominal']*$item['jumlah']}}</h6>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                            {{-- <tr>
-                                                <td class="border-bottom-0">
-                                                    <h6 class="fw-semibold mb-0">4</h6>
-                                                </td>
-                                                <td class="border-bottom-0">
-                                                    <h6 class="fw-semibold mb-1">Nirav Joshi</h6>
-                                                    <span class="fw-normal">Frontend Engineer</span>
-                                                </td>
-                                                <td class="border-bottom-0">
-                                                    <p class="mb-0 fw-normal">Hosting Press HTML</p>
-                                                </td>
-                                                <td class="border-bottom-0">
-                                                    <div class="d-flex align-items-center gap-2">
-                                                        <span
-                                                            class="badge bg-success rounded-3 fw-semibold">Critical</span>
-                                                    </div>
-                                                </td>
-                                                <td class="border-bottom-0">
-                                                    <h6 class="fw-semibold mb-0 fs-4">$2.4k</h6>
-                                                </td>
-                                            </tr> --}}
-                                        </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
