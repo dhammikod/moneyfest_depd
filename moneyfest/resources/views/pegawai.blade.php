@@ -8,6 +8,15 @@
     <link rel="shortcut icon" type="image/png" href="../assets/images/logo/.png" />
     <link rel="stylesheet" href="assets/css/dashboard.css" />
     <link rel="stylesheet" href="../assets/css/dashboard2.css" />
+
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Include DataTables JS -->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script>
+    <link rel="stylesheet" href="/assets/css/dashboard.css">
+    <link rel="stylesheet" href="assets/css/dashboard2.css">
 </head>
 
 <body>
@@ -161,14 +170,14 @@
                         <div class="col-md-12">
                             <h5 class="card-title fw-semibold mb-4">Salary</h5>
                             <div class="card table-responsive">
-                                <div class="table-responsive">
+                                <div id="contacts" class="table-responsive">
 
                                     <table class="table table-striped ">
                                         <thead>
                                             <tr>
-                                                <th class="sort" data-sort="nama">Nama Pegawai</th>
-                                                <th class="sort" data-sort="jenis">Jabatan</th>
-                                                <th class="sort" data-sort="deskripsi">Gaji</th>
+                                                <th scope="col" class="sort" data-sort="nama">Nama Pegawai</th>
+                                                <th scope="col" class="sort" data-sort="jabatan">Jabatan</th>
+                                                <th scope="col" class="sort" data-sort="gaji">Gaji</th>
                                                 <th colspan="2">
                                                     <input type="text" class="search"
                                                         placeholder="Search Salary" />
@@ -357,15 +366,17 @@
             </div>
 
 
-            <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
-            <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
             <script src="../assets/js/sidebarmenu.js"></script>
             <script src="../assets/js/app.min.js"></script>
-            <script src="../assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-            <script src="../assets/libs/simplebar/dist/simplebar.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+            <script src="/assets/js/stok.js"></script>
             <script src="../assets/js/dashboard.js"></script>
-
+            <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+            <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+            <script src="../assets/libs/simplebar/dist/simplebar.js"></script>
 </body>
 
 </html>
