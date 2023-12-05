@@ -442,7 +442,7 @@
                 </div>
                 <div class="hero-action text-center">
 
-                    <a href="login"
+                    <a href="https://wa.me/085335627728?text=Halo%20saya%20ingin%20mencoba%20trial%20demonya!"
                         class="btn btn-outline-primary justify-content-center align-item-center"><span>Try Demo!</span></a>
                 </div>
                 <div class="col-12 col-md-12 col-lg-6 text-md-center mx-md-auto mt-3">
