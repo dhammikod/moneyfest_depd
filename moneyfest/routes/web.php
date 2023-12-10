@@ -55,6 +55,7 @@ Route::get('/logout', [Controller::class, 'logout']);
 
 
 //jangan sentuh samsek yagais :)
+Route::get('/tes_dashboard', [Controller::class, 'tes_dashboard']);
 Route::get('/api/jenis-kategoris', [JenisKategorisController::class, 'index']);
 Route::get('/api/kategoris/{jenis}', [KategorisController::class, 'index']);
 Route::get('/api/list-pengeluaran', [KeuanganController::class, 'pengeluaran']);

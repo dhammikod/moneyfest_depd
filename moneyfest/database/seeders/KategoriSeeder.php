@@ -106,12 +106,6 @@ class KategoriSeeder extends Seeder
         );
         Kategori::create(
             [
-                'kategori' => "lain-lain",
-                'id_jenis_kategori' => 2,
-            ]
-        );
-        Kategori::create(
-            [
                 'kategori' => "lisensi",
                 'id_jenis_kategori' => 2,
             ]

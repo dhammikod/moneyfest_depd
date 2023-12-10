@@ -127,12 +127,38 @@ class KeuanganSeeder extends Seeder
 
         Keuangan::create(
             [
-                'nama' => "pendapatan ga tau",
-                'nominal' => 40000,
+                'nama' => "lisensi baliho",
+                'nominal' => 500000,
+                'kategori' => 15,
+                'jumlah' => 1,
+                'satuan' => "paket",
+                'tanggal' => Carbon::parse("2023-8-10"),
+                'catatan' => "-",
+                'user_id' => 1,
+            ]
+        );
+
+        Keuangan::create(
+            [
+                'nama' => "penjualan baliho",
+                'nominal' => 20000000,
+                'kategori' => 20,
+                'jumlah' => 1,
+                'satuan' => "paket",
+                'tanggal' => Carbon::parse("2023-8-11"),
+                'catatan' => "-",
+                'user_id' => 1,
+            ]
+        );
+
+        Keuangan::create(
+            [
+                'nama' => "iklan baliho",
+                'nominal' => 3000000,
                 'kategori' => 12,
-                'jumlah' => 5,
-                'satuan' => "buah",
-                'tanggal' => Carbon::parse("2023-7-10"),
+                'jumlah' => 1,
+                'satuan' => "paket",
+                'tanggal' => Carbon::parse("2023-8-12"),
                 'catatan' => "-",
                 'user_id' => 1,
             ]

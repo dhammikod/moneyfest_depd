@@ -15,6 +15,9 @@ use App\Models\Kategori;
 use App\Models\Pegawai;
 use App\Models\Produk;
 use Illuminate\Routing\Controller as BaseController;
+use Phpml\Regression\LeastSquares;
+// use Phpml\Classification\Ensemble\RandomForest;
+
 
 class Controller extends BaseController
 {
@@ -268,6 +271,56 @@ class Controller extends BaseController
         return view('dashboard', [
             'user' => $user,
             'transactions' => $result,
+        ]);
+    }
+
+    public function tes_dashboard()
+    {
+        if (!Session::has('user_id')) {
+            return redirect()->to('/login');
+        }
+
+        $user = User::where('id', session('user_id'))->first();
+
+        $result = Keuangan::select('keuangans.*', 'jenis__kategoris.jenis_kategori AS kategoris')
+            ->join('kategoris', 'keuangans.kategori', '=', 'kategoris.id')
+            ->join('jenis__kategoris', 'kategoris.id_jenis_kategori', '=', 'jenis__kategoris.id')
+            ->orderByDesc('keuangans.tanggal')
+            ->where('keuangans.user_id', session('user_id'))
+            ->limit(5)
+            ->get();
+        
+        //jadikan setiap kategori sebagai attribute
+        $orders = Keuangan::select(
+            DB::raw('Keuangans.*'),
+            DB::raw('SUM(Keuangans.nominal*Keuangans.jumlah) as total'),  
+            DB::raw("DATE_FORMAT(tanggal,'%M %Y') as months"),
+            DB::raw("DATE_FORMAT(tanggal,'%m') as monthKey")
+        )
+        ->groupBy('months', 'monthKey', 'id', 'created_at', 'updated_at', 'nama', 'nominal', 'kategori', 'jumlah', 'satuan', 'tanggal', 'catatan', 'user_id')
+        ->orderBy('tanggal', 'ASC')
+        ->get();
+
+        $traindata = [];
+        $target = [];
+        foreach ($result as $row) {
+            array_push($target, intval($row['jumlah']) * intval($row['nominal']));
+            $date = Carbon::createFromTimestampUTC($row["tanggal"])->secondsSinceMidnight();
+            array_push($traindata, [$row['kategori'],$date]);
+        }
+
+        $regression = new LeastSquares();
+        $regression->train($traindata, $target);
+        
+        $predictions = $regression->predict([2,3000000]);
+        //predict which category that is used
+        // 0 1 0 1 0 and smt
+        
+        return view('tes_dashboard', [
+            'user' => $user,
+            'transactions' => $result,
+            'prediction' => $predictions,
+            'by_month' => $orders,
         ]);
     }
 
