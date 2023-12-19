@@ -313,33 +313,32 @@ class Controller extends BaseController
         ]);
     }
 
-    public function request_predict()
-    {
+    public function request_predict(){
         $result = DB::table('keuangans as k')
-            ->join('kategoris as kat', 'k.kategori', '=', 'kat.id')
-            ->join('jenis__kategoris as jen', 'kat.id_jenis_kategori', '=', 'jen.id')
-            ->select(
-                DB::raw('YEAR(k.tanggal) as tahun'),
-                DB::raw('MONTH(k.tanggal) as bulan'),
-                DB::raw('SUM(CASE WHEN kat.kategori = "iklan" THEN k.nominal * k.jumlah ELSE 0 END) as iklan'),
-                DB::raw('SUM(CASE WHEN kat.kategori = "penjualan produk" THEN k.nominal * k.jumlah ELSE 0 END) as penjualan_produk'),
-                DB::raw('SUM(CASE WHEN kat.kategori = "royalti" THEN k.nominal * k.jumlah ELSE 0 END) as royalti'),
-                DB::raw('SUM(CASE WHEN kat.kategori = "lisensi" THEN k.nominal * k.jumlah ELSE 0 END) as lisensi'),
-                DB::raw('SUM(CASE WHEN kat.kategori = "donasi" THEN k.nominal * k.jumlah ELSE 0 END) as donasi'),
-                DB::raw('SUM(CASE WHEN kat.kategori = "langganan" THEN k.nominal * k.jumlah ELSE 0 END) as langganan'),
-                DB::raw('SUM(CASE WHEN kat.kategori = "afiliasi" THEN k.nominal * k.jumlah ELSE 0 END) as afiliasi'),
-                DB::raw('SUM(CASE WHEN kat.kategori = "layanan konsultasi" THEN k.nominal * k.jumlah ELSE 0 END) as layanan_konsultasi'),
-                DB::raw('SUM(CASE WHEN kat.kategori = "penjualan aset" THEN k.nominal * k.jumlah ELSE 0 END) as penjualan_aset'),
-                DB::raw('SUM(CASE WHEN kat.kategori = "lain-lain" THEN k.nominal * k.jumlah ELSE 0 END) as lain_lain'),
-                DB::raw('SUM(k.nominal * k.jumlah) as total')
-            )
-            ->where('jen.jenis_kategori', 'pendapatan')
-            ->where('k.user_id', session('user_id'))
-            ->groupBy('tahun', 'bulan')
-            ->orderByDesc('tahun')
-            ->orderByDesc('bulan')
-            ->limit(3)
-            ->get();
+        ->join('kategoris as kat', 'k.kategori', '=', 'kat.id')
+        ->join('jenis__kategoris as jen', 'kat.id_jenis_kategori', '=', 'jen.id')
+        ->select(
+            DB::raw('YEAR(k.tanggal) as tahun'),
+            DB::raw('MONTH(k.tanggal) as bulan'),
+            DB::raw('SUM(CASE WHEN kat.kategori = "iklan" THEN k.nominal * k.jumlah ELSE 0 END) as iklan'),
+            DB::raw('SUM(CASE WHEN kat.kategori = "penjualan produk" THEN k.nominal * k.jumlah ELSE 0 END) as penjualan_produk'),
+            DB::raw('SUM(CASE WHEN kat.kategori = "royalti" THEN k.nominal * k.jumlah ELSE 0 END) as royalti'),
+            DB::raw('SUM(CASE WHEN kat.kategori = "lisensi" THEN k.nominal * k.jumlah ELSE 0 END) as lisensi'),
+            DB::raw('SUM(CASE WHEN kat.kategori = "donasi" THEN k.nominal * k.jumlah ELSE 0 END) as donasi'),
+            DB::raw('SUM(CASE WHEN kat.kategori = "langganan" THEN k.nominal * k.jumlah ELSE 0 END) as langganan'),
+            DB::raw('SUM(CASE WHEN kat.kategori = "afiliasi" THEN k.nominal * k.jumlah ELSE 0 END) as afiliasi'),
+            DB::raw('SUM(CASE WHEN kat.kategori = "layanan konsultasi" THEN k.nominal * k.jumlah ELSE 0 END) as layanan_konsultasi'),
+            DB::raw('SUM(CASE WHEN kat.kategori = "penjualan aset" THEN k.nominal * k.jumlah ELSE 0 END) as penjualan_aset'),
+            DB::raw('SUM(CASE WHEN kat.kategori = "lain-lain" THEN k.nominal * k.jumlah ELSE 0 END) as lain_lain'),
+            DB::raw('SUM(k.nominal * k.jumlah) as total')
+        )
+        ->where('jen.jenis_kategori', 'pendapatan')
+        ->where('k.user_id', session('user_id'))
+        ->groupBy('tahun', 'bulan')
+        ->orderByDesc('tahun')
+        ->orderByDesc('bulan')
+        ->limit(3)
+        ->get();
         return $result;
     }
     public function generate_model()
@@ -427,46 +426,46 @@ class Controller extends BaseController
     public function make_equation($item)
     {
         $equation = "";
-        $iklanIsZero = $item->first()->iklan == 0;
-        $penjualanProdukIsZero = $item->first()->penjualan_produk == 0;
-        $lisensiIsZero = $item->first()->lisensi == 0;
-        $royaltiIsZero = $item->first()->royalti == 0;
-        $donasiIsZero = $item->first()->donasi == 0;
-        $langgananIsZero = $item->first()->langganan == 0;
-        $afiliasiIsZero = $item->first()->afiliasi == 0;
-        $layananKonsultasiIsZero = $item->first()->layanan_konsultasi == 0;
-        $penjualanAsetIsZero = $item->first()->penjualan_aset == 0;
-        $lainLainIsZero = $item->first()->lain_lain == 0;
+        $iklanIsZero = $item->iklan == 0;
+        $penjualanProdukIsZero = $item->penjualan_produk == 0;
+        $lisensiIsZero = $item->lisensi == 0;
+        $royaltiIsZero = $item->royalti == 0;
+        $donasiIsZero = $item->donasi == 0;
+        $langgananIsZero = $item->langganan == 0;
+        $afiliasiIsZero = $item->afiliasi == 0;
+        $layananKonsultasiIsZero = $item->layanan_konsultasi == 0;
+        $penjualanAsetIsZero = $item->penjualan_aset == 0;
+        $lainLainIsZero = $item->lain_lain == 0;
 
         if (!$iklanIsZero) {
-            $equation = $equation . "iklan: " . str($item->first()->iklan);
+            $equation = $equation . "iklan: " . str($item->iklan);
         }
         if (!$penjualanProdukIsZero) {
-            $equation = $equation . "penjualan_produk: " . str($item->first()->penjualan_produk);
+            $equation = $equation . "penjualan_produk: " . str($item->penjualan_produk);
         }
         if (!$lisensiIsZero) {
-            $equation = $equation . "lisensi, " . str($item->first()->lisensi);
+            $equation = $equation . "lisensi, " . str($item->lisensi);
         }
         if (!$royaltiIsZero) {
-            $equation = $equation . "royalti, " . str($item->first()->royalti);
+            $equation = $equation . "royalti, " . str($item->royalti);
         }
         if (!$donasiIsZero) {
-            $equation = $equation . "donasi, " . str($item->first()->donasi);
+            $equation = $equation . "donasi, " . str($item->donasi);
         }
         if (!$langgananIsZero) {
-            $equation = $equation . "langganan, " . str($item->first()->langganan);
+            $equation = $equation . "langganan, " . str($item->langganan);
         }
         if (!$afiliasiIsZero) {
-            $equation = $equation . "afiliasi, " . str($item->first()->afiliasi);
+            $equation = $equation . "afiliasi, " . str($item->afiliasi);
         }
         if (!$layananKonsultasiIsZero) {
-            $equation = $equation . "layanan konsultasi, " . str($item->first()->layanan_konsultasi);
+            $equation = $equation . "layanan konsultasi, " . str($item->layanan_konsultasi);
         }
         if (!$penjualanAsetIsZero) {
-            $equation = $equation . "penjualan aset, " . str($item->first()->penjualan_aset);
+            $equation = $equation . "penjualan aset, " . str($item->penjualan_aset);
         }
         if (!$lainLainIsZero) {
-            $equation = $equation . "lain-lain, " . str($item->first()->lain_lain);
+            $equation = $equation . "lain-lain, " . str($item->lain_lain);
         }
         return $equation;
     }
@@ -494,14 +493,14 @@ class Controller extends BaseController
                 ->whereMonth('tanggal', $now->month)
                 ->whereYear('tanggal', $now->year)
                 ->get();
-
-
+            print_r($item);
+            
             $equation = $this->make_equation($item);
             //if exist return page with prediction
             return view('tes_dashboard', [
                 'user' => $user,
-                'item' => $item,
-                'prediction' => $item->first()->prediction,
+                'item'=> $item,
+                'prediction' => $item->prediction,
                 'equation' => $equation
             ]);
         } else {
@@ -510,29 +509,16 @@ class Controller extends BaseController
 
             $count = $result->count();
 
-            if ($count < 3) {
+            if($count < 3){
                 return view('tes_dashboard', [
                     'user' => $user,
                     'prediction' => 0,
                     'equation' => "not enough data available"
                 ]);
-            } else {
+            }else{
                 $this->generate_model();
-                $item = Predictions::where('user_id', session('user_id'))
-                    ->whereMonth('tanggal', $now->month)
-                    ->whereYear('tanggal', $now->year)
-                    ->get();
-
-
-                $equation = $this->make_equation($item);
-                //if exist return page with prediction
-                return view('tes_dashboard', [
-                    'user' => $user,
-                    'item' => $item,
-                    'prediction' => $item->first()->prediction,
-                    'equation' => $equation
-                ]);
             }
+            //if not, make prediction then return model with prediction
         }
     }
 

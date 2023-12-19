@@ -426,6 +426,8 @@ class Controller extends BaseController
 
     public function make_equation($item)
     {
+        print_r($item);
+        print_r($item);
         $equation = "";
         $iklanIsZero = $item->first()->iklan == 0;
         $penjualanProdukIsZero = $item->first()->penjualan_produk == 0;
@@ -533,6 +535,7 @@ class Controller extends BaseController
                     'equation' => $equation
                 ]);
             }
+            //if not, make prediction then return model with prediction
         }
     }
 

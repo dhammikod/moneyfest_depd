@@ -13,10 +13,8 @@ use Carbon\Carbon;
 use App\Models\Jenis_Kategori;
 use App\Models\Kategori;
 use App\Models\Pegawai;
-use App\Models\predictions;
 use App\Models\Produk;
 use Illuminate\Routing\Controller as BaseController;
-use Illuminate\Database\QueryException;
 use Phpml\Regression\LeastSquares;
 use Phpml\Preprocessing\Normalizer;
 
@@ -39,7 +37,7 @@ class Controller extends BaseController
         } elseif (isset($_POST['edit'])) {
             $id = $_POST['id'];
             $keuangan = Keuangan::findOrFail($id);
-
+            
             $keuangan->update([
                 'nama' => $_POST['nama'],
                 'nominal' => $_POST['nominal'],
@@ -52,20 +50,20 @@ class Controller extends BaseController
             return redirect()->to('/histori/' . $route);
         } elseif (isset($_POST['create'])) {
             $user = User::where('id', session('user_id'))->first();
-            if ($_POST['additionalDropdown'] != -1) {
+            if($_POST['additionalDropdown'] != -1){
                 $produk = Produk::findOrFail($_POST['additionalDropdown']);
-                if ($_POST['url'] == 'pemasukan') {
+                if($_POST['url'] == 'pemasukan'){
                     $produk->update([
                         'stok' => $produk->stok - $_POST['jumlah'],
                         'terjual' => $produk->terjual + $_POST['jumlah'],
                     ]);
-                } else if ($_POST['url'] == 'pengeluaran') {
+                }else if($_POST['url'] == 'pengeluaran'){
                     $produk->update([
-                        'stok' => $produk->stok + $_POST['jumlah'],
+                        'stok' => $produk->stok + $_POST['jumlah'],                       
                     ]);
-                }
+                }                
             }
-
+            
             $keuangan = Keuangan::create([
                 'nama' => $_POST['name'],
                 'nominal' => $_POST['nominal'],
@@ -196,57 +194,24 @@ class Controller extends BaseController
 
     public function login()
     {
-        // if (Session::has('user_id')) {
-        //     return redirect()->to('/dashboard');
-        // }
-
-        // if (isset($_POST["email"]) && isset($_POST["password"])) {
-        //     $user = User::where('email', $_POST["email"])->first();
-
-        //     if ($user && Hash::check($_POST["password"], $user->password)) {
-        //         session(['user_id' => $user->id]);
-
-        //         return redirect()->to('/dashboard');
-        //     }
-
-        //     return view('login', [
-        //         'pagetitle' => 'Home',
-        //         'invalid' => true,
-        //     ]);
-        // }
-
         if (Session::has('user_id')) {
-            $user = User::find(Session::get('user_id'));
-
-            // Periksa peran pengguna
-            if ($user && $user->role == 'admin') {
-                return redirect()->to('/admin/dashboard');
-            } else {
-                return redirect()->to('/dashboard');
-            }
+            return redirect()->to('/dashboard');
         }
 
         if (isset($_POST["email"]) && isset($_POST["password"])) {
             $user = User::where('email', $_POST["email"])->first();
 
             if ($user && Hash::check($_POST["password"], $user->password)) {
+                session(['user_id' => $user->id]);
 
-                if ($user->role == 'admin') {
-                    Session::put('user_id', $user->id);
-                    return redirect()->to('/admin/dashboard');
-                } else {
-                    Session::put('user_id', $user->id);
-                    return redirect()->to('/dashboard');
-                }
-            } else {
-                return view('login', [
-                    'pagetitle' => 'Home',
-                    'invalid' => true,
-                ]);
+                return redirect()->to('/dashboard');
             }
+
+            return view('login', [
+                'pagetitle' => 'Home',
+                'invalid' => true,
+            ]);
         }
-
-
 
         return view('login', [
             'pagetitle' => 'Home',
@@ -313,163 +278,6 @@ class Controller extends BaseController
         ]);
     }
 
-    public function request_predict()
-    {
-        $result = DB::table('keuangans as k')
-            ->join('kategoris as kat', 'k.kategori', '=', 'kat.id')
-            ->join('jenis__kategoris as jen', 'kat.id_jenis_kategori', '=', 'jen.id')
-            ->select(
-                DB::raw('YEAR(k.tanggal) as tahun'),
-                DB::raw('MONTH(k.tanggal) as bulan'),
-                DB::raw('SUM(CASE WHEN kat.kategori = "iklan" THEN k.nominal * k.jumlah ELSE 0 END) as iklan'),
-                DB::raw('SUM(CASE WHEN kat.kategori = "penjualan produk" THEN k.nominal * k.jumlah ELSE 0 END) as penjualan_produk'),
-                DB::raw('SUM(CASE WHEN kat.kategori = "royalti" THEN k.nominal * k.jumlah ELSE 0 END) as royalti'),
-                DB::raw('SUM(CASE WHEN kat.kategori = "lisensi" THEN k.nominal * k.jumlah ELSE 0 END) as lisensi'),
-                DB::raw('SUM(CASE WHEN kat.kategori = "donasi" THEN k.nominal * k.jumlah ELSE 0 END) as donasi'),
-                DB::raw('SUM(CASE WHEN kat.kategori = "langganan" THEN k.nominal * k.jumlah ELSE 0 END) as langganan'),
-                DB::raw('SUM(CASE WHEN kat.kategori = "afiliasi" THEN k.nominal * k.jumlah ELSE 0 END) as afiliasi'),
-                DB::raw('SUM(CASE WHEN kat.kategori = "layanan konsultasi" THEN k.nominal * k.jumlah ELSE 0 END) as layanan_konsultasi'),
-                DB::raw('SUM(CASE WHEN kat.kategori = "penjualan aset" THEN k.nominal * k.jumlah ELSE 0 END) as penjualan_aset'),
-                DB::raw('SUM(CASE WHEN kat.kategori = "lain-lain" THEN k.nominal * k.jumlah ELSE 0 END) as lain_lain'),
-                DB::raw('SUM(k.nominal * k.jumlah) as total')
-            )
-            ->where('jen.jenis_kategori', 'pendapatan')
-            ->where('k.user_id', session('user_id'))
-            ->groupBy('tahun', 'bulan')
-            ->orderByDesc('tahun')
-            ->orderByDesc('bulan')
-            ->limit(3)
-            ->get();
-        return $result;
-    }
-    public function generate_model()
-    {
-        $result = $this->request_predict();
-        // $traindata = [];
-        // $target = [];
-        // $temp = 0.00001;
-        // $a = 1;
-        $iklan = [];
-        $penjualan_produk = [];
-        $royalti = [];
-        $lisensi = [];
-        $donasi = [];
-        $langganan = [];
-        $afiliasi = [];
-        $layanan_konsultasi = [];
-        $penjualan_aset = [];
-        $lain_lain = [];
-        $total = [];
-
-
-        foreach ($result as $row) {
-            $iklan[] = $row->iklan;
-            $penjualan_produk[] = $row->penjualan_produk;
-            $royalti[] = $row->royalti;
-            $lisensi[] = $row->lisensi;
-            $donasi[] = $row->donasi;
-            $langganan[] = $row->langganan;
-            $afiliasi[] = $row->afiliasi;
-            $layanan_konsultasi[] = $row->layanan_konsultasi;
-            $penjualan_aset[] = $row->penjualan_aset;
-            $lain_lain[] = $row->lain_lain;
-            $total[] = $row->total;
-        }
-        $sum = array_sum($total);
-        $average_total = $sum / count($total);
-
-        $prediction = 0;
-        if ($total[2] >= $average_total) {
-            $prediction = $total[2] * 110 / 100;
-            $iklan[2] = $iklan[2] * 110 / 100;
-            $penjualan_produk[2]     = $penjualan_produk[2] * 110 / 100;
-            $royalti[2] = $royalti[2] * 110 / 100;
-            $lisensi[2] = $lisensi[2] * 110 / 100;
-            $donasi[2] = $donasi[2] * 110 / 100;
-            $langganan[2] = $langganan[2] * 110 / 100;
-            $afiliasi[2] = $afiliasi[2] * 110 / 100;
-            $layanan_konsultasi[2] = $layanan_konsultasi[2] * 110 / 100;
-            $penjualan_aset[2] = $penjualan_aset[2] * 110 / 100;
-            $lain_lain[2] = $lain_lain[2] * 110 / 100;
-        } else {
-            $prediction = $total[2] * 90 / 100;
-            $iklan[2] = $iklan[2] * 90 / 100;
-            $penjualan_produk[2]  = $penjualan_produk[2] * 90 / 100;
-            $royalti[2] = $royalti[2] * 90 / 100;
-            $lisensi[2] = $lisensi[2] * 90 / 100;
-            $donasi[2] = $donasi[2] * 90 / 100;
-            $langganan[2] = $langganan[2] * 90 / 100;
-            $afiliasi[2] = $afiliasi[2] * 90 / 100;
-            $layanan_konsultasi[2] = $layanan_konsultasi[2] * 90 / 100;
-            $penjualan_aset[2] = $penjualan_aset[2] * 90 / 100;
-            $lain_lain[2] = $lain_lain[2] * 90 / 100;
-        }
-
-        predictions::create(
-            [
-                'tanggal' => now(),
-                'iklan' => $iklan[2],
-                'penjualan_produk' => $penjualan_produk[2],
-                'royalti' => $royalti[2],
-                'lisensi' => $lisensi[2],
-                'donasi' => $donasi[2],
-                'langganan' => $langganan[2],
-                'afiliasi' => $afiliasi[2],
-                'layanan_konsultasi' => $layanan_konsultasi[2],
-                'penjualan_aset' => $penjualan_aset[2],
-                'lain_lain' => $lain_lain[2],
-                'prediction' => $prediction,
-                'user_id' => session('user_id'),
-            ],
-        );
-    }
-
-    public function make_equation($item)
-    {
-        $equation = "";
-        $iklanIsZero = $item->first()->iklan == 0;
-        $penjualanProdukIsZero = $item->first()->penjualan_produk == 0;
-        $lisensiIsZero = $item->first()->lisensi == 0;
-        $royaltiIsZero = $item->first()->royalti == 0;
-        $donasiIsZero = $item->first()->donasi == 0;
-        $langgananIsZero = $item->first()->langganan == 0;
-        $afiliasiIsZero = $item->first()->afiliasi == 0;
-        $layananKonsultasiIsZero = $item->first()->layanan_konsultasi == 0;
-        $penjualanAsetIsZero = $item->first()->penjualan_aset == 0;
-        $lainLainIsZero = $item->first()->lain_lain == 0;
-
-        if (!$iklanIsZero) {
-            $equation = $equation . "iklan: " . str($item->first()->iklan);
-        }
-        if (!$penjualanProdukIsZero) {
-            $equation = $equation . "penjualan_produk: " . str($item->first()->penjualan_produk);
-        }
-        if (!$lisensiIsZero) {
-            $equation = $equation . "lisensi, " . str($item->first()->lisensi);
-        }
-        if (!$royaltiIsZero) {
-            $equation = $equation . "royalti, " . str($item->first()->royalti);
-        }
-        if (!$donasiIsZero) {
-            $equation = $equation . "donasi, " . str($item->first()->donasi);
-        }
-        if (!$langgananIsZero) {
-            $equation = $equation . "langganan, " . str($item->first()->langganan);
-        }
-        if (!$afiliasiIsZero) {
-            $equation = $equation . "afiliasi, " . str($item->first()->afiliasi);
-        }
-        if (!$layananKonsultasiIsZero) {
-            $equation = $equation . "layanan konsultasi, " . str($item->first()->layanan_konsultasi);
-        }
-        if (!$penjualanAsetIsZero) {
-            $equation = $equation . "penjualan aset, " . str($item->first()->penjualan_aset);
-        }
-        if (!$lainLainIsZero) {
-            $equation = $equation . "lain-lain, " . str($item->first()->lain_lain);
-        }
-        return $equation;
-    }
     public function tes_dashboard()
     {
         if (!Session::has('user_id')) {
@@ -478,62 +286,85 @@ class Controller extends BaseController
 
         $user = User::where('id', session('user_id'))->first();
 
-        //cari if there is a model
-        $now = now();
-        $month = $now->month;
-        $year = $now->year;
+        $result = DB::table('keuangans as k')
+            ->select(
+                DB::raw('YEAR(k.tanggal) AS tahun'),
+                DB::raw('MONTH(k.tanggal) AS bulan'),
+                DB::raw('SUM(CASE WHEN kat.kategori = "iklan" THEN k.nominal * k.jumlah ELSE 0 END) AS iklan'),
+                DB::raw('SUM(CASE WHEN kat.kategori = "penjualan produk" THEN k.nominal * k.jumlah ELSE 0 END) AS penjualan_produk'),
+                DB::raw('SUM(CASE WHEN kat.kategori = "royalti" THEN k.nominal * k.jumlah ELSE 0 END) AS royalti'),
+                DB::raw('SUM(CASE WHEN kat.kategori = "lisensi" THEN k.nominal * k.jumlah ELSE 0 END) AS lisensi'),
+                DB::raw('SUM(CASE WHEN kat.kategori = "donasi" THEN k.nominal * k.jumlah ELSE 0 END) AS donasi'),
+                DB::raw('SUM(CASE WHEN kat.kategori = "langganan" THEN k.nominal * k.jumlah ELSE 0 END) AS langganan'),
+                DB::raw('SUM(CASE WHEN kat.kategori = "afiliasi" THEN k.nominal * k.jumlah ELSE 0 END) AS afiliasi'),
+                DB::raw('SUM(CASE WHEN kat.kategori = "layanan konsultasi" THEN k.nominal * k.jumlah ELSE 0 END) AS layanan_konsultasi'),
+                DB::raw('SUM(CASE WHEN kat.kategori = "penjualan aset" THEN k.nominal * k.jumlah ELSE 0 END) AS penjualan_aset'),
+                DB::raw('SUM(CASE WHEN kat.kategori = "lain-lain" THEN k.nominal * k.jumlah ELSE 0 END) AS lain_lain'),
+                DB::raw('SUM(k.nominal * k.jumlah) AS total')
+            )
+            ->join('kategoris as kat', 'k.kategori', '=', 'kat.id')
+            ->join('jenis__kategoris as jen', 'kat.id_jenis_kategori', '=', 'jen.id')
+            ->where('jen.jenis_kategori', '=', 'pendapatan')
+            ->groupBy('tahun', 'bulan')
+            ->orderByDesc('tahun')
+            ->orderByDesc('bulan')
+            ->get();
+        
+        //jadikan setiap kategori sebagai attribute
+        // $orders = Keuangan::select(
+        //     DB::raw('Keuangans.*'),
+        //     DB::raw('SUM(Keuangans.nominal*Keuangans.jumlah) as total'),  
+        //     DB::raw("DATE_FORMAT(tanggal,'%M %Y') as months"),
+        //     DB::raw("DATE_FORMAT(tanggal,'%m') as monthKey")
+        // )
+        // ->groupBy('months', 'monthKey', 'id', 'created_at', 'updated_at', 'nama', 'nominal', 'kategori', 'jumlah', 'satuan', 'tanggal', 'catatan', 'user_id')
+        // ->orderBy('tanggal', 'ASC')
+        // ->get();
 
-        $exists = Predictions::where('user_id', session('user_id'))
-            ->whereMonth('tanggal', $month)
-            ->whereYear('tanggal', $year)
-            ->exists();
-
-        $equation = "";
-        if ($exists) {
-            $item = Predictions::where('user_id', session('user_id'))
-                ->whereMonth('tanggal', $now->month)
-                ->whereYear('tanggal', $now->year)
-                ->get();
-
-
-            $equation = $this->make_equation($item);
-            //if exist return page with prediction
-            return view('tes_dashboard', [
-                'user' => $user,
-                'item' => $item,
-                'prediction' => $item->first()->prediction,
-                'equation' => $equation
-            ]);
-        } else {
-            //check lebih ga dari 3
-            $result = $this->request_predict();
-
-            $count = $result->count();
-
-            if ($count < 3) {
-                return view('tes_dashboard', [
-                    'user' => $user,
-                    'prediction' => 0,
-                    'equation' => "not enough data available"
-                ]);
-            } else {
-                $this->generate_model();
-                $item = Predictions::where('user_id', session('user_id'))
-                    ->whereMonth('tanggal', $now->month)
-                    ->whereYear('tanggal', $now->year)
-                    ->get();
-
-
-                $equation = $this->make_equation($item);
-                //if exist return page with prediction
-                return view('tes_dashboard', [
-                    'user' => $user,
-                    'item' => $item,
-                    'prediction' => $item->first()->prediction,
-                    'equation' => $equation
-                ]);
+        $traindata = [];
+        $target = [];
+        $temp = 0.00001;
+        foreach ($result as $row) {
+            $container = [];
+            $i = 0;
+            foreach ($row as $item){
+                if($i == 12){
+                    $target[] = $item;
+                }else if($i > 1){
+                    $container[] = $item;
+                }
+                $i++;
             }
+            for($x=0; $x < count($container); $x++) {
+                if($container[$x] == 0){
+                    $container[$x] = $temp;
+                    $temp += $temp;
+                }
+                
+            }
+            $traindata[] = $container;
         }
+        
+
+//         $normalizer = new Normalizer();
+// $normalizer->fit($traindata);
+// $traindata = $normalizer->transform($traindata);
+        
+        $regression = new LeastSquares();
+        $regression->train($traindata, [[10], [20], [30], [40]]);
+        
+        // $predictions = $regression->predict([2,3000000]);
+        //predict which category that is used
+        // 0 1 0 1 0 and smt
+        
+        return view('tes_dashboard', [
+            'user' => $user,
+            'result' => $result,
+            'traindata' => $traindata,
+            'target' => $target
+            // 'prediction' => $predictions,
+            // 'by_month' => $orders,
+        ]);
     }
 
     public function pemasukan()
@@ -553,14 +384,13 @@ class Controller extends BaseController
             ->where('jenis__kategoris.jenis_kategori', 'pendapatan')
             ->groupBy('kategoris.kategori')
             ->get();
-
+        
         return view('pemasukan', [
             'user' => $user,
             'kategories_sum' => $kategories_sum,
         ]);
     }
-    public function stok()
-    {
+    public function stok(){
         if (!Session::has('user_id')) {
             return redirect()->to('/login');
         }
@@ -574,8 +404,7 @@ class Controller extends BaseController
         ]);
     }
 
-    public function pegawai()
-    {
+    public function pegawai(){
         if (!Session::has('user_id')) {
             return redirect()->to('/login');
         }
@@ -605,8 +434,8 @@ class Controller extends BaseController
             ->where('jenis__kategoris.jenis_kategori', 'pengeluaran')
             ->groupBy('kategoris.kategori')
             ->get();
-
-
+        
+        
         return view('pengeluaran', [
             'user' => $user,
             'kategories_sum' => $kategories_sum,
@@ -621,8 +450,8 @@ class Controller extends BaseController
 
     public function tes()
     {
-        if (isset($_POST['additionalDropdown'])) {
-            if ($_POST['additionalDropdown'] != -1) {
+        if(isset($_POST['additionalDropdown'])){
+            if($_POST['additionalDropdown'] != -1){
                 $produk = Produk::findOrFail($_POST['additionalDropdown']);
                 $produk->update([
                     'stok' => $produk->stok - $_POST['jumlah'],
@@ -647,15 +476,15 @@ class Controller extends BaseController
 
     public function create_pengeluaran()
     {
-        if (isset($_POST['additionalDropdown'])) {
-            if ($_POST['additionalDropdown'] != -1) {
+        if(isset($_POST['additionalDropdown'])){
+            if($_POST['additionalDropdown'] != -1){
                 $produk = Produk::findOrFail($_POST['additionalDropdown']);
                 $produk->update([
                     'stok' => $produk->stok + $_POST['jumlah'],
                 ]);
             }
         }
-
+       
         $user = User::where('id', session('user_id'))->first();
         $keuangan = Keuangan::create([
             'nama' => $_POST['name'],
@@ -668,44 +497,5 @@ class Controller extends BaseController
             'user_id' => $_POST['user_id'],
         ]);
         return redirect()->to('/pengeluaran');
-    }
-
-    public function create_user()
-    {
-
-
-
-        if (isset($_POST['delete'])) {
-            $id = $_POST['id'];
-            $user = User::findOrFail($id);
-            $user->delete();
-            return redirect()->to('/admin/dashboard');
-        } elseif (isset($_POST['edit'])) {
-            $id = $_POST['id'];
-            $user = User::findOrFail($id);
-            $user->update([
-                'name' => $_POST['name'],
-                'email' => $_POST['email'],
-                'password' => Hash::make($_POST['password']),
-            ]);
-            return redirect()->to('/admin/dashboard');
-        } elseif (isset($_POST['create'])) {
-
-            $existingUser = User::where('email', $_POST['email'])->first();
-            if ($existingUser) {
-                return redirect()->back()->with('error', 'Email sudah terdaftar.');
-            }
-
-            $user = User::create([
-                'name' => $_POST['name'],
-                'email' => $_POST['email'],
-                'password' => Hash::make($_POST['password']),
-                'role' => $_POST['role'],
-            ]);
-
-            return redirect()->to('/admin/dashboard');
-        } else {
-            return redirect()->back()->with('error', 'wrong usage');
-        }
     }
 }

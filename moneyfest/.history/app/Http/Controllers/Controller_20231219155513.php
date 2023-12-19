@@ -313,8 +313,22 @@ class Controller extends BaseController
         ]);
     }
 
-    public function request_predict()
+    public function generate_model(){
+        
+    }
+    public function tes_dashboard()
     {
+        if (!Session::has('user_id')) {
+            return redirect()->to('/login');
+        }
+
+        $user = User::where('id', session('user_id'))->first();
+
+        //cari if there is a model
+
+        //if exist return page with prediction
+        //if not, make prediction then return model with prediction
+
         $result = DB::table('keuangans as k')
             ->join('kategoris as kat', 'k.kategori', '=', 'kat.id')
             ->join('jenis__kategoris as jen', 'kat.id_jenis_kategori', '=', 'jen.id')
@@ -340,17 +354,14 @@ class Controller extends BaseController
             ->orderByDesc('bulan')
             ->limit(3)
             ->get();
-        return $result;
-    }
-    public function generate_model()
-    {
-        $result = $this->request_predict();
+
+
         // $traindata = [];
         // $target = [];
         // $temp = 0.00001;
         // $a = 1;
         $iklan = [];
-        $penjualan_produk = [];
+        $penjualan_produk     = [];
         $royalti = [];
         $lisensi = [];
         $donasi = [];
@@ -381,28 +392,28 @@ class Controller extends BaseController
         $prediction = 0;
         if ($total[2] >= $average_total) {
             $prediction = $total[2] * 110 / 100;
-            $iklan[2] = $iklan[2] * 110 / 100;
-            $penjualan_produk[2]     = $penjualan_produk[2] * 110 / 100;
-            $royalti[2] = $royalti[2] * 110 / 100;
-            $lisensi[2] = $lisensi[2] * 110 / 100;
-            $donasi[2] = $donasi[2] * 110 / 100;
-            $langganan[2] = $langganan[2] * 110 / 100;
-            $afiliasi[2] = $afiliasi[2] * 110 / 100;
-            $layanan_konsultasi[2] = $layanan_konsultasi[2] * 110 / 100;
-            $penjualan_aset[2] = $penjualan_aset[2] * 110 / 100;
-            $lain_lain[2] = $lain_lain[2] * 110 / 100;
+            $iklan[2] = $iklan[2] * 110/100;
+            $penjualan_produk[2]     = $penjualan_produk[2] * 110/100;
+            $royalti[2] = $royalti[2] * 110/100;
+            $lisensi[2] = $lisensi[2] * 110/100;
+            $donasi[2] = $donasi[2] * 110/100;
+            $langganan[2] = $langganan[2] * 110/100;
+            $afiliasi[2] = $afiliasi[2] * 110/100;
+            $layanan_konsultasi[2] = $layanan_konsultasi[2] * 110/100;
+            $penjualan_aset[2] = $penjualan_aset[2] * 110/100;
+            $lain_lain[2] = $lain_lain[2] * 110/100;
         } else {
             $prediction = $total[2] * 90 / 100;
-            $iklan[2] = $iklan[2] * 90 / 100;
-            $penjualan_produk[2]  = $penjualan_produk[2] * 90 / 100;
-            $royalti[2] = $royalti[2] * 90 / 100;
-            $lisensi[2] = $lisensi[2] * 90 / 100;
-            $donasi[2] = $donasi[2] * 90 / 100;
-            $langganan[2] = $langganan[2] * 90 / 100;
-            $afiliasi[2] = $afiliasi[2] * 90 / 100;
-            $layanan_konsultasi[2] = $layanan_konsultasi[2] * 90 / 100;
-            $penjualan_aset[2] = $penjualan_aset[2] * 90 / 100;
-            $lain_lain[2] = $lain_lain[2] * 90 / 100;
+            $iklan[2] = $iklan[2] * 90/100;
+            $penjualan_produk[2]  = $penjualan_produk[2] * 90/100;
+            $royalti[2] = $royalti[2] * 90/100;
+            $lisensi[2] = $lisensi[2] * 90/100;
+            $donasi[2] = $donasi[2] * 90/100;
+            $langganan[2] = $langganan[2] * 90/100;
+            $afiliasi[2] = $afiliasi[2] * 90/100;
+            $layanan_konsultasi[2] = $layanan_konsultasi[2] * 90/100;
+            $penjualan_aset[2] = $penjualan_aset[2] * 90/100;
+            $lain_lain[2] = $lain_lain[2] * 90/100;
         }
 
         predictions::create(
@@ -422,118 +433,60 @@ class Controller extends BaseController
                 'user_id' => session('user_id'),
             ],
         );
-    }
-
-    public function make_equation($item)
-    {
         $equation = "";
-        $iklanIsZero = $item->first()->iklan == 0;
-        $penjualanProdukIsZero = $item->first()->penjualan_produk == 0;
-        $lisensiIsZero = $item->first()->lisensi == 0;
-        $royaltiIsZero = $item->first()->royalti == 0;
-        $donasiIsZero = $item->first()->donasi == 0;
-        $langgananIsZero = $item->first()->langganan == 0;
-        $afiliasiIsZero = $item->first()->afiliasi == 0;
-        $layananKonsultasiIsZero = $item->first()->layanan_konsultasi == 0;
-        $penjualanAsetIsZero = $item->first()->penjualan_aset == 0;
-        $lainLainIsZero = $item->first()->lain_lain == 0;
+
+        $iklanIsZero = isset($iklan[2]) && $iklan[2] == 0;
+        $penjualanProdukIsZero = isset($penjualan_produk[2]) && $penjualan_produk[2] == 0;
+        $lisensiIsZero = isset($lisensi[2]) && $lisensi[2] == 0;
+        $royaltiIsZero = isset($royalti[2]) && $royalti[2] == 0;
+        $donasiIsZero = isset($donasi[2]) && $donasi[2] == 0;
+        $langgananIsZero = isset($langganan[2]) && $langganan[2] == 0;
+        $afiliasiIsZero = isset($afiliasi[2]) && $afiliasi[2] == 0;
+        $layananKonsultasiIsZero = isset($layanan_konsultasi[2]) && $layanan_konsultasi[2] == 0;
+        $penjualanAsetIsZero = isset($penjualan_aset[2]) && $penjualan_aset[2] == 0;
+        $lainLainIsZero = isset($lain_lain[2]) && $lain_lain[2] == 0;
 
         if (!$iklanIsZero) {
-            $equation = $equation . "iklan: " . str($item->first()->iklan);
+            $equation = $equation . "iklan: ".str($iklan[2]);
         }
         if (!$penjualanProdukIsZero) {
-            $equation = $equation . "penjualan_produk: " . str($item->first()->penjualan_produk);
+            $equation = $equation . "penjualan_produk: ".str($penjualan_produk[2]);
         }
         if (!$lisensiIsZero) {
-            $equation = $equation . "lisensi, " . str($item->first()->lisensi);
+            $equation = $equation . "lisensi, ".str($royalti[2]);
         }
         if (!$royaltiIsZero) {
-            $equation = $equation . "royalti, " . str($item->first()->royalti);
+            $equation = $equation . "royalti, ".str($lisensi[2]);
         }
         if (!$donasiIsZero) {
-            $equation = $equation . "donasi, " . str($item->first()->donasi);
+            $equation = $equation . "donasi, ".str($donasi[2]);
         }
         if (!$langgananIsZero) {
-            $equation = $equation . "langganan, " . str($item->first()->langganan);
+            $equation = $equation . "langganan, ".str($langganan[2]);
         }
         if (!$afiliasiIsZero) {
-            $equation = $equation . "afiliasi, " . str($item->first()->afiliasi);
+            $equation = $equation . "afiliasi, ".str($afiliasi[2]);
         }
         if (!$layananKonsultasiIsZero) {
-            $equation = $equation . "layanan konsultasi, " . str($item->first()->layanan_konsultasi);
+            $equation = $equation . "layanan konsultasi, ".str($layanan_konsultasi[2]);
         }
         if (!$penjualanAsetIsZero) {
-            $equation = $equation . "penjualan aset, " . str($item->first()->penjualan_aset);
+            $equation = $equation . "penjualan aset, ".str($penjualan_aset[2]);
         }
         if (!$lainLainIsZero) {
-            $equation = $equation . "lain-lain, " . str($item->first()->lain_lain);
-        }
-        return $equation;
-    }
-    public function tes_dashboard()
-    {
-        if (!Session::has('user_id')) {
-            return redirect()->to('/login');
+            $equation = $equation . "lain-lain, ".str($lain_lain[2]);
         }
 
-        $user = User::where('id', session('user_id'))->first();
-
-        //cari if there is a model
-        $now = now();
-        $month = $now->month;
-        $year = $now->year;
-
-        $exists = Predictions::where('user_id', session('user_id'))
-            ->whereMonth('tanggal', $month)
-            ->whereYear('tanggal', $year)
-            ->exists();
-
-        $equation = "";
-        if ($exists) {
-            $item = Predictions::where('user_id', session('user_id'))
-                ->whereMonth('tanggal', $now->month)
-                ->whereYear('tanggal', $now->year)
-                ->get();
-
-
-            $equation = $this->make_equation($item);
-            //if exist return page with prediction
-            return view('tes_dashboard', [
-                'user' => $user,
-                'item' => $item,
-                'prediction' => $item->first()->prediction,
-                'equation' => $equation
-            ]);
-        } else {
-            //check lebih ga dari 3
-            $result = $this->request_predict();
-
-            $count = $result->count();
-
-            if ($count < 3) {
-                return view('tes_dashboard', [
-                    'user' => $user,
-                    'prediction' => 0,
-                    'equation' => "not enough data available"
-                ]);
-            } else {
-                $this->generate_model();
-                $item = Predictions::where('user_id', session('user_id'))
-                    ->whereMonth('tanggal', $now->month)
-                    ->whereYear('tanggal', $now->year)
-                    ->get();
-
-
-                $equation = $this->make_equation($item);
-                //if exist return page with prediction
-                return view('tes_dashboard', [
-                    'user' => $user,
-                    'item' => $item,
-                    'prediction' => $item->first()->prediction,
-                    'equation' => $equation
-                ]);
-            }
-        }
+        return view('tes_dashboard', [
+            'user' => $user,
+            'result' => $result,
+            'prediction' => $prediction,
+            'equation' => $equation
+            // 'traindata' => $traindata,
+            // 'target' => $target
+            // 'prediction' => $predictions,
+            // 'by_month' => $orders,
+        ]);
     }
 
     public function pemasukan()

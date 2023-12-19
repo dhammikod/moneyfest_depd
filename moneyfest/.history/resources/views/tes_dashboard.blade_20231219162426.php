@@ -11,10 +11,10 @@
 lorem ipsum
 {{-- <p>{{count($target)}}</p>
 <p>{{count($traindata)}}</p> --}}
-{{-- @foreach ($item as $items)
+@foreach ($item as $items)
 {{$items}}
-@endforeach --}}
+@endforeach
 
-{{$prediction}}
+{{-- {{$prediction}} --}}
 {{$equation}}
 
