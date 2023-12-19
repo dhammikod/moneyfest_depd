@@ -16,7 +16,6 @@ use App\Models\Pegawai;
 use App\Models\Produk;
 use Illuminate\Routing\Controller as BaseController;
 use Phpml\Regression\LeastSquares;
-use Phpml\Regression\LeastSquares
 
 class Controller extends BaseController
 {

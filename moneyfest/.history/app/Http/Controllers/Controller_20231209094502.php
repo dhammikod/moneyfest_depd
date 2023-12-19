@@ -301,7 +301,7 @@ class Controller extends BaseController
         foreach ($result as $row) {
             $kategori = 0;
             if($row['kategori'] == 'pendapatan'){
-                $kategori = 
+                // $kategori = 
             } 
             array_push($target, intval($row['jumlah']) * intval($row['nominal']));
             array_push($traindata, [$map_kategori[$row['kategori']]]);

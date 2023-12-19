@@ -6,6 +6,7 @@ use App\Http\Controllers\API\JenisKategorisController;
 use App\Http\Controllers\API\KategorisController;
 use App\Http\Controllers\KeuanganController;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,15 @@ Route::get('/', function () {
 
 Route::get('/login', [Controller::class, 'login']);
 Route::post('/login', [Controller::class, 'login']);
+
+// Route::middleware(['web', 'auth'])->group(function () {
+
+// });
+
+Route::get('/dashboard', [Controller::class, 'dashboard'])->name('dashboard');
+
+Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+Route::post('/admin/dashboard', [Controller::class, 'create_user']);
 
 Route::get('/register', [Controller::class, 'registerpage']);
 Route::post('/register', [Controller::class, 'registerlogic']);
@@ -66,7 +76,3 @@ Route::get('/api/produk/{jual}/{jenis}', [ProdukController::class, 'produkspes']
 Route::get('/api/dashboard', [KeuanganController::class, 'api']);
 Route::get('/api/dashboard2', [KeuanganController::class, 'api2']);
 Route::get('/api/dashboard3/{date}/{quartil}', [KeuanganController::class, 'api3']);
-
-
-
-

@@ -15,7 +15,10 @@ use App\Models\Kategori;
 use App\Models\Pegawai;
 use App\Models\Produk;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Database\QueryException;
 use Phpml\Regression\LeastSquares;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\AdminController;
 // use Phpml\Classification\Ensemble\RandomForest;
 
 
@@ -33,7 +36,7 @@ class Controller extends BaseController
         } elseif (isset($_POST['edit'])) {
             $id = $_POST['id'];
             $keuangan = Keuangan::findOrFail($id);
-            
+
             $keuangan->update([
                 'nama' => $_POST['nama'],
                 'nominal' => $_POST['nominal'],
@@ -46,20 +49,20 @@ class Controller extends BaseController
             return redirect()->to('/histori/' . $route);
         } elseif (isset($_POST['create'])) {
             $user = User::where('id', session('user_id'))->first();
-            if($_POST['additionalDropdown'] != -1){
+            if ($_POST['additionalDropdown'] != -1) {
                 $produk = Produk::findOrFail($_POST['additionalDropdown']);
-                if($_POST['url'] == 'pemasukan'){
+                if ($_POST['url'] == 'pemasukan') {
                     $produk->update([
                         'stok' => $produk->stok - $_POST['jumlah'],
                         'terjual' => $produk->terjual + $_POST['jumlah'],
                     ]);
-                }else if($_POST['url'] == 'pengeluaran'){
+                } else if ($_POST['url'] == 'pengeluaran') {
                     $produk->update([
-                        'stok' => $produk->stok + $_POST['jumlah'],                       
+                        'stok' => $produk->stok + $_POST['jumlah'],
                     ]);
-                }                
+                }
             }
-            
+
             $keuangan = Keuangan::create([
                 'nama' => $_POST['name'],
                 'nominal' => $_POST['nominal'],
@@ -190,24 +193,57 @@ class Controller extends BaseController
 
     public function login()
     {
+        // if (Session::has('user_id')) {
+        //     return redirect()->to('/dashboard');
+        // }
+
+        // if (isset($_POST["email"]) && isset($_POST["password"])) {
+        //     $user = User::where('email', $_POST["email"])->first();
+
+        //     if ($user && Hash::check($_POST["password"], $user->password)) {
+        //         session(['user_id' => $user->id]);
+
+        //         return redirect()->to('/dashboard');
+        //     }
+
+        //     return view('login', [
+        //         'pagetitle' => 'Home',
+        //         'invalid' => true,
+        //     ]);
+        // }
+
         if (Session::has('user_id')) {
-            return redirect()->to('/dashboard');
+            $user = User::find(Session::get('user_id'));
+
+            // Periksa peran pengguna
+            if ($user && $user->role == 'admin') {
+                return redirect()->to('/admin/dashboard');
+            } else {
+                return redirect()->to('/dashboard');
+            }
         }
 
         if (isset($_POST["email"]) && isset($_POST["password"])) {
             $user = User::where('email', $_POST["email"])->first();
 
             if ($user && Hash::check($_POST["password"], $user->password)) {
-                session(['user_id' => $user->id]);
 
-                return redirect()->to('/dashboard');
+                if ($user->role == 'admin') {
+                    Session::put('user_id', $user->id);
+                    return redirect()->to('/admin/dashboard');
+                } else {
+                    Session::put('user_id', $user->id);
+                    return redirect()->to('/dashboard');
+                }
+            } else {
+                return view('login', [
+                    'pagetitle' => 'Home',
+                    'invalid' => true,
+                ]);
             }
-
-            return view('login', [
-                'pagetitle' => 'Home',
-                'invalid' => true,
-            ]);
         }
+
+
 
         return view('login', [
             'pagetitle' => 'Home',
@@ -289,37 +325,37 @@ class Controller extends BaseController
             ->where('keuangans.user_id', session('user_id'))
             ->limit(5)
             ->get();
-        
+
         //jadikan setiap kategori sebagai attribute
         $orders = Keuangan::select(
             DB::raw('Keuangans.*'),
-            DB::raw('SUM(Keuangans.nominal*Keuangans.jumlah) as total'),  
+            DB::raw('SUM(Keuangans.nominal*Keuangans.jumlah) as total'),
             DB::raw("DATE_FORMAT(tanggal,'%M %Y') as months"),
             DB::raw("DATE_FORMAT(tanggal,'%m') as monthKey")
         )
-        ->groupBy('months', 'monthKey', 'id', 'created_at', 'updated_at', 'nama', 'nominal', 'kategori', 'jumlah', 'satuan', 'tanggal', 'catatan', 'user_id')
-        ->orderBy('tanggal', 'ASC')
-        ->get();
+            ->groupBy('months', 'monthKey', 'id', 'created_at', 'updated_at', 'nama', 'nominal', 'kategori', 'jumlah', 'satuan', 'tanggal', 'catatan', 'user_id')
+            ->orderBy('tanggal', 'ASC')
+            ->get();
 
         $traindata = [];
         $target = [];
         foreach ($result as $row) {
             array_push($target, intval($row['jumlah']) * intval($row['nominal']));
             $date = Carbon::createFromTimestampUTC($row["tanggal"])->secondsSinceMidnight();
-            array_push($traindata, [$row['kategori'],$date]);
+            array_push($traindata, [$row['kategori'], $date]);
         }
 
-        $regression = new LeastSquares();
-        $regression->train($traindata, $target);
-        
-        $predictions = $regression->predict([2,3000000]);
+        // $regression = new LeastSquares();
+        // $regression->train($traindata, $target);
+
+        // $predictions = $regression->predict([2,3000000]);
         //predict which category that is used
         // 0 1 0 1 0 and smt
-        
+
         return view('tes_dashboard', [
             'user' => $user,
             'transactions' => $result,
-            'prediction' => $predictions,
+            // 'prediction' => $predictions,
             'by_month' => $orders,
         ]);
     }
@@ -341,13 +377,14 @@ class Controller extends BaseController
             ->where('jenis__kategoris.jenis_kategori', 'pendapatan')
             ->groupBy('kategoris.kategori')
             ->get();
-        
+
         return view('pemasukan', [
             'user' => $user,
             'kategories_sum' => $kategories_sum,
         ]);
     }
-    public function stok(){
+    public function stok()
+    {
         if (!Session::has('user_id')) {
             return redirect()->to('/login');
         }
@@ -361,7 +398,8 @@ class Controller extends BaseController
         ]);
     }
 
-    public function pegawai(){
+    public function pegawai()
+    {
         if (!Session::has('user_id')) {
             return redirect()->to('/login');
         }
@@ -391,8 +429,8 @@ class Controller extends BaseController
             ->where('jenis__kategoris.jenis_kategori', 'pengeluaran')
             ->groupBy('kategoris.kategori')
             ->get();
-        
-        
+
+
         return view('pengeluaran', [
             'user' => $user,
             'kategories_sum' => $kategories_sum,
@@ -407,8 +445,8 @@ class Controller extends BaseController
 
     public function tes()
     {
-        if(isset($_POST['additionalDropdown'])){
-            if($_POST['additionalDropdown'] != -1){
+        if (isset($_POST['additionalDropdown'])) {
+            if ($_POST['additionalDropdown'] != -1) {
                 $produk = Produk::findOrFail($_POST['additionalDropdown']);
                 $produk->update([
                     'stok' => $produk->stok - $_POST['jumlah'],
@@ -433,15 +471,15 @@ class Controller extends BaseController
 
     public function create_pengeluaran()
     {
-        if(isset($_POST['additionalDropdown'])){
-            if($_POST['additionalDropdown'] != -1){
+        if (isset($_POST['additionalDropdown'])) {
+            if ($_POST['additionalDropdown'] != -1) {
                 $produk = Produk::findOrFail($_POST['additionalDropdown']);
                 $produk->update([
                     'stok' => $produk->stok + $_POST['jumlah'],
                 ]);
             }
         }
-       
+
         $user = User::where('id', session('user_id'))->first();
         $keuangan = Keuangan::create([
             'nama' => $_POST['name'],
@@ -454,5 +492,44 @@ class Controller extends BaseController
             'user_id' => $_POST['user_id'],
         ]);
         return redirect()->to('/pengeluaran');
+    }
+
+    public function create_user()
+    {
+
+
+
+        if (isset($_POST['delete'])) {
+            $id = $_POST['id'];
+            $user = User::findOrFail($id);
+            $user->delete();
+            return redirect()->to('/admin/dashboard');
+        } elseif (isset($_POST['edit'])) {
+            $id = $_POST['id'];
+            $user = User::findOrFail($id);
+            $user->update([
+                'name' => $_POST['name'],
+                'email' => $_POST['email'],
+                'password' => Hash::make($_POST['password']),
+            ]);
+            return redirect()->to('/admin/dashboard');
+        } elseif (isset($_POST['create'])) {
+
+            $existingUser = User::where('email', $_POST['email'])->first();
+            if ($existingUser) {
+                return redirect()->back()->with('error', 'Email sudah terdaftar.');
+            }
+
+            $user = User::create([
+                'name' => $_POST['name'],
+                'email' => $_POST['email'],
+                'password' => Hash::make($_POST['password']),
+                'role' => $_POST['role'],
+            ]);
+
+            return redirect()->to('/admin/dashboard');
+        } else {
+            return redirect()->back()->with('error', 'wrong usage');
+        }
     }
 }
