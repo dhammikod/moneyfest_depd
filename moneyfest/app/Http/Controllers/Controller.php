@@ -498,7 +498,7 @@ class Controller extends BaseController
 
             $equation = $this->make_equation($item);
             //if exist return page with prediction
-            return view('tes_dashboard', [
+            return view('keuntungan', [
                 'user' => $user,
                 'item' => $item,
                 'prediction' => $item->first()->prediction,
@@ -511,10 +511,10 @@ class Controller extends BaseController
             $count = $result->count();
 
             if ($count < 3) {
-                return view('tes_dashboard', [
+                return view('keuntungan', [
                     'user' => $user,
                     'prediction' => 0,
-                    'equation' => "not enough data available"
+                    'equation' => "Not enough data available"
                 ]);
             } else {
                 $this->generate_model();
@@ -526,7 +526,7 @@ class Controller extends BaseController
 
                 $equation = $this->make_equation($item);
                 //if exist return page with prediction
-                return view('tes_dashboard', [
+                return view('keuntungan', [
                     'user' => $user,
                     'item' => $item,
                     'prediction' => $item->first()->prediction,
