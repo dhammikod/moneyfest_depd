@@ -22,6 +22,7 @@
 </head>
 
 <body>
+    {{-- {{$produk}} --}}
     <!--  Body Wrapper -->
     <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
         data-sidebar-position="fixed" data-header-position="fixed">
@@ -174,59 +175,99 @@
                         <div class="col-lg-6 col-md-12 mb-3">
                             <h5 class="card-title mb-4"><b>Expenses Patterns</b></h5>
                             <!-- Dropdown untuk memilih kategori -->
-                <select id="kategoriDropdown" class="form-select mb-3" onchange="filterByCategory(this.value)">
-                    <option value="all">All Categories</option>
-                    <option value="transportasi">transportasi</option>
-                    <option value="asuransi">asuransi</option>
-                    <option value="gaji pegawai">gaji pegawai</option>
-                    <option value="pembelian produk">pembelian produk</option>
-                    <option value="bahan habis pakai">bahan habis pakai</option>
-                    <option value="operasional">operasional</option>
-                    <option value="administrasi">administrasi</option>
-                    <option value="distribusi">distribusi</option>
-                    <option value="pengiriman">pengiriman</option>
-                    <option value="lain-lain">lain-lain</option>
-                </select>
+                            <select id="kategoriDropdown" class="form-select mb-3"
+                                onchange="filterByCategory(this.value)">
+                                <option value="all">All Categories</option>
+                                <option value="transportasi">transportasi</option>
+                                <option value="asuransi">asuransi</option>
+                                <option value="gaji pegawai">gaji pegawai</option>
+                                <option value="pembelian produk">pembelian produk</option>
+                                <option value="bahan habis pakai">bahan habis pakai</option>
+                                <option value="operasional">operasional</option>
+                                <option value="administrasi">administrasi</option>
+                                <option value="distribusi">distribusi</option>
+                                <option value="pengiriman">pengiriman</option>
+                                <option value="lain-lain">lain-lain</option>
+                            </select>
 
-                @foreach ($kategories_sum as $item)
-                <div class="card mb-3 category" data-category="{{$item['kategori']}}">
-                    <div class="card-body d-flex justify-content-between align-items-center">
-                        <h5 class="card-title mb-0">{{ $item['kategori'] }}</h5>
-                        <h6 class="card-subtitle text-muted">{{ $item['total_category'] }}</h6>
-                    </div>
-                </div>
-            @endforeach
+                            {{-- @foreach ($kategories_sum as $item)
+                                <div class="card mb-3 category" data-category="{{ $item['kategori'] }}">
+                                    <div class="card-body d-flex justify-content-between align-items-center">
+                                        <h5 class="card-title mb-0">{{ $item['kategori'] }}</h5>
+                                        <h6 class="card-subtitle text-muted">{{ $item['total_category'] }}</h6>
+                                    </div>
+                                </div>
+                            @endforeach --}}
+
+
+                            @foreach ($kategories_sum as $item)
+                                <a href="/histori/pengeluaran">
+                                    <div class="card mb-3 category" data-category="{{ $item['kategori'] }}">
+                                        <div class="card-body d-flex justify-content-between align-items-center">
+                                            <h5 class="card-title mb-0">{{ $item['kategori'] }}</h5>
+                                            <h6 class="card-subtitle text-muted">{{ $item['total_category'] }}</h6>
+                                        </div>
+                                    </div>
+                                </a>
+                            @endforeach
+
+
+
+                            {{-- @foreach ($kategories_sum as $item)
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="card-body d-flex justify-content-between align-items-center">
+                                                <h5 class="card-title mb-0">{{ $item['kategori'] }}</h5>
+                                                <h6 class="card-subtitle text-muted">{{ $item['total_category'] }}</h6>
+                                            </div>
+                                        </div>
+                                        <div class="progress mt-3">
+                                            <div class="progress-bar" role="progressbar"
+                                                style="width: {{ $item['percentage'] }}%;"
+                                                aria-valuenow="{{ $item['percentage'] }}" aria-valuemin="0"
+                                                aria-valuemax="100">{{ $item['percentage'] }}%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach --}}
 
                         </div>
-
-                        <div style="display: flex; justify-content: flex-end">
+                        <div style="col-lg-6 col-md-12">
                             <form method="post" action="" class="form" style="text-align: center">
-                                <h2 style="font-weight: bold">Input New Expense</h2>
+                                <h2 style="font-weight: bold; padding: 20px">Input New Expense</h2>
                                 @csrf
                                 <input type="hidden" name="jenis" value="pengeluaran">
 
                                 <select id="kategori" name="kategori"
-                                    style="border-color: #2F80ED; background-color: #E0E9F4">
+                                    style="border-color: #2F80ED; background-color: #E0E9F4"
+                                    class="form-control mb-3">
                                     <!-- Options will be dynamically populated using JavaScript -->
                                 </select>
 
-                                <div id="additionalSelectContainer">
+                                <div id="additionalSelectContainer"  class="mb-3">
                                     <!-- Additional select will be added here -->
                                 </div>
 
                                 <input type="hidden" name="user_id" value="{{ $user->id }}">
                                 <input type="text" name="name" id="name" placeholder="Name of Expense"
-                                    required style="border-color: #2F80ED; background-color: #E0E9F4">
+                                    required style="border-color: #2F80ED; background-color: #E0E9F4"
+                                    class="form-control mb-3">
                                 <input type="number" name="nominal" id="nominal" placeholder="Nominal" required
-                                    style="border-color: #2F80ED; background-color: #E0E9F4">
+                                    style="border-color: #2F80ED; background-color: #E0E9F4"
+                                    class="form-control mb-3">
                                 <input type="number" name="jumlah" id="jumlah" placeholder="Amount" required
-                                    style="border-color: #2F80ED; background-color: #E0E9F4">
+                                    style="border-color: #2F80ED; background-color: #E0E9F4"
+                                    class="form-control mb-3">
                                 <input type="text" name="satuan" id="satuan" placeholder="Unit" required
-                                    style="border-color: #2F80ED; background-color: #E0E9F4">
+                                    style="border-color: #2F80ED; background-color: #E0E9F4"
+                                    class="form-control mb-3">
                                 <input type="text" name="tanggal" id="tanggal" placeholder="Date" required
-                                    style="border-color: #2F80ED; background-color: #E0E9F4">
+                                    style="border-color: #2F80ED; background-color: #E0E9F4"
+                                    class="form-control mb-3">
                                 <input type="text" name="catatan" id="catatan" placeholder="Notes" required
-                                    style="border-color: #2F80ED; background-color: #E0E9F4">
+                                    style="border-color: #2F80ED; background-color: #E0E9F4"
+                                    class="form-control mb-3">
 
                                 <button type="submit"
                                     style="background: white; padding: 8px 12px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold">SAVE</button>
@@ -254,13 +295,13 @@
 
         </div>
     </div>
-    <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+    {{-- <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
     <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/sidebarmenu.js"></script>
     <script src="../assets/js/app.min.js"></script>
     <script src="../assets/libs/apexcharts/dist/apexcharts.min.js"></script>
     <script src="../assets/libs/simplebar/dist/simplebar.js"></script>
-    <script src="../assets/js/dashboard.js"></script>
+    <script src="../assets/js/dashboard.js"></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="assets/js/autoload_pengeluaran.js"></script>

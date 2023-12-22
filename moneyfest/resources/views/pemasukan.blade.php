@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../assets/css/dashboard2.css" />
     <link rel="stylesheet" href="assets/css/icon/icon.css">
     <link rel="stylesheet" href="assets/css/icon/tablericon.svg">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <!-- Include DataTables CSS -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
 
@@ -166,7 +167,6 @@
                 </nav>
             </header>
             <!--  Header End -->
-
 
             <div class="container-fluid">
                 <div class="card w-100 h-100 position-relative overflow-hidden">
