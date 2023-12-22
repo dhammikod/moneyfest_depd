@@ -66,11 +66,11 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="./pengeluaran" aria-expanded="false">
+                            <a class="sidebar-link" href="/pengeluaran" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-alert-circle"></i>
                                 </span>
-                                <span class="hide-menu">Expense</span>
+                                <span class="hide-menu">Expenses</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
@@ -82,7 +82,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="./ui-forms.html" aria-expanded="false">
+                            <a class="sidebar-link" href="/profit" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-file-description"></i>
                                 </span>
