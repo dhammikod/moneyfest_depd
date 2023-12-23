@@ -203,20 +203,20 @@
                                                 $a = 1;
                                             @endphp
                                             {{-- @foreach ($equation as $item) --}}
-                                                <tr>
-                                                    <td class="border-bottom-0">
-                                                        <h6 class="fw-semibold mb-0">{{ $a }}</h6>
-                                                    </td>
-                                                    @php
-                                                        $a++;
-                                                    @endphp
-                                                    <td class="border-bottom-0">
-                                                        <h6 class="fw-semibold mb-1">{{$equation}}</h6>
-                                                    </td>
-                                                    {{-- <td class="border-bottom-0">
-                                                        <p class="mb-0 fw-normal">{{ $item['catatan'] }}</p>
-                                                    </td>
-                                                    @if ($item['kategori'] == 'pengeluaran')
+                                            <tr>
+                                                <td class="border-bottom-0">
+                                                    <h6 class="fw-semibold mb-0">{{ $a }}</h6>
+                                                </td>
+                                                @php
+                                                    $a++;
+                                                @endphp
+                                                <td class="border-bottom-0">
+                                                    <h6 class="fw-semibold mb-1">{{ ucwords(str_replace("_", " ", $equation['variable'])) }}</h6>
+                                                </td>
+                                                <td class="border-bottom-0">
+                                                    <h6 class="fw-semibold mb-1">{{ $equation['value'] }}</h6>
+                                                </td>
+                                                {{-- @if ($item['kategori'] == 'pengeluaran')
                                                         <td class="border-bottom-0">
                                                             <div class="d-flex align-items-center gap-2">
                                                                 <span
@@ -239,7 +239,7 @@
                                                             {{ $item['nominal'] * $item['jumlah'] }}</h6>
                                                     </td>
                                                 </tr> --}}
-                                            {{-- @endforeach --}}
+                                                {{-- @endforeach --}}
 
                                         </tbody>
                                     </table>

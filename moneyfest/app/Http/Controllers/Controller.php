@@ -494,14 +494,20 @@ class Controller extends BaseController
                 ->whereMonth('tanggal', $now->month)
                 ->whereYear('tanggal', $now->year)
                 ->get();
-
-
-            $equation = $this->make_equation($item);
-            //if exist return page with prediction
+    
+            $equationResult = explode(':', $this->make_equation($item));
+            $prediction = number_format($item->first()->prediction, 0, ',', '.');
+    
+            $equation = [
+                'variable' => $equationResult[0],
+                'value' => number_format(trim($equationResult[1]), 0, ',', '.')
+            ];
+    
+            //if exist return page with prediction and split equation
             return view('keuntungan', [
                 'user' => $user,
                 'item' => $item,
-                'prediction' => $item->first()->prediction,
+                'prediction' => $prediction,
                 'equation' => $equation
             ]);
         } else {
