@@ -50,5 +50,57 @@ class ProdukSeeder extends Seeder
                 'user_id' => 1,
             ]
         );
+
+        Produk::create(
+            [
+                'nama' => 'pembuatan logo',
+                'jenis' => 'jasa digital',
+                'deskripsi' => 'pembuatan logo company profile',
+                'stok' => 100,
+                'harga_jual' => 200000,
+                'harga_beli' => 300000,
+                'terjual' => 90,
+                'user_id' => 3,
+            ]
+        );
+
+        Produk::create(
+            [
+                'nama' => 'kopi',
+                'jenis' => 'minuman',
+                'deskripsi' => 'kopi kapal api',
+                'stok' => 10,
+                'harga_jual' => 10000,
+                'harga_beli' => 3000,
+                'terjual' => 10,
+                'user_id' => 3,
+            ]
+        );
+
+        Produk::create(
+            [
+                'nama' => 'kopi',
+                'jenis' => 'minuman',
+                'deskripsi' => 'kopi kapal api',
+                'stok' => 10,
+                'harga_jual' => 10000,
+                'harga_beli' => 3000,
+                'terjual' => 10,
+                'user_id' => 3,
+            ]
+        );
+
+        Produk::create(
+            [
+                'nama' => 'kopi',
+                'jenis' => 'minuman',
+                'deskripsi' => 'kopi kapal api',
+                'stok' => 10,
+                'harga_jual' => 10000,
+                'harga_beli' => 3000,
+                'terjual' => 10,
+                'user_id' => 3,
+            ]
+        );
     }
 }

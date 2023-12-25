@@ -202,5 +202,66 @@ class KeuanganSeeder extends Seeder
                 'user_id' => 1,
             ]
         );
+
+        Keuangan::create(
+            [
+                'nama' => "hasil endorsement",
+                'nominal' => 1000000,
+                'kategori' => 13,
+                'jumlah' => 8,
+                'satuan' => "paket",
+                'tanggal' => Carbon::parse("2022-3-15"),
+                'catatan' => "-",
+                'user_id' => 3,
+            ]
+        );
+        Keuangan::create(
+            [
+                'nama' => "hasil advertisement",
+                'nominal' => 2000000,
+                'kategori' => 12,
+                'jumlah' => 6,
+                'satuan' => "buah",
+                'tanggal' => Carbon::parse("2022-5-17"),
+                'catatan' => "-",
+                'user_id' => 3,
+            ]
+        );
+        Keuangan::create(
+            [
+                'nama' => "hasil bazar",
+                'nominal' => 500000,
+                'kategori' => 4,
+                'jumlah' => 9,
+                'satuan' => "buah",
+                'tanggal' => Carbon::parse("2022-10-10"),
+                'catatan' => "-",
+                'user_id' => 3,
+            ]
+        );
+        Keuangan::create(
+            [
+                'nama' => "hasil pameran",
+                'nominal' => 5000000,
+                'kategori' => 12,
+                'jumlah' => 7,
+                'satuan' => "paket",
+                'tanggal' => Carbon::parse("2023-10-10"),
+                'catatan' => "-",
+                'user_id' => 3,
+            ]
+        );
+        Keuangan::create(
+            [
+                'nama' => "uc entrepreneur event",
+                'nominal' => 11000000,
+                'kategori' => 11,
+                'jumlah' => 8,
+                'satuan' => "buah",
+                'tanggal' => Carbon::parse("2023-11-11"),
+                'catatan' => "-",
+                'user_id' => 3,
+            ]
+        );
     }
 }
