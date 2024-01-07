@@ -6,6 +6,7 @@ use App\Http\Controllers\API\JenisKategorisController;
 use App\Http\Controllers\API\KategorisController;
 use App\Http\Controllers\KeuanganController;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,11 +27,23 @@ Route::get('/', function () {
 Route::get('/login', [Controller::class, 'login']);
 Route::post('/login', [Controller::class, 'login']);
 
+// Route::middleware(['web', 'auth'])->group(function () {
+
+// });
+
+Route::get('/dashboard', [Controller::class, 'dashboard'])->name('dashboard');
+
+Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+Route::post('/admin/dashboard', [Controller::class, 'create_user']);
+
 Route::get('/register', [Controller::class, 'registerpage']);
 Route::post('/register', [Controller::class, 'registerlogic']);
 
 Route::get('/stock', [Controller::class, 'stock']);
-
+// Route::get('/profit', [Controller::class, 'keuntungan']);
+// Route::get('/profit', function () {
+//     return view('keuntungan');
+// });
 Route::get('/dashboard', [Controller::class, 'dashboard']);
 Route::get('/pemasukan', [Controller::class, 'pemasukan']);
 Route::get('/pengeluaran', [Controller::class, 'pengeluaran']);
@@ -52,17 +65,15 @@ Route::get('/logout', [Controller::class, 'logout']);
 
 
 //jangan sentuh samsek yagais :)
-Route::get('/api/jenis-kategoris', [JenisKategorisController::class, 'index']);
-Route::get('/api/kategoris/{jenis}', [KategorisController::class, 'index']);
+Route::get('/profit', [Controller::class, 'tes_dashboard']);
+Route::get('/api/jenis-kategoris', [Controller::class, 'api_for_jenis_controllers']);
+Route::get('/api/kategoris/{jenis}', [Controller::class, 'api_for_kategori']);
+Route::get('/api/jenis-pengeluaran', [Controller::class, 'api_for_jenis_pengeluaran']);
+
 Route::get('/api/list-pengeluaran', [KeuanganController::class, 'pengeluaran']);
 Route::get('/api/list-pemasukan', [KeuanganController::class, 'pemasukan']);
-Route::get('/api/jenis-pengeluaran', [JenisKategorisController::class, 'pengeluaran']);
 Route::get('/api/produk', [ProdukController::class, 'index']);
 Route::get('/api/produk/{jual}/{jenis}', [ProdukController::class, 'produkspes']);
 Route::get('/api/dashboard', [KeuanganController::class, 'api']);
 Route::get('/api/dashboard2', [KeuanganController::class, 'api2']);
-Route::get('/api/dashboard3', [KeuanganController::class, 'api3']);
-
-
-
-
+Route::get('/api/dashboard3/{date}/{quartil}', [KeuanganController::class, 'api3']);

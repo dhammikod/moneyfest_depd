@@ -41,9 +41,9 @@ Route::post('/register', [Controller::class, 'registerlogic']);
 
 Route::get('/stock', [Controller::class, 'stock']);
 // Route::get('/profit', [Controller::class, 'keuntungan']);
-Route::get('/profit', function () {
-    return view('keuntungan');
-});
+// Route::get('/profit', function () {
+//     return view('keuntungan');
+// });
 Route::get('/dashboard', [Controller::class, 'dashboard']);
 Route::get('/pemasukan', [Controller::class, 'pemasukan']);
 Route::get('/pengeluaran', [Controller::class, 'pengeluaran']);
@@ -66,11 +66,12 @@ Route::get('/logout', [Controller::class, 'logout']);
 
 //jangan sentuh samsek yagais :)
 Route::get('/profit', [Controller::class, 'tes_dashboard']);
-Route::get('/api/jenis-kategoris', [JenisKategorisController::class, 'index']);
-Route::get('/api/kategoris/{jenis}', [KategorisController::class, 'index']);
+Route::get('/api/jenis-kategoris', [Controller::class, 'api_for_jenis_controllers']);
+Route::get('/api/kategoris/{jenis}', [Controller::class, 'api_for_kategori']);
+Route::get('/api/jenis-pengeluaran', [Controller::class, 'api_for_jenis_pengeluaran']);
+
 Route::get('/api/list-pengeluaran', [KeuanganController::class, 'pengeluaran']);
 Route::get('/api/list-pemasukan', [KeuanganController::class, 'pemasukan']);
-Route::get('/api/jenis-pengeluaran', [JenisKategorisController::class, 'pengeluaran']);
 Route::get('/api/produk', [ProdukController::class, 'index']);
 Route::get('/api/produk/{jual}/{jenis}', [ProdukController::class, 'produkspes']);
 Route::get('/api/dashboard', [KeuanganController::class, 'api']);

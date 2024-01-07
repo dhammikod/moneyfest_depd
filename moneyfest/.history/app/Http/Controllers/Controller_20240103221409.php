@@ -231,36 +231,36 @@ class Controller extends BaseController
         //     ]);
         // }
 
-            if (Session::has('user_id')) {
-                $user = User::find(Session::get('user_id'));
+        if (Session::has('user_id')) {
+            $user = User::find(Session::get('user_id'));
 
-                // Periksa peran pengguna
-                if ($user && $user->role == 'admin') {
+            // Periksa peran pengguna
+            if ($user && $user->role == 'admin') {
+                return redirect()->to('/admin/dashboard');
+            } else {
+                return redirect()->to('/dashboard');
+            }
+        }
+
+        if (isset($_POST["email"]) && isset($_POST["password"])) {
+            $user = User::where('email', $_POST["email"])->first();
+
+            if ($user && Hash::check($_POST["password"], $user->password)) {
+
+                if ($user->role == 'admin') {
+                    Session::put('user_id', $user->id);
                     return redirect()->to('/admin/dashboard');
                 } else {
+                    Session::put('user_id', $user->id);
                     return redirect()->to('/dashboard');
                 }
+            } else {
+                return view('login', [
+                    'pagetitle' => 'Home',
+                    'invalid' => true,
+                ]);
             }
-
-            if (isset($_POST["email"]) && isset($_POST["password"])) {
-                $user = User::where('email', $_POST["email"])->first();
-
-                if ($user && Hash::check($_POST["password"], $user->password)) {
-
-                    if ($user->role == 'admin') {
-                        Session::put('user_id', $user->id);
-                        return redirect()->to('/admin/dashboard');
-                    } else {
-                        Session::put('user_id', $user->id);
-                        return redirect()->to('/dashboard');
-                    }
-                } else {
-                    return view('login', [
-                        'pagetitle' => 'Home',
-                        'invalid' => true,
-                    ]);
-                }
-            }
+        }
 
 
 
@@ -692,42 +692,42 @@ class Controller extends BaseController
         return redirect()->to('/pengeluaran');
     }
 
-        public function create_user()
-        {
+    public function create_user()
+    {
 
 
 
-            if (isset($_POST['delete'])) {
-                $id = $_POST['id'];
-                $user = User::findOrFail($id);
-                $user->delete();
-                return redirect()->to('/admin/dashboard');
-            } elseif (isset($_POST['edit'])) {
-                $id = $_POST['id'];
-                $user = User::findOrFail($id);
-                $user->update([
-                    'name' => $_POST['name'],
-                    'email' => $_POST['email'],
-                    'password' => Hash::make($_POST['password']),
-                ]);
-                return redirect()->to('/admin/dashboard');
-            } elseif (isset($_POST['create'])) {
+        if (isset($_POST['delete'])) {
+            $id = $_POST['id'];
+            $user = User::findOrFail($id);
+            $user->delete();
+            return redirect()->to('/admin/dashboard');
+        } elseif (isset($_POST['edit'])) {
+            $id = $_POST['id'];
+            $user = User::findOrFail($id);
+            $user->update([
+                'name' => $_POST['name'],
+                'email' => $_POST['email'],
+                'password' => Hash::make($_POST['password']),
+            ]);
+            return redirect()->to('/admin/dashboard');
+        } elseif (isset($_POST['create'])) {
 
-                $existingUser = User::where('email', $_POST['email'])->first();
-                if ($existingUser) {
-                    return redirect()->back()->with('error', 'Email sudah terdaftar.');
-                }
-
-                $user = User::create([
-                    'name' => $_POST['name'],
-                    'email' => $_POST['email'],
-                    'password' => Hash::make($_POST['password']),
-                    'role' => $_POST['role'],
-                ]);
-
-                return redirect()->to('/admin/dashboard');
-            } else {
-                return redirect()->back()->with('error', 'wrong usage');
+            $existingUser = User::where('email', $_POST['email'])->first();
+            if ($existingUser) {
+                return redirect()->back()->with('error', 'Email sudah terdaftar.');
             }
+
+            $user = User::create([
+                'name' => $_POST['name'],
+                'email' => $_POST['email'],
+                'password' => Hash::make($_POST['password']),
+                'role' => $_POST['role'],
+            ]);
+
+            return redirect()->to('/admin/dashboard');
+        } else {
+            return redirect()->back()->with('error', 'wrong usage');
         }
+    }
 }
