@@ -37,13 +37,5 @@ class UserSeeder extends Seeder
                 'password' => Hash::make("demo1"),
             ],
         );
-        User::create(
-            [
-                'name' => "vebby",
-                'email' => 'v@gmail.com',
-                'password' => Hash::make("123masuk"),
-                'role' => 'admin',
-            ],
-        );
     }
 }
