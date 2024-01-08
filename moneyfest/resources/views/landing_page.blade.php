@@ -220,7 +220,7 @@
           <div class="icon-box">
             <div class="icon"><i class="fab fa-ello"></i></div>
             <h4 class="title"><a href="">Categorizing income and expenses</a></h4>
-            <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate</p>
+            <p class="description">Quickly sort your income and expenses into clear categories, gaining insights into your financial habits effortlessly.</p>
           </div>
         </div>
 
@@ -228,15 +228,15 @@
           <div class="icon-box">
             <div class="icon"><i class="fab fa-dribbble"></i></div>
             <h4 class="title"><a href="">Real-time income and expense tracking</a></h4>
-            <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla</p>
+            <p class="description">Stay on top of your finances with instant updates on income and expenses, providing a live snapshot of your financial situation.</p>
           </div>
         </div>
 
         <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="300">
           <div class="icon-box">
-            <div class="icon"><i class="fab fa-calendar"></i></div>
+            <div class="icon"><i class="fab fa-dribble"></i></div>
             <h4 class="title"><a href="">Monthly turnover goal and performance graph</a></h4>
-            <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim</p>
+            <p class="description">Set monthly turnover goals and track your performance visually with easy-to-read graphs, turning financial aspirations into achievable targets.</p>
           </div>
         </div>
 
@@ -244,7 +244,7 @@
           <div class="icon-box">
             <div class="icon"><i class="fab fa-business-time"></i></div>
             <h4 class="title"><a href="">Displaying full history and categorizing it</a></h4>
-            <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum</p>
+            <p class="description">Access your complete financial history and categorize it for a concise overview, empowering you to make informed decisions</p>
           </div>
         </div>
 
@@ -369,8 +369,8 @@
                     <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
                         <div class="heading text-center">
                             <h2 class="heading-title">Reviews</h2>
-                            <p class="heading-desc">Berikut adalah ulasan dari client kami bagamiana CapCai dapat
-                                membantu memanajemen bisnis mereka</p>
+                            <p class="heading-desc">These are the review from our client on
+                                 how CapcAI can help their business management</p>
                         </div>
                     </div>
                 </div>
@@ -379,7 +379,7 @@
                         <div class="testimonial-panel style-1">
                             <div class="testimonial-body">
                                 <div class="testimonial-icon"><i class="fas fa-quote-left"></i></div>
-                                <p>keren sekali , target omset bisa tercapai , terimakasih CapcAI!</p>
+                                <p>Very Cool! , income target achieved! ,thank you CapcAI!</p>
                                 <div class="testimonial-author">
                                     <div class="testimonial-img"><img src="assets/images/testimonials/avatar-1.png"
                                             alt="avatar author" /></div>
@@ -394,7 +394,7 @@
                         <div class="testimonial-panel style-2">
                             <div class="testimonial-body">
                                 <div class="testimonial-icon"><i class="fas fa-quote-left"></i></div>
-                                <p>Keren sekali prediksinya sangat tepat! </p>
+                                <p>Very cool, the prediction is very precises! </p>
                                 <div class="testimonial-author">
                                     <div class="testimonial-img"><img src="assets/images/testimonials/avatar-2.png"
                                             alt="avatar author" /></div>
@@ -409,7 +409,7 @@
                         <div class="testimonial-panel style-3">
                             <div class="testimonial-body">
                                 <div class="testimonial-icon"><i class="fas fa-quote-left"></i></div>
-                                <p>Dengan CapcAi, pencatatan keuangan bisnis saya semakin lebih mudah dan efesien</p>
+                                <p>With CapcAI, i can easily and efficienly manage my business</p>
                                 <div class="testimonial-author">
                                     <div class="testimonial-img"><img src="assets/images/testimonials/avatar-3.png"
                                             alt="avatar author" /></div>
